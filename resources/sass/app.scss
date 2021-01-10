@@ -1,0 +1,24 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Partials
+@import "./partials/home";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+strong {
+    font-family: Georgia, "Times New Roman", Times, serif !important;
+}
+
+body {
+    background-color: #fff !important;
+}
