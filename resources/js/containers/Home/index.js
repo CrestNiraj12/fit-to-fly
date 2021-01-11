@@ -3,11 +3,17 @@ import Tick from "../../../images/tick.png";
 import Airplane from "../../../images/airplane.png";
 import Calendar from "../../../images/calendar.webp";
 import BookCard from "../../components/BookCard";
+import Image from "../../../images/image1.jpg";
 
 const FitToFly = () => {
     return (
         <>
-            <header className="bg-dark py-5 mb-5">
+            <header
+                className="bg-dark py-5 mb-5"
+                style={{
+                    background: `url(${Image}) bottom center / cover`,
+                }}
+            >
                 <div className="container h-100">
                     <div className="row h-100 align-items-center">
                         <div className="col-lg-12">

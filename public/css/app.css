@@ -1,5 +1,33 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
+.cardHeaderImage {
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100%;
+  margin-bottom: 30px;
+}
+
+.titleIcon {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  align-self: center;
+}
+
+.timeSlot {
+  border-radius: 5px;
+  width: 100%;
+  font-size: 10px;
+  padding: 5px 0;
+  margin: 3px 0;
+}
+
+.timeSlot:hover {
+  background-color: #0cca00 !important;
+}
+
 .react-datepicker,
 .react-datepicker__month-container {
   width: 100%;
@@ -60,6 +88,7 @@
   border-radius: 100% !important;
   background-color: #0cca00 !important;
   outline: none;
+  color: #fff !important;
 }
 
 .react-datepicker__day,
@@ -69,6 +98,54 @@
   border-radius: 100% !important;
   outline: none;
   font-size: 15px;
+}
+
+.react-datepicker__week div[aria-disabled=true] {
+  text-decoration: line-through;
+  cursor: not-allowed !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  color: #656565 !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range {
+  color: #fff !important;
+}
+
+footer {
+  background: #f1f1f1;
+  padding: 40px 50px 10px 50px;
+  text-align: center;
+  margin-top: 150px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.footer-links > li {
+  margin: 0 30px;
+}
+
+footer hr {
+  margin: 10px 0;
 }
 
 /*!
