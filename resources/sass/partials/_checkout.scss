@@ -1,0 +1,14 @@
+.mark {
+    display: block;
+    background-color: transparent !important;
+}
+
+.mark > div {
+    display: inline-block;
+}
+
+.form-control:disabled {
+    color: #6c757d !important;
+    background-color: #e9ecef !important;
+    cursor: not-allowed !important;
+}

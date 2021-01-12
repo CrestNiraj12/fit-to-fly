@@ -28,6 +28,12 @@
   background-color: #0cca00 !important;
 }
 
+.cardSpinner {
+  position: absolute;
+  top: 45%;
+  left: 48%;
+}
+
 .react-datepicker,
 .react-datepicker__month-container {
   width: 100%;
@@ -146,6 +152,21 @@ footer {
 
 footer hr {
   margin: 10px 0;
+}
+
+.mark {
+  display: block;
+  background-color: transparent !important;
+}
+
+.mark > div {
+  display: inline-block;
+}
+
+.form-control:disabled {
+  color: #6c757d !important;
+  background-color: #e9ecef !important;
+  cursor: not-allowed !important;
 }
 
 /*!

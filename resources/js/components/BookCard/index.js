@@ -3,19 +3,10 @@ import DatePicker from "react-datepicker";
 import ConfirmCard from "./ConfirmCard";
 import TimeSlot from "./TimeSlot";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 const BookCard = () => {
-    const services = [
-        {
-            title: "LIFE Pharmacy COVID-19 PCR Test + Fit to Fly Certificate",
-            locations: [
-                "Life Pharmacy Brompton Road",
-                "Life Pharmacy Oxford Street",
-            ],
-            price: 99.0,
-        },
-    ];
-
+    const [services, setServices] = useState([]);
     const [serviceIndex, setService] = useState("");
     const [location, setLocation] = useState("");
     const [confirmData, setConfirmData] = useState(false);
@@ -25,8 +16,28 @@ const BookCard = () => {
     const [selectedTime, setSelectedTime] = useState("");
 
     useEffect(() => {
-        setTimePeriod([...generateTimePeriod("09:30", "22:45")]);
+        axios
+            .get("/api/services")
+            .then((res) => {
+                setServices(res.data);
+            })
+            .catch((err) => console.log(err));
     }, []);
+
+    useEffect(() => {
+        if (location)
+            axios
+                .get(`/api/locations/${location}`)
+                .then((res) => {
+                    setTimePeriod([
+                        ...generateTimePeriod(
+                            res.data["opening-time"],
+                            res.data["closing-time"]
+                        ),
+                    ]);
+                })
+                .catch((err) => console.log(err));
+    }, [location]);
 
     const handleConfirmData = () => {
         if (!confirmData) setConfirmData(true);
@@ -50,15 +61,19 @@ const BookCard = () => {
         return date >= new Date(year, month, day);
     };
 
-    const generateTimePeriod = (minTime, maxTime) => {
+    const generateTimePeriod = (minTime, maxTime, duration = 5) => {
         const periods = [];
         var start;
+        minTime = minTime.trim();
+        maxTime = maxTime.trim();
+        var ended = false;
+
         for (
             var i = Number(minTime.split(":")[0]);
             i <= Number(maxTime.split(":")[0]);
             i++
         ) {
-            for (var j = 0; j <= 55; j += 5) {
+            for (var j = 0; j <= 55; j += duration) {
                 const time = `${String(i).length === 2 ? i : "0" + String(i)}:${
                     String(j).length === 2 ? j : "0" + String(j)
                 }`;
@@ -75,12 +90,14 @@ const BookCard = () => {
                                   ? j + 5
                                   : "0" + String(j + 5)
                           }`;
-
                 if (time === minTime) start = true;
                 if (start) periods.push(time + " - " + endTime);
-
-                if (endTime === maxTime) break;
+                if (endTime === maxTime) {
+                    ended = true;
+                    break;
+                }
             }
+            if (ended) break;
         }
         return periods;
     };
@@ -97,7 +114,7 @@ const BookCard = () => {
         >
             {confirmBookDate ? (
                 <ConfirmCard
-                    serviceTitle={services[serviceIndex].title}
+                    serviceTitle={services[serviceIndex].name}
                     bookDate={
                         convertDateToString(bookDate) +
                         " " +
@@ -135,9 +152,9 @@ const BookCard = () => {
                                         }
                                         style={{ marginBottom: "20px" }}
                                     >
-                                        {services.map(({ title }, index) => (
+                                        {services.map(({ name }, index) => (
                                             <option key={index} value={index}>
-                                                {title}
+                                                {name}
                                             </option>
                                         ))}
                                     </select>
@@ -155,12 +172,9 @@ const BookCard = () => {
                                         }
                                     >
                                         {services[serviceIndex].locations.map(
-                                            (location, index) => (
-                                                <option
-                                                    value={index}
-                                                    key={index}
-                                                >
-                                                    {location}
+                                            ({ name, id }, index) => (
+                                                <option value={id} key={index}>
+                                                    {name}
                                                 </option>
                                             )
                                         )}
@@ -243,18 +257,15 @@ const BookCard = () => {
                                             >
                                                 Select service
                                             </option>
-                                            {services.map(
-                                                ({ title }, index) => (
-                                                    <option
-                                                        key={index}
-                                                        value={index}
-                                                    >
-                                                        {title}
-                                                    </option>
-                                                )
-                                            )}
+                                            {services.map(({ name }, index) => (
+                                                <option
+                                                    key={index}
+                                                    value={index}
+                                                >
+                                                    {name}
+                                                </option>
+                                            ))}
                                         </select>
-
                                         {serviceIndex && (
                                             <>
                                                 <label htmlFor="location">
@@ -285,12 +296,15 @@ const BookCard = () => {
                                                     {services[
                                                         serviceIndex
                                                     ].locations.map(
-                                                        (location, index) => (
+                                                        (
+                                                            { name, id },
+                                                            index
+                                                        ) => (
                                                             <option
-                                                                index={index}
+                                                                value={id}
                                                                 key={index}
                                                             >
-                                                                {location}
+                                                                {name}
                                                             </option>
                                                         )
                                                     )}
@@ -325,7 +339,7 @@ const BookCard = () => {
                             type="button"
                             className="btn btn-secondary"
                             style={{ width: "100%", marginTop: "10px" }}
-                            disabled={!location}
+                            disabled={confirmData ? !selectedTime : !location}
                             onClick={handleConfirmData}
                         >
                             Continue

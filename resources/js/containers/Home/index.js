@@ -4,6 +4,7 @@ import Airplane from "../../../images/airplane.png";
 import Calendar from "../../../images/calendar.webp";
 import BookCard from "../../components/BookCard";
 import Image from "../../../images/image1.jpg";
+import Footer from "../../components/Footer";
 
 const FitToFly = () => {
     return (
@@ -151,6 +152,7 @@ const FitToFly = () => {
                     <BookCard />
                 </div>
             </div>
+            <Footer />
         </>
     );
 };

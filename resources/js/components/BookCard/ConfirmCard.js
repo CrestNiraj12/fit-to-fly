@@ -1,4 +1,8 @@
+import axios from "axios";
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Image from "../../../images/image2.webp";
 
 const ConfirmCard = ({
@@ -8,6 +12,20 @@ const ConfirmCard = ({
     price,
     setConfirmBookDate,
 }) => {
+    const history = useHistory();
+    const [locationArray, setLocationArray] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        axios
+            .get(`/api/locations/${location}`)
+            .then((res) => {
+                setLocationArray(res.data);
+                setLoading(false);
+            })
+            .catch((err) => console.log(err));
+    }, []);
+
     const info = [
         {
             icon: (
@@ -80,100 +98,131 @@ const ConfirmCard = ({
                 </svg>
             ),
             title: "Location",
-            description: location,
+            description: locationArray ? locationArray.name : "",
         },
     ];
-    return (
-        <div className="card-body" style={{ padding: "50px 0" }}>
-            <div className="row" style={{ justifyContent: "center" }}>
-                <img src={Image} className="cardHeaderImage" />
-            </div>
-            <div className="row" style={{ justifyContent: "center" }}>
-                <h4>{serviceTitle}</h4>
-            </div>
 
-            <div
-                className="row"
-                style={{
-                    borderTop: "1px solid #e9e9e9",
-                    borderBottom: "1px solid #e9e9e9",
-                    padding: "15px 5%",
-                    margin: "30px 0",
-                }}
-            >
-                {info.map(({ icon, title, description }, index) => (
-                    <div className="col-md-3" key={index}>
-                        <div className="row" style={{ margin: "7.5px -15px" }}>
-                            {icon}
-                            {title}
-                        </div>
-                        <div className="row" style={{ fontSize: "13px" }}>
-                            {description}
-                        </div>
+    const handleConfirm = (e) => {
+        e.preventDefault();
+        const service = {
+            title: serviceTitle,
+            date: bookDate,
+            location: locationArray.name,
+            amount: price,
+        };
+        localStorage.setItem("service", JSON.stringify(service));
+        history.push("/checkout");
+    };
+
+    return (
+        <div
+            className="card-body"
+            style={{ padding: "50px 0", minHeight: 400 }}
+        >
+            {loading ? (
+                <div className="spinner-border cardSpinner" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            ) : (
+                <>
+                    <div className="row" style={{ justifyContent: "center" }}>
+                        <img src={Image} className="cardHeaderImage" />
                     </div>
-                ))}
-            </div>
-            <div
-                className="row mb-5"
-                style={{
-                    backgroundColor: "#0086ec17",
-                    margin: "0",
-                    padding: "10px 5%",
-                }}
-            >
-                <div className="col-md-12">
+                    <div className="row" style={{ justifyContent: "center" }}>
+                        <h4>{serviceTitle}</h4>
+                    </div>
+
                     <div
                         className="row"
                         style={{
-                            justifyContent: "space-between",
-                            padding: "5px 0",
+                            borderTop: "1px solid #e9e9e9",
+                            borderBottom: "1px solid #e9e9e9",
+                            padding: "15px 5%",
+                            margin: "30px 0",
                         }}
                     >
-                        <span>Quantity</span>
-                        <span style={{ color: "#0086ec" }}>1</span>
+                        {info.map(({ icon, title, description }, index) => (
+                            <div className="col-md-3" key={index}>
+                                <div
+                                    className="row"
+                                    style={{ margin: "7.5px -15px" }}
+                                >
+                                    {icon}
+                                    {title}
+                                </div>
+                                <div
+                                    className="row"
+                                    style={{ fontSize: "13px" }}
+                                >
+                                    {description}
+                                </div>
+                            </div>
+                        ))}
                     </div>
                     <div
-                        className="row "
+                        className="row mb-5"
                         style={{
-                            justifyContent: "space-between",
-                            padding: "5px 0",
+                            backgroundColor: "#0086ec17",
+                            margin: "0",
+                            padding: "10px 5%",
                         }}
                     >
-                        <span>Total Price</span>
-                        <span style={{ color: "#0086ec" }}>
-                            £{price.toFixed(2)}
-                        </span>
+                        <div className="col-md-12">
+                            <div
+                                className="row"
+                                style={{
+                                    justifyContent: "space-between",
+                                    padding: "5px 0",
+                                }}
+                            >
+                                <span>Quantity</span>
+                                <span style={{ color: "#0086ec" }}>1</span>
+                            </div>
+                            <div
+                                className="row "
+                                style={{
+                                    justifyContent: "space-between",
+                                    padding: "5px 0",
+                                }}
+                            >
+                                <span>Total Price</span>
+                                <span style={{ color: "#0086ec" }}>
+                                    £{price.toFixed(2)}
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div
-                className="row"
-                style={{ justifyContent: "center", margin: "0 10%" }}
-            >
-                <button
-                    type="button"
-                    className="btn"
-                    style={{
-                        padding: "12px 5%",
-                        margin: "0 10px",
-                        backgroundColor: "#f3f3f3",
-                    }}
-                    onClick={() => setConfirmBookDate(false)}
-                >
-                    Back
-                </button>
-                <button
-                    type="button"
-                    className="btn"
-                    style={{
-                        padding: "12px 5%",
-                        backgroundColor: "#0086ec",
-                        color: "#fff",
-                    }}
-                >
-                    Confirm
-                </button>
-            </div>
+                    <div
+                        className="row"
+                        style={{ justifyContent: "center", margin: "0 10%" }}
+                    >
+                        <button
+                            type="button"
+                            className="btn"
+                            style={{
+                                padding: "12px 5%",
+                                margin: "0 10px",
+                                backgroundColor: "#f3f3f3",
+                            }}
+                            onClick={() => setConfirmBookDate(false)}
+                        >
+                            Back
+                        </button>
+                        <button
+                            type="button"
+                            className="btn"
+                            style={{
+                                padding: "12px 5%",
+                                backgroundColor: "#0086ec",
+                                color: "#fff",
+                            }}
+                            onClick={handleConfirm}
+                        >
+                            Confirm
+                        </button>
+                    </div>
+                </>
+            )}
         </div>
     );
 };

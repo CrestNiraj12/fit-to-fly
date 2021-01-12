@@ -191,6 +191,1030 @@ module.exports = _objectWithoutPropertiesLoose;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/@paypal/react-paypal-js/dist/react-paypal.esm.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@paypal/react-paypal-js/dist/react-paypal.esm.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FUNDING": () => /* binding */ FUNDING,
+/* harmony export */   "PayPalButtons": () => /* binding */ PayPalButtons,
+/* harmony export */   "PayPalMarks": () => /* binding */ PayPalMarks,
+/* harmony export */   "PayPalMessages": () => /* binding */ PayPalMessages,
+/* harmony export */   "PayPalScriptProvider": () => /* binding */ PayPalScriptProvider,
+/* harmony export */   "usePayPalScriptReducer": () => /* binding */ usePayPalScriptReducer
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+/*!
+ * paypal-js v1.0.3 (2020-10-14T17:44:15.504Z)
+ * Copyright 2020-present, PayPal, Inc. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @this {Promise}
+ */
+
+function finallyConstructor(callback) {
+  var constructor = this.constructor;
+  return this.then(function (value) {
+    // @ts-ignore
+    return constructor.resolve(callback()).then(function () {
+      return value;
+    });
+  }, function (reason) {
+    // @ts-ignore
+    return constructor.resolve(callback()).then(function () {
+      // @ts-ignore
+      return constructor.reject(reason);
+    });
+  });
+} // Store setTimeout reference so promise-polyfill will be unaffected by
+// other code modifying setTimeout (like sinon.useFakeTimers())
+
+
+var setTimeoutFunc = setTimeout;
+
+function isArray(x) {
+  return Boolean(x && typeof x.length !== 'undefined');
+}
+
+function noop() {} // Polyfill for Function.prototype.bind
+
+
+function bind(fn, thisArg) {
+  return function () {
+    fn.apply(thisArg, arguments);
+  };
+}
+/**
+ * @constructor
+ * @param {Function} fn
+ */
+
+
+function Promise(fn) {
+  if (!(this instanceof Promise)) throw new TypeError('Promises must be constructed via new');
+  if (typeof fn !== 'function') throw new TypeError('not a function');
+  /** @type {!number} */
+
+  this._state = 0;
+  /** @type {!boolean} */
+
+  this._handled = false;
+  /** @type {Promise|undefined} */
+
+  this._value = undefined;
+  /** @type {!Array<!Function>} */
+
+  this._deferreds = [];
+  doResolve(fn, this);
+}
+
+function handle(self, deferred) {
+  while (self._state === 3) {
+    self = self._value;
+  }
+
+  if (self._state === 0) {
+    self._deferreds.push(deferred);
+
+    return;
+  }
+
+  self._handled = true;
+
+  Promise._immediateFn(function () {
+    var cb = self._state === 1 ? deferred.onFulfilled : deferred.onRejected;
+
+    if (cb === null) {
+      (self._state === 1 ? resolve : reject)(deferred.promise, self._value);
+      return;
+    }
+
+    var ret;
+
+    try {
+      ret = cb(self._value);
+    } catch (e) {
+      reject(deferred.promise, e);
+      return;
+    }
+
+    resolve(deferred.promise, ret);
+  });
+}
+
+function resolve(self, newValue) {
+  try {
+    // Promise Resolution Procedure: https://github.com/promises-aplus/promises-spec#the-promise-resolution-procedure
+    if (newValue === self) throw new TypeError('A promise cannot be resolved with itself.');
+
+    if (newValue && (_typeof(newValue) === 'object' || typeof newValue === 'function')) {
+      var then = newValue.then;
+
+      if (newValue instanceof Promise) {
+        self._state = 3;
+        self._value = newValue;
+        finale(self);
+        return;
+      } else if (typeof then === 'function') {
+        doResolve(bind(then, newValue), self);
+        return;
+      }
+    }
+
+    self._state = 1;
+    self._value = newValue;
+    finale(self);
+  } catch (e) {
+    reject(self, e);
+  }
+}
+
+function reject(self, newValue) {
+  self._state = 2;
+  self._value = newValue;
+  finale(self);
+}
+
+function finale(self) {
+  if (self._state === 2 && self._deferreds.length === 0) {
+    Promise._immediateFn(function () {
+      if (!self._handled) {
+        Promise._unhandledRejectionFn(self._value);
+      }
+    });
+  }
+
+  for (var i = 0, len = self._deferreds.length; i < len; i++) {
+    handle(self, self._deferreds[i]);
+  }
+
+  self._deferreds = null;
+}
+/**
+ * @constructor
+ */
+
+
+function Handler(onFulfilled, onRejected, promise) {
+  this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
+  this.onRejected = typeof onRejected === 'function' ? onRejected : null;
+  this.promise = promise;
+}
+/**
+ * Take a potentially misbehaving resolver function and make sure
+ * onFulfilled and onRejected are only called once.
+ *
+ * Makes no guarantees about asynchrony.
+ */
+
+
+function doResolve(fn, self) {
+  var done = false;
+
+  try {
+    fn(function (value) {
+      if (done) return;
+      done = true;
+      resolve(self, value);
+    }, function (reason) {
+      if (done) return;
+      done = true;
+      reject(self, reason);
+    });
+  } catch (ex) {
+    if (done) return;
+    done = true;
+    reject(self, ex);
+  }
+}
+
+Promise.prototype['catch'] = function (onRejected) {
+  return this.then(null, onRejected);
+};
+
+Promise.prototype.then = function (onFulfilled, onRejected) {
+  // @ts-ignore
+  var prom = new this.constructor(noop);
+  handle(this, new Handler(onFulfilled, onRejected, prom));
+  return prom;
+};
+
+Promise.prototype['finally'] = finallyConstructor;
+
+Promise.all = function (arr) {
+  return new Promise(function (resolve, reject) {
+    if (!isArray(arr)) {
+      return reject(new TypeError('Promise.all accepts an array'));
+    }
+
+    var args = Array.prototype.slice.call(arr);
+    if (args.length === 0) return resolve([]);
+    var remaining = args.length;
+
+    function res(i, val) {
+      try {
+        if (val && (_typeof(val) === 'object' || typeof val === 'function')) {
+          var then = val.then;
+
+          if (typeof then === 'function') {
+            then.call(val, function (val) {
+              res(i, val);
+            }, reject);
+            return;
+          }
+        }
+
+        args[i] = val;
+
+        if (--remaining === 0) {
+          resolve(args);
+        }
+      } catch (ex) {
+        reject(ex);
+      }
+    }
+
+    for (var i = 0; i < args.length; i++) {
+      res(i, args[i]);
+    }
+  });
+};
+
+Promise.resolve = function (value) {
+  if (value && _typeof(value) === 'object' && value.constructor === Promise) {
+    return value;
+  }
+
+  return new Promise(function (resolve) {
+    resolve(value);
+  });
+};
+
+Promise.reject = function (value) {
+  return new Promise(function (resolve, reject) {
+    reject(value);
+  });
+};
+
+Promise.race = function (arr) {
+  return new Promise(function (resolve, reject) {
+    if (!isArray(arr)) {
+      return reject(new TypeError('Promise.race accepts an array'));
+    }
+
+    for (var i = 0, len = arr.length; i < len; i++) {
+      Promise.resolve(arr[i]).then(resolve, reject);
+    }
+  });
+}; // Use polyfill for setImmediate for performance gains
+
+
+Promise._immediateFn = // @ts-ignore
+typeof setImmediate === 'function' && function (fn) {
+  // @ts-ignore
+  setImmediate(fn);
+} || function (fn) {
+  setTimeoutFunc(fn, 0);
+};
+
+Promise._unhandledRejectionFn = function _unhandledRejectionFn(err) {
+  if (typeof console !== 'undefined' && console) {
+    console.warn('Possible Unhandled Promise Rejection:', err); // eslint-disable-line no-console
+  }
+};
+
+function findScript(url, dataAttributes) {
+  var currentScript = document.querySelector("script[src=\"".concat(url, "\"]"));
+  if (!currentScript) return null;
+  var nextScript = createScriptElement(url, dataAttributes); // check if the new script has the same number of data attributes
+
+  if (objectSize(currentScript.dataset) !== objectSize(nextScript.dataset)) {
+    return null;
+  }
+
+  var isExactMatch = true; // check if the data attribute values are the same
+
+  forEachObjectKey(currentScript.dataset, function (key) {
+    if (currentScript.dataset[key] !== nextScript.dataset[key]) {
+      isExactMatch = false;
+    }
+  });
+  return isExactMatch ? currentScript : null;
+}
+
+function insertScriptElement(_ref) {
+  var url = _ref.url,
+      dataAttributes = _ref.dataAttributes,
+      onSuccess = _ref.onSuccess,
+      onError = _ref.onError;
+  var newScript = createScriptElement(url, dataAttributes);
+  newScript.onerror = onError;
+  newScript.onload = onSuccess;
+  document.head.insertBefore(newScript, document.head.firstElementChild);
+}
+
+function processOptions() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var processedOptions = {
+    queryParams: {},
+    dataAttributes: {}
+  };
+  forEachObjectKey(options, function (key) {
+    if (key.substring(0, 5) === 'data-') {
+      processedOptions.dataAttributes[key] = options[key];
+    } else {
+      processedOptions.queryParams[key] = options[key];
+    }
+  });
+  var queryParams = processedOptions.queryParams,
+      dataAttributes = processedOptions.dataAttributes;
+  return {
+    queryString: objectToQueryString(queryParams),
+    dataAttributes: dataAttributes
+  };
+}
+
+function objectToQueryString(params) {
+  var queryString = '';
+  forEachObjectKey(params, function (key) {
+    if (queryString.length !== 0) queryString += '&';
+    queryString += key + '=' + params[key];
+  });
+  return queryString;
+}
+
+function createScriptElement(url) {
+  var dataAttributes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var newScript = document.createElement('script');
+  newScript.src = url;
+  forEachObjectKey(dataAttributes, function (key) {
+    newScript.setAttribute(key, dataAttributes[key]);
+  });
+  return newScript;
+} // uses es3 to avoid requiring polyfills for Array.prototype.forEach and Object.keys
+
+
+function forEachObjectKey(obj, callback) {
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      callback(key);
+    }
+  }
+}
+
+function objectSize(obj) {
+  var size = 0;
+  forEachObjectKey(obj, function () {
+    return size++;
+  });
+  return size;
+}
+
+var SDK_BASE_URL = 'https://www.paypal.com/sdk/js';
+var loadingPromise;
+var isLoading = false;
+
+function loadScript(options) {
+  // resolve with the existing promise when the script is loading
+  if (isLoading) return loadingPromise;
+  return loadingPromise = new Promise(function (resolve, reject) {
+    // resolve with null when running in Node
+    if (typeof window === 'undefined') return resolve(null);
+
+    var _processOptions = processOptions(options),
+        queryString = _processOptions.queryString,
+        dataAttributes = _processOptions.dataAttributes;
+
+    var url = "".concat(SDK_BASE_URL, "?").concat(queryString); // resolve with the existing global paypal object when a script with the same src already exists
+
+    if (findScript(url, dataAttributes) && window.paypal) return resolve(window.paypal);
+    isLoading = true;
+    insertScriptElement({
+      url: url,
+      dataAttributes: dataAttributes,
+      onSuccess: function onSuccess() {
+        isLoading = false;
+        if (window.paypal) return resolve(window.paypal);
+        return reject(new Error('The window.paypal global variable is not available.'));
+      },
+      onError: function onError() {
+        isLoading = false;
+        return reject(new Error("The script \"".concat(url, "\" didn't load correctly.")));
+      }
+    });
+  });
+} // replaced with the package.json version at build time
+
+
+var SCRIPT_LOADING_STATE = {
+  PENDING: "pending",
+  REJECTED: "rejected",
+  RESOLVED: "resolved"
+};
+var ScriptContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)();
+var ScriptDispatchContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)();
+
+function scriptReducer(state, action) {
+  switch (action.type) {
+    case "setLoadingStatus":
+      return {
+        options: _objectSpread({}, state.options),
+        loadingStatus: action.value
+      };
+
+    case "resetOptions":
+      return {
+        loadingStatus: SCRIPT_LOADING_STATE.PENDING,
+        options: action.value
+      };
+
+    default:
+      {
+        throw new Error("Unhandled action type: ".concat(action.type));
+      }
+  }
+}
+
+function usePayPalScriptReducer() {
+  var scriptContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ScriptContext);
+  var dispatchContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ScriptDispatchContext);
+
+  if (scriptContext === undefined || dispatchContext === undefined) {
+    throw new Error("useScriptReducer must be used within a ScriptProvider");
+  }
+
+  var loadingStatus = scriptContext.loadingStatus,
+      restScriptContext = _objectWithoutProperties(scriptContext, ["loadingStatus"]);
+
+  var derivedStatusContext = _objectSpread(_objectSpread({}, restScriptContext), {}, {
+    isPending: loadingStatus === SCRIPT_LOADING_STATE.PENDING,
+    isResolved: loadingStatus === SCRIPT_LOADING_STATE.RESOLVED,
+    isRejected: loadingStatus === SCRIPT_LOADING_STATE.REJECTED
+  });
+
+  return [derivedStatusContext, dispatchContext];
+}
+
+function PayPalScriptProvider(_ref2) {
+  var options = _ref2.options,
+      children = _ref2.children;
+  var initialState = {
+    options: options,
+    loadingStatus: SCRIPT_LOADING_STATE.PENDING
+  };
+
+  var _useReducer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(scriptReducer, initialState),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      state = _useReducer2[0],
+      dispatch = _useReducer2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (state.loadingStatus !== SCRIPT_LOADING_STATE.PENDING) return;
+    var isSubscribed = true;
+    loadScript(state.options).then(function () {
+      if (isSubscribed) {
+        dispatch({
+          type: "setLoadingStatus",
+          value: SCRIPT_LOADING_STATE.RESOLVED
+        });
+      }
+    })["catch"](function () {
+      if (isSubscribed) {
+        dispatch({
+          type: "setLoadingStatus",
+          value: SCRIPT_LOADING_STATE.REJECTED
+        });
+      }
+    });
+    return function () {
+      isSubscribed = false;
+    };
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ScriptContext.Provider, {
+    value: state
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ScriptDispatchContext.Provider, {
+    value: dispatch
+  }, children));
+}
+
+PayPalScriptProvider.propTypes = {
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().node.isRequired),
+  options: prop_types__WEBPACK_IMPORTED_MODULE_1___default().exact({
+    "buyer-country": (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    "client-id": (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
+    commit: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)]),
+    components: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    currency: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    "data-client-token": (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    "data-csp-nonce": (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    "data-order-id": (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    "data-page-type": (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    "data-partner-attribution-id": (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    debug: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)]),
+    "disable-funding": (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    "integration-date": (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    intent: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    locale: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    "merchant-id": (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    vault: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)])
+  })
+};
+/**
+ * This `<PayPalButtons />` component renders the [Smart Payment Buttons](https://developer.paypal.com/docs/business/javascript-sdk/javascript-sdk-reference/#buttons).
+ * It relies on the `<PayPalScriptProvider />` parent component for managing state related to loading the JS SDK script.
+ *
+ * Use props for customizing your buttons. For example, here's how you would use the `style` and `createOrder` options:
+ *
+ * ```jsx
+ *     <PayPalButtons style={{ layout: "vertical" }} createOrder={(data, actions) => {}} />
+ * ```
+ */
+
+function PayPalButtons(props) {
+  var _usePayPalScriptReduc = usePayPalScriptReducer(),
+      _usePayPalScriptReduc2 = _slicedToArray(_usePayPalScriptReduc, 1),
+      _usePayPalScriptReduc3 = _usePayPalScriptReduc2[0],
+      isResolved = _usePayPalScriptReduc3.isResolved,
+      options = _usePayPalScriptReduc3.options;
+
+  var buttonsContainerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var buttons = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      setErrorState = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var cleanup = function cleanup() {
+      if (buttons.current) {
+        buttons.current.close();
+      }
+    };
+
+    if (!isResolved) {
+      return cleanup;
+    }
+
+    if (!hasValidGlobalStateForButtons(options, setErrorState)) {
+      return cleanup;
+    }
+
+    buttons.current = window.paypal.Buttons(_objectSpread({}, props));
+
+    if (!buttons.current.isEligible()) {
+      return cleanup;
+    }
+
+    buttons.current.render(buttonsContainerRef.current)["catch"](function (err) {
+      console.error("Failed to render <PayPalButtons /> component. ".concat(err));
+    });
+    return cleanup;
+  }, [isResolved, props.forceReRender, props.fundingSource]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    ref: buttonsContainerRef
+  });
+}
+
+function hasValidGlobalStateForButtons(_ref3, setErrorState) {
+  var _ref3$components = _ref3.components,
+      components = _ref3$components === void 0 ? "" : _ref3$components;
+
+  if (typeof window.paypal.Buttons !== "undefined") {
+    return true;
+  }
+
+  var errorMessage = "Unable to render <PayPalButtons /> because window.paypal.Buttons is undefined."; // the JS SDK includes the Buttons component by default when no 'components' are specified.
+  // The 'buttons' component must be included in the 'components' list when using it with other components.
+
+  if (components.length && !components.includes("buttons")) {
+    var expectedComponents = "".concat(components, ",buttons");
+    errorMessage += "\nTo fix the issue, add 'buttons' to the list of components passed to the parent PayPalScriptProvider:" + "\n`<PayPalScriptProvider options={{ components: '".concat(expectedComponents, "'}}>`.");
+  }
+
+  setErrorState(function () {
+    throw new Error(errorMessage);
+  });
+  return false;
+}
+
+PayPalButtons.propTypes = {
+  /**
+   * Sets up the transaction. Called when the buyer clicks the PayPal button.
+   */
+  createOrder: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
+
+  /**
+   * Deprecated, replaced by `createSubscription`.
+   */
+  createBillingAgreement: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
+
+  /**
+   * Sets up a subscription. Called when the buyer clicks the PayPal button.
+   */
+  createSubscription: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
+
+  /**
+   * The individual button to render. Use the `FUNDING` constant exported by this library to set this value.
+   * View the [list of available funding sources](https://developer.paypal.com/docs/business/checkout/configure-payments/standalone-buttons/#funding-sources) for more info.
+   */
+  fundingSource: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+
+  /**
+   * [Styling options](https://developer.paypal.com/docs/business/checkout/reference/style-guide/#customize-the-payment-buttons) for customizing layout, color, shape, and labels.
+   */
+  style: prop_types__WEBPACK_IMPORTED_MODULE_1___default().exact({
+    color: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    height: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number),
+    label: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    layout: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    shape: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+    tagline: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().bool)
+  }),
+
+  /**
+   * Finalizes the transaction. Often used to show the buyer a [confirmation page](https://developer.paypal.com/docs/checkout/integration-features/confirmation-page/).
+   */
+  onApprove: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
+
+  /**
+   * Called when the buyer cancels the transaction.
+   * Often used to show the buyer a [cancellation page](https://developer.paypal.com/docs/business/checkout/add-capabilities/buyer-experience/#show-a-cancellation-page).
+   */
+  onCancel: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
+
+  /**
+   * Called when the button is clicked. Often used for [validation](https://developer.paypal.com/docs/checkout/integration-features/validation/).
+   */
+  onClick: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
+
+  /**
+   * Catch all for errors preventing buyer checkout.
+   * Often used to show the buyer an [error page](https://developer.paypal.com/docs/checkout/integration-features/handle-errors/).
+   */
+  onError: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
+
+  /**
+   * Called when the button first renders.
+   */
+  onInit: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
+
+  /**
+   * Called when the buyer changes their shipping address on PayPal.
+   */
+  onShippingChange: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().func),
+
+  /**
+   * Used to re-render the component. Changes to this prop will destroy
+   * the existing Buttons and render them again using the current props.
+   */
+  forceReRender: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().any)
+};
+PayPalButtons.defaultProps = {
+  style: {}
+};
+/**
+ * The `<PayPalMarks />` component is used for conditionally rendering different payment options using radio buttons.
+ * The [Display PayPal Buttons with other Payment Methods guide](https://developer.paypal.com/docs/business/checkout/add-capabilities/buyer-experience/#display-paypal-buttons-with-other-payment-methods) describes this style of integration in detail.
+ * It relies on the `<PayPalScriptProvider />` parent component for managing state related to loading the JS SDK script.
+ *
+ * ```jsx
+ *     <PayPalMarks />
+ * ```
+ *
+ * This component can also be configured to use a single funding source similar to the [standalone buttons](https://developer.paypal.com/docs/business/checkout/configure-payments/standalone-buttons/) approach.
+ * A `FUNDING` object is exported by this library which has a key for every available funding source option.
+ *
+ * ```js
+ *     import { FUNDING } from '@paypal/react-paypal-js'
+ * ```
+ *
+ * Use this `FUNDING` constant to set the `fundingSource` prop.
+ *
+ * ```jsx
+ *     <PayPalMarks fundingSource={FUNDING.PAYPAL}/>
+ * ```
+ */
+
+function PayPalMarks(props) {
+  var _usePayPalScriptReduc4 = usePayPalScriptReducer(),
+      _usePayPalScriptReduc5 = _slicedToArray(_usePayPalScriptReduc4, 1),
+      _usePayPalScriptReduc6 = _usePayPalScriptReduc5[0],
+      isResolved = _usePayPalScriptReduc6.isResolved,
+      options = _usePayPalScriptReduc6.options;
+
+  var markContainerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var mark = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      setErrorState = _useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!isResolved || mark.current) {
+      return;
+    }
+
+    if (!hasValidStateForMarks(options, setErrorState)) {
+      return;
+    }
+
+    mark.current = window.paypal.Marks(_objectSpread({}, props));
+
+    if (!mark.current.isEligible()) {
+      return;
+    }
+
+    mark.current.render(markContainerRef.current)["catch"](function (err) {
+      console.error("Failed to render <PayPalMarks /> component. ".concat(err));
+    });
+  }, [isResolved, props.fundingSource]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    ref: markContainerRef
+  });
+}
+
+function hasValidStateForMarks(_ref4, setErrorState) {
+  var _ref4$components = _ref4.components,
+      components = _ref4$components === void 0 ? "" : _ref4$components;
+
+  if (typeof window.paypal.Marks !== "undefined") {
+    return true;
+  }
+
+  var errorMessage = "Unable to render <PayPalMarks /> because window.paypal.Marks is undefined."; // the JS SDK does not load the Marks component by default. It must be passed into the "components" query parameter.
+
+  if (!components.includes("marks")) {
+    var expectedComponents = components ? "".concat(components, ",marks") : "marks";
+    errorMessage += "\nTo fix the issue, add 'marks' to the list of components passed to the parent PayPalScriptProvider:" + "\n`<PayPalScriptProvider options={{ components: '".concat(expectedComponents, "'}}>`.");
+  }
+
+  setErrorState(function () {
+    throw new Error(errorMessage);
+  });
+  return false;
+}
+
+PayPalMarks.propTypes = {
+  /**
+   * The individual mark to render. Use the `FUNDING` constant exported by this library to set this value.
+   * View the [list of available funding sources](https://developer.paypal.com/docs/business/checkout/configure-payments/standalone-buttons/#funding-sources) for more info.
+   */
+  fundingSource: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
+};
+
+function PayPalMessages(props) {
+  var _usePayPalScriptReduc7 = usePayPalScriptReducer(),
+      _usePayPalScriptReduc8 = _slicedToArray(_usePayPalScriptReduc7, 1),
+      isResolved = _usePayPalScriptReduc8[0].isResolved;
+
+  var messagesContainerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var messages = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!isResolved) {
+      return;
+    }
+
+    messages.current = window.paypal.Messages(_objectSpread({}, props));
+    messages.current.render(messagesContainerRef.current)["catch"](function (err) {
+      console.error("Failed to render <PayPalMessages /> component. ".concat(err));
+    }); // eslint-disable-next-line react/prop-types
+  }, [isResolved, props.forceReRender]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    ref: messagesContainerRef
+  });
+}
+
+var FUNDING = {
+  PAYPAL: 'paypal',
+  VENMO: 'venmo',
+  ITAU: 'itau',
+  CREDIT: 'credit',
+  PAYLATER: 'paylater',
+  CARD: 'card',
+  IDEAL: 'ideal',
+  SEPA: 'sepa',
+  BANCONTACT: 'bancontact',
+  GIROPAY: 'giropay',
+  SOFORT: 'sofort',
+  EPS: 'eps',
+  MYBANK: 'mybank',
+  P24: 'p24',
+  VERKKOPANKKI: 'verkkopankki',
+  PAYU: 'payu',
+  BLIK: 'blik',
+  TRUSTLY: 'trustly',
+  ZIMPLER: 'zimpler',
+  MAXIMA: 'maxima',
+  OXXO: 'oxxo',
+  BOLETO: 'boleto',
+  WECHATPAY: 'wechatpay',
+  MERCADOPAGO: 'mercadopago'
+};
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@stripe/stripe-js/dist/stripe.esm.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@stripe/stripe-js/dist/stripe.esm.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "loadStripe": () => /* binding */ loadStripe
+/* harmony export */ });
+var V3_URL = 'https://js.stripe.com/v3';
+var V3_URL_REGEX = /^https:\/\/js\.stripe\.com\/v3\/?(\?.*)?$/;
+var EXISTING_SCRIPT_MESSAGE = 'loadStripe.setLoadParameters was called but an existing Stripe.js script already exists in the document; existing script parameters will be used';
+var findScript = function findScript() {
+  var scripts = document.querySelectorAll("script[src^=\"".concat(V3_URL, "\"]"));
+
+  for (var i = 0; i < scripts.length; i++) {
+    var script = scripts[i];
+
+    if (!V3_URL_REGEX.test(script.src)) {
+      continue;
+    }
+
+    return script;
+  }
+
+  return null;
+};
+
+var injectScript = function injectScript(params) {
+  var queryString = params && !params.advancedFraudSignals ? '?advancedFraudSignals=false' : '';
+  var script = document.createElement('script');
+  script.src = "".concat(V3_URL).concat(queryString);
+  var headOrBody = document.head || document.body;
+
+  if (!headOrBody) {
+    throw new Error('Expected document.body not to be null. Stripe.js requires a <body> element.');
+  }
+
+  headOrBody.appendChild(script);
+  return script;
+};
+
+var registerWrapper = function registerWrapper(stripe, startTime) {
+  if (!stripe || !stripe._registerWrapper) {
+    return;
+  }
+
+  stripe._registerWrapper({
+    name: 'stripe-js',
+    version: "1.11.0",
+    startTime: startTime
+  });
+};
+
+var stripePromise = null;
+var loadScript = function loadScript(params) {
+  // Ensure that we only attempt to load Stripe.js at most once
+  if (stripePromise !== null) {
+    return stripePromise;
+  }
+
+  stripePromise = new Promise(function (resolve, reject) {
+    if (typeof window === 'undefined') {
+      // Resolve to null when imported server side. This makes the module
+      // safe to import in an isomorphic code base.
+      resolve(null);
+      return;
+    }
+
+    if (window.Stripe && params) {
+      console.warn(EXISTING_SCRIPT_MESSAGE);
+    }
+
+    if (window.Stripe) {
+      resolve(window.Stripe);
+      return;
+    }
+
+    try {
+      var script = findScript();
+
+      if (script && params) {
+        console.warn(EXISTING_SCRIPT_MESSAGE);
+      } else if (!script) {
+        script = injectScript(params);
+      }
+
+      script.addEventListener('load', function () {
+        if (window.Stripe) {
+          resolve(window.Stripe);
+        } else {
+          reject(new Error('Stripe.js not available'));
+        }
+      });
+      script.addEventListener('error', function () {
+        reject(new Error('Failed to load Stripe.js'));
+      });
+    } catch (error) {
+      reject(error);
+      return;
+    }
+  });
+  return stripePromise;
+};
+var initStripe = function initStripe(maybeStripe, args, startTime) {
+  if (maybeStripe === null) {
+    return null;
+  }
+
+  var stripe = maybeStripe.apply(undefined, args);
+  registerWrapper(stripe, startTime);
+  return stripe;
+};
+
+// own script injection.
+
+var stripePromise$1 = Promise.resolve().then(function () {
+  return loadScript(null);
+});
+var loadCalled = false;
+stripePromise$1["catch"](function (err) {
+  if (!loadCalled) {
+    console.warn(err);
+  }
+});
+var loadStripe = function loadStripe() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  loadCalled = true;
+  var startTime = Date.now();
+  return stripePromise$1.then(function (maybeStripe) {
+    return initStripe(maybeStripe, args, startTime);
+  });
+};
+
+
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2037,10 +3061,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Footer */ "./resources/js/components/Footer/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _containers_Checkout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./containers/Checkout */ "./resources/js/containers/Checkout/index.js");
 /* harmony import */ var _containers_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers/Home */ "./resources/js/containers/Home/index.js");
+/* harmony import */ var _containers_PaymentRedirect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./containers/PaymentRedirect */ "./resources/js/containers/PaymentRedirect/index.js");
 
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -2049,14 +3081,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Main = function Main() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
-        exact: true,
-        path: "/",
-        component: _containers_Home__WEBPACK_IMPORTED_MODULE_3__.default
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Footer__WEBPACK_IMPORTED_MODULE_2__.default, {})]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Switch, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      exact: true,
+      path: "/",
+      component: _containers_Home__WEBPACK_IMPORTED_MODULE_3__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      path: "/checkout",
+      component: _containers_Checkout__WEBPACK_IMPORTED_MODULE_2__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      path: "/success",
+      component: function component(props) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_containers_PaymentRedirect__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread({}, props), {}, {
+          success: true
+        }));
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      path: "/cancel",
+      component: function component(props) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_containers_PaymentRedirect__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread({}, props), {}, {
+          success: false
+        }));
+      }
+    })]
   });
 };
 
@@ -2165,8 +3212,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
+
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 
 
@@ -2178,6 +3246,26 @@ var ConfirmCard = function ConfirmCard(_ref) {
       location = _ref.location,
       price = _ref.price,
       setConfirmBookDate = _ref.setConfirmBookDate;
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      locationArray = _useState2[0],
+      setLocationArray = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      loading = _useState4[0],
+      setLoading = _useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/locations/".concat(location)).then(function (res) {
+      setLocationArray(res.data);
+      setLoading(false);
+    })["catch"](function (err) {
+      return console.log(err);
+    });
+  }, []);
   var info = [{
     icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", {
       xmlns: "http://www.w3.org/2000/svg",
@@ -2246,127 +3334,151 @@ var ConfirmCard = function ConfirmCard(_ref) {
       })]
     }),
     title: "Location",
-    description: location
+    description: locationArray ? locationArray.name : ""
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+
+  var handleConfirm = function handleConfirm(e) {
+    e.preventDefault();
+    var service = {
+      title: serviceTitle,
+      date: bookDate,
+      location: locationArray.name,
+      amount: price
+    };
+    localStorage.setItem("service", JSON.stringify(service));
+    history.push("/checkout");
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: "card-body",
     style: {
-      padding: "50px 0"
+      padding: "50px 0",
+      minHeight: 400
     },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "row",
-      style: {
-        justifyContent: "center"
-      },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-        src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_2__.default,
-        className: "cardHeaderImage"
+    children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "spinner-border cardSpinner",
+      role: "status",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "sr-only",
+        children: "Loading..."
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "row",
-      style: {
-        justifyContent: "center"
-      },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
-        children: serviceTitle
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "row",
-      style: {
-        borderTop: "1px solid #e9e9e9",
-        borderBottom: "1px solid #e9e9e9",
-        padding: "15px 5%",
-        margin: "30px 0"
-      },
-      children: info.map(function (_ref2, index) {
-        var icon = _ref2.icon,
-            title = _ref2.title,
-            description = _ref2.description;
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "col-md-3",
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "row",
+        style: {
+          justifyContent: "center"
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+          src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_3__.default,
+          className: "cardHeaderImage"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "row",
+        style: {
+          justifyContent: "center"
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+          children: serviceTitle
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "row",
+        style: {
+          borderTop: "1px solid #e9e9e9",
+          borderBottom: "1px solid #e9e9e9",
+          padding: "15px 5%",
+          margin: "30px 0"
+        },
+        children: info.map(function (_ref2, index) {
+          var icon = _ref2.icon,
+              title = _ref2.title,
+              description = _ref2.description;
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "col-md-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "row",
+              style: {
+                margin: "7.5px -15px"
+              },
+              children: [icon, title]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "row",
+              style: {
+                fontSize: "13px"
+              },
+              children: description
+            })]
+          }, index);
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "row mb-5",
+        style: {
+          backgroundColor: "#0086ec17",
+          margin: "0",
+          padding: "10px 5%"
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "col-md-12",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             className: "row",
             style: {
-              margin: "7.5px -15px"
+              justifyContent: "space-between",
+              padding: "5px 0"
             },
-            children: [icon, title]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+              children: "Quantity"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+              style: {
+                color: "#0086ec"
+              },
+              children: "1"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "row ",
             style: {
-              fontSize: "13px"
+              justifyContent: "space-between",
+              padding: "5px 0"
             },
-            children: description
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+              children: "Total Price"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+              style: {
+                color: "#0086ec"
+              },
+              children: ["\xA3", price.toFixed(2)]
+            })]
           })]
-        }, index);
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "row mb-5",
-      style: {
-        backgroundColor: "#0086ec17",
-        margin: "0",
-        padding: "10px 5%"
-      },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "col-md-12",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "row",
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "row",
+        style: {
+          justifyContent: "center",
+          margin: "0 10%"
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+          type: "button",
+          className: "btn",
           style: {
-            justifyContent: "space-between",
-            padding: "5px 0"
+            padding: "12px 5%",
+            margin: "0 10px",
+            backgroundColor: "#f3f3f3"
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-            children: "Quantity"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-            style: {
-              color: "#0086ec"
-            },
-            children: "1"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "row ",
+          onClick: function onClick() {
+            return setConfirmBookDate(false);
+          },
+          children: "Back"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+          type: "button",
+          className: "btn",
           style: {
-            justifyContent: "space-between",
-            padding: "5px 0"
+            padding: "12px 5%",
+            backgroundColor: "#0086ec",
+            color: "#fff"
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-            children: "Total Price"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-            style: {
-              color: "#0086ec"
-            },
-            children: ["\xA3", price.toFixed(2)]
-          })]
+          onClick: handleConfirm,
+          children: "Confirm"
         })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "row",
-      style: {
-        justifyContent: "center",
-        margin: "0 10%"
-      },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-        type: "button",
-        className: "btn",
-        style: {
-          padding: "12px 5%",
-          margin: "0 10px",
-          backgroundColor: "#f3f3f3"
-        },
-        onClick: function onClick() {
-          return setConfirmBookDate(false);
-        },
-        children: "Back"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-        type: "button",
-        className: "btn",
-        style: {
-          padding: "12px 5%",
-          backgroundColor: "#0086ec",
-          color: "#fff"
-        },
-        children: "Confirm"
       })]
-    })]
+    })
   });
 };
 
@@ -2453,11 +3565,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _ConfirmCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ConfirmCard */ "./resources/js/components/BookCard/ConfirmCard.js");
 /* harmony import */ var _TimeSlot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TimeSlot */ "./resources/js/components/BookCard/TimeSlot.js");
 /* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-datepicker/dist/react-datepicker.css */ "./node_modules/react-datepicker/dist/react-datepicker.css");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -2488,51 +3602,62 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var BookCard = function BookCard() {
-  var services = [{
-    title: "LIFE Pharmacy COVID-19 PCR Test + Fit to Fly Certificate",
-    locations: ["Life Pharmacy Brompton Road", "Life Pharmacy Oxford Street"],
-    price: 99.0
-  }];
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+var BookCard = function BookCard() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      serviceIndex = _useState2[0],
-      setService = _useState2[1];
+      services = _useState2[0],
+      setServices = _useState2[1];
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      location = _useState4[0],
-      setLocation = _useState4[1];
+      serviceIndex = _useState4[0],
+      setService = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
-      confirmData = _useState6[0],
-      setConfirmData = _useState6[1];
+      location = _useState6[0],
+      setLocation = _useState6[1];
 
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState8 = _slicedToArray(_useState7, 2),
-      confirmBookDate = _useState8[0],
-      setConfirmBookDate = _useState8[1];
+      confirmData = _useState8[0],
+      setConfirmData = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(new Date()),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState10 = _slicedToArray(_useState9, 2),
-      bookDate = _useState10[0],
-      setBookDate = _useState10[1];
+      confirmBookDate = _useState10[0],
+      setConfirmBookDate = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(new Date()),
       _useState12 = _slicedToArray(_useState11, 2),
-      timePeriod = _useState12[0],
-      setTimePeriod = _useState12[1];
+      bookDate = _useState12[0],
+      setBookDate = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState14 = _slicedToArray(_useState13, 2),
-      selectedTime = _useState14[0],
-      setSelectedTime = _useState14[1];
+      timePeriod = _useState14[0],
+      setTimePeriod = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState16 = _slicedToArray(_useState15, 2),
+      selectedTime = _useState16[0],
+      setSelectedTime = _useState16[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    setTimePeriod(_toConsumableArray(generateTimePeriod("09:30", "22:45")));
+    axios__WEBPACK_IMPORTED_MODULE_5___default().get("/api/services").then(function (res) {
+      setServices(res.data);
+    })["catch"](function (err) {
+      return console.log(err);
+    });
   }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (location) axios__WEBPACK_IMPORTED_MODULE_5___default().get("/api/locations/".concat(location)).then(function (res) {
+      setTimePeriod(_toConsumableArray(generateTimePeriod(res.data["opening-time"], res.data["closing-time"])));
+    })["catch"](function (err) {
+      return console.log(err);
+    });
+  }, [location]);
 
   var handleConfirmData = function handleConfirmData() {
     if (!confirmData) setConfirmData(true);else setConfirmBookDate(true);
@@ -2554,17 +3679,27 @@ var BookCard = function BookCard() {
   };
 
   var generateTimePeriod = function generateTimePeriod(minTime, maxTime) {
+    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 5;
     var periods = [];
     var start;
+    minTime = minTime.trim();
+    maxTime = maxTime.trim();
+    var ended = false;
 
     for (var i = Number(minTime.split(":")[0]); i <= Number(maxTime.split(":")[0]); i++) {
-      for (var j = 0; j <= 55; j += 5) {
+      for (var j = 0; j <= 55; j += duration) {
         var time = "".concat(String(i).length === 2 ? i : "0" + String(i), ":").concat(String(j).length === 2 ? j : "0" + String(j));
         var endTime = j === 55 ? "".concat(String(i + 1).length === 2 ? i + 1 : "0" + String(i + 1), ":00") : "".concat(String(i).length === 2 ? i : "0" + String(i), ":").concat(String(j + 5).length === 2 ? j + 5 : "0" + String(j + 5));
         if (time === minTime) start = true;
         if (start) periods.push(time + " - " + endTime);
-        if (endTime === maxTime) break;
+
+        if (endTime === maxTime) {
+          ended = true;
+          break;
+        }
       }
+
+      if (ended) break;
     }
 
     return periods;
@@ -2579,7 +3714,7 @@ var BookCard = function BookCard() {
       border: "1px solid #eeeeee"
     },
     children: confirmBookDate ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ConfirmCard__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceTitle: services[serviceIndex].title,
+      serviceTitle: services[serviceIndex].name,
       bookDate: convertDateToString(bookDate) + " " + selectedTime.split("-")[0].trim(),
       location: location,
       price: services[serviceIndex].price,
@@ -2615,10 +3750,10 @@ var BookCard = function BookCard() {
                 marginBottom: "20px"
               },
               children: services.map(function (_ref, index) {
-                var title = _ref.title;
+                var name = _ref.name;
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
                   value: index,
-                  children: title
+                  children: name
                 }, index);
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
@@ -2634,10 +3769,12 @@ var BookCard = function BookCard() {
               onChange: function onChange(e) {
                 return setLocation(e.target.value);
               },
-              children: services[serviceIndex].locations.map(function (location, index) {
+              children: services[serviceIndex].locations.map(function (_ref2, index) {
+                var name = _ref2.name,
+                    id = _ref2.id;
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
-                  value: index,
-                  children: location
+                  value: id,
+                  children: name
                 }, index);
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
@@ -2659,7 +3796,7 @@ var BookCard = function BookCard() {
           width: "50%"
         },
         children: [confirmData ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_5___default()), {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_6___default()), {
             selected: bookDate,
             onChange: function onChange(date) {
               return setBookDate(date);
@@ -2711,11 +3848,11 @@ var BookCard = function BookCard() {
                     display: "none"
                   },
                   children: "Select service"
-                }), services.map(function (_ref2, index) {
-                  var title = _ref2.title;
+                }), services.map(function (_ref3, index) {
+                  var name = _ref3.name;
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
                     value: index,
-                    children: title
+                    children: name
                   }, index);
                 })]
               }), serviceIndex && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
@@ -2739,10 +3876,12 @@ var BookCard = function BookCard() {
                       display: "none"
                     },
                     children: "Select location"
-                  }), services[serviceIndex].locations.map(function (location, index) {
+                  }), services[serviceIndex].locations.map(function (_ref4, index) {
+                    var name = _ref4.name,
+                        id = _ref4.id;
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
-                      index: index,
-                      children: location
+                      value: id,
+                      children: name
                     }, index);
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
@@ -2765,7 +3904,7 @@ var BookCard = function BookCard() {
             width: "100%",
             marginTop: "10px"
           },
-          disabled: !location,
+          disabled: confirmData ? !selectedTime : !location,
           onClick: handleConfirmData,
           children: "Continue"
         })]
@@ -2851,6 +3990,613 @@ var ACTIVE_TIME_SLOT = "ACTIVE_TIME_SLOT";
 
 /***/ }),
 
+/***/ "./resources/js/containers/Checkout/index.js":
+/*!***************************************************!*\
+  !*** ./resources/js/containers/Checkout/index.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _paypal_react_paypal_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @paypal/react-paypal-js */ "./node_modules/@paypal/react-paypal-js/dist/react-paypal.esm.js");
+/* harmony import */ var _stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @stripe/stripe-js */ "./node_modules/@stripe/stripe-js/dist/stripe.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Footer */ "./resources/js/components/Footer/index.js");
+/* harmony import */ var _images_image1_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../images/image1.jpg */ "./resources/images/image1.jpg");
+/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
+
+
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_test_51HrrlNARkfToiPFSupHqiJpGnsej3pPYyODpRU5x651HuosD4y4b9fufVkDzfKf0BQNbKgxwAKZWMiFWxrnIgaRO000iRAqmx5");
+var PAYPAL_CLIENT_ID = "AU7wEngzj7X-pWbhKsvfGbT4AaLZ0zEyoTL8XPiv01ujkCHwdZdHelg-TrCA-NjYkWz2VwToxE1DyPWV";
+
+var Checkout = function Checkout() {
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      countries = _useState2[0],
+      setCountries = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(0),
+      _useState4 = _slicedToArray(_useState3, 2),
+      amount = _useState4[0],
+      setAmount = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      buttonLoading = _useState6[0],
+      setButtonLoading = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
+      _useState8 = _slicedToArray(_useState7, 2),
+      service = _useState8[0],
+      setService = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({
+    firstname: "",
+    lastname: "",
+    email: "",
+    address: "",
+    address2: "",
+    country: "",
+    postal: ""
+  }),
+      _useState10 = _slicedToArray(_useState9, 2),
+      details = _useState10[0],
+      setDetails = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      detailsSubmitted = _useState12[0],
+      setDetailsSubmitted = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({
+    state: false,
+    customer_id: null
+  }),
+      _useState14 = _slicedToArray(_useState13, 2),
+      updateInfo = _useState14[0],
+      setUpdateInfo = _useState14[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    var parsedService = JSON.parse(localStorage.getItem("service"));
+    setService(parsedService);
+    setAmount(parsedService.amount);
+  }, []);
+
+  var validateForm = function validateForm() {
+    var isValid = true;
+    if (!details["firstname"] || !details["lastname"] || !details["email"] || !details["address"] || !details["country"] || !details["postal"]) isValid = false;
+    document.querySelector("#firstName").classList.add(!details["firstname"] ? "is-invalid" : "is-valid");
+    document.querySelector("#firstName").classList.remove(!details["firstname"] ? "is-valid" : "is-invalid");
+    document.querySelector("#lastName").classList.add(!details["lastname"] ? "is-invalid" : "is-valid");
+    document.querySelector("#lastName").classList.remove(!details["lastName"] ? "is-valid" : "is-invalid");
+    document.querySelector("#email").classList.add(!details["email"] ? "is-invalid" : "is-valid");
+    document.querySelector("#email").classList.remove(!details["email"] ? "is-valid" : "is-invalid");
+    document.querySelector("#address").classList.add(!details["address"] ? "is-invalid" : "is-valid");
+    document.querySelector("#address").classList.remove(!details["address"] ? "is-valid" : "is-invalid");
+    document.querySelector("#country").classList.add(!details["country"] ? "is-invalid" : "is-valid");
+    document.querySelector("#country").classList.remove(!details["country"] ? "is-valid" : "is-invalid");
+    document.querySelector("#zip").classList.add(!details["postal"] ? "is-invalid" : "is-valid");
+    document.querySelector("#zip").classList.remove(!details["postal"] ? "is-valid" : "is-invalid");
+
+    if (details["email"] !== "undefined") {
+      var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      document.querySelector("#email").classList.add(!pattern.test(details["email"]) ? "is-invalid" : "is-valid");
+      document.querySelector("#email").classList.remove(!details["email"] ? "is-valid" : "is-invalid");
+      if (!pattern.test(details["email"])) isValid = false;
+    }
+
+    return isValid;
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    if (localStorage.getItem("countries-ftf")) setCountries(JSON.parse(localStorage.getItem("countries-ftf")));else axios__WEBPACK_IMPORTED_MODULE_2___default().get("https://restcountries.eu/rest/v2/all").then(function (res) {
+      var countriesList = res.data.map(function (country) {
+        return country.name;
+      });
+      setCountries(_toConsumableArray(countriesList));
+      localStorage.setItem("countries-ftf", JSON.stringify(countriesList));
+    });
+  }, []);
+
+  var onApprove = function onApprove(data, actions) {
+    actions.order.capture().then(function () {
+      var details = {
+        method: "paypal",
+        amount: amount,
+        customer_id: updateInfo.customer_id
+      };
+      axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/orders/", details).then(function () {
+        history.push("/success/?order_id=".concat(data.orderID, "&method=paypal"));
+      })["catch"](function (err) {
+        return "Error while creating payments!";
+      });
+    });
+  };
+
+  var onCancel = function onCancel(data) {
+    history.push("/cancel");
+  };
+
+  var createOrder = function createOrder(data, actions) {
+    return actions.order.create({
+      purchase_units: [{
+        amount: {
+          currency: "GBP",
+          value: amount
+        }
+      }]
+    });
+  };
+
+  var payWithStripe = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(e) {
+      var stripe, serviceItem, response, result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              e.preventDefault();
+              setButtonLoading(true);
+              _context.next = 4;
+              return stripePromise;
+
+            case 4:
+              stripe = _context.sent;
+              serviceItem = JSON.stringify({
+                price_data: {
+                  currency: "GBP",
+                  product_data: {
+                    name: service.title,
+                    images: ["https://cdn.shopify.com/s/files/1/0518/7289/1069/files/pic3.jpg?240"]
+                  },
+                  unit_amount: Number(amount.toFixed(2)) * 100
+                },
+                quantity: 1
+              });
+              _context.next = 8;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/stripe/pay", {
+                service: serviceItem
+              });
+
+            case 8:
+              response = _context.sent;
+              _context.next = 11;
+              return stripe.redirectToCheckout({
+                sessionId: response.data
+              });
+
+            case 11:
+              result = _context.sent;
+              if (result.error) console.log(result.error);
+
+            case 13:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function payWithStripe(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var handleFormInput = function handleFormInput(e) {
+    setDetails(_objectSpread(_objectSpread({}, details), {}, _defineProperty({}, e.target.name, e.target.value)));
+  };
+
+  var handleSubmitDetails = function handleSubmitDetails(e) {
+    e.preventDefault();
+
+    if (validateForm()) {
+      if (!updateInfo.state) axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/customers", details).then(function (res) {
+        setDetailsSubmitted(true);
+        setUpdateInfo({
+          state: true,
+          customer_id: res.data.customer_id
+        });
+        localStorage.setItem("customerId", res.data.customer_id);
+      })["catch"](function (err) {
+        return console.log(err);
+      });else axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/customers/".concat(updateInfo.customer_id), details).then(function (res) {
+        setDetailsSubmitted(true);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: !localStorage.getItem("service") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Redirect, {
+      to: "/"
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
+        className: "bg-dark py-5 mb-5",
+        style: {
+          background: "url(".concat(_images_image1_jpg__WEBPACK_IMPORTED_MODULE_7__.default, ") bottom center / cover")
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "container h-100",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "row h-100 align-items-center",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "col-lg-12",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
+                className: "display-4 text-white mt-5 mb-2",
+                children: "Fit to Fly Covid-19 Test"
+              })
+            })
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "col-md-5 order-md-2 mb-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+              className: "d-flex justify-content-between align-items-center mb-3",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                className: "text-muted",
+                children: "Your order"
+              })
+            }), service && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+              className: "list-group mb-3 sticky-top",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                className: "list-group-item d-flex justify-content-between lh-condensed",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                    src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_8__.default,
+                    style: {
+                      width: "50px",
+                      margin: "5px 10px 5px 0"
+                    }
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  style: {
+                    paddingRight: "5%"
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h6", {
+                    className: "my-0",
+                    children: service.title
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("small", {
+                    className: "text-muted",
+                    children: ["Date Time: ", service.date, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Location: ", service.location]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                  className: "text-muted",
+                  children: ["\xA3", amount.toFixed(2)]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                className: "list-group-item d-flex justify-content-between",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                  children: "Total"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("strong", {
+                  children: ["\xA3", amount.toFixed(2)]
+                })]
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "col-md-7 order-md-1",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+              className: "mb-3",
+              children: "Billing address"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+              className: "needs-validation",
+              noValidate: true,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "col-md-6 mb-3",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                    htmlFor: "firstName",
+                    children: "First name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                    type: "text",
+                    className: "form-control",
+                    id: "firstName",
+                    name: "firstname",
+                    onChange: handleFormInput,
+                    value: details.firstname,
+                    required: true,
+                    disabled: detailsSubmitted
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Valid first name is required."
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "col-md-6 mb-3",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                    htmlFor: "lastName",
+                    children: "Last name"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                    type: "text",
+                    className: "form-control",
+                    id: "lastName",
+                    name: "lastname",
+                    onChange: handleFormInput,
+                    value: details.lastname,
+                    required: true,
+                    disabled: detailsSubmitted
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Valid last name is required."
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "mb-3",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                  htmlFor: "email",
+                  children: "Email"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                  type: "email",
+                  className: "form-control",
+                  id: "email",
+                  name: "email",
+                  onChange: handleFormInput,
+                  value: details.email,
+                  required: true,
+                  disabled: detailsSubmitted
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Please enter a valid email address."
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "mb-3",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                  htmlFor: "address",
+                  children: "Address"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                  type: "text",
+                  className: "form-control",
+                  id: "address",
+                  placeholder: "1234 Main St",
+                  name: "address",
+                  onChange: handleFormInput,
+                  value: details.address,
+                  required: true,
+                  disabled: detailsSubmitted
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Please enter your shipping address."
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "mb-3",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("label", {
+                  htmlFor: "address2",
+                  children: ["Address 2", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                    className: "text-muted",
+                    children: "(Optional)"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                  type: "text",
+                  className: "form-control",
+                  id: "address2",
+                  placeholder: "Apartment or suite",
+                  name: "address2",
+                  onChange: handleFormInput,
+                  value: details.address2,
+                  disabled: detailsSubmitted
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "col-md-6 mb-3",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                    htmlFor: "state",
+                    children: "Country/Region"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("select", {
+                    className: "custom-select d-block w-100",
+                    id: "country",
+                    name: "country",
+                    onChange: handleFormInput,
+                    value: details.country,
+                    required: true,
+                    disabled: detailsSubmitted,
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+                      value: "",
+                      children: "Choose..."
+                    }), countries.map(function (country, index) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+                        value: country,
+                        children: country
+                      }, index);
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Please provide a valid country."
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  className: "col-md-4 mb-3",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                    htmlFor: "zip",
+                    children: "Postal Code"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                    type: "text",
+                    className: "form-control",
+                    id: "zip",
+                    name: "postal",
+                    onChange: handleFormInput,
+                    value: details.postal,
+                    required: true,
+                    disabled: detailsSubmitted
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                    className: "invalid-feedback",
+                    children: "Postal code required."
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {
+                className: "mb-4"
+              }), detailsSubmitted ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+                  className: "mb-3",
+                  children: "Payment"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+                    className: "btn btn-link",
+                    onClick: function onClick() {
+                      return setDetailsSubmitted(false);
+                    },
+                    style: {
+                      padding: 0
+                    },
+                    children: "Edit your information"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
+                    className: "btn btn-primary",
+                    style: {
+                      width: "100%",
+                      margin: "10px 0"
+                    },
+                    onClick: payWithStripe,
+                    children: [buttonLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                      className: "spinner-border",
+                      role: "status",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                        className: "sr-only",
+                        children: "Loading..."
+                      })
+                    }), !buttonLoading && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                      children: "Pay with Stripe"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_paypal_react_paypal_js__WEBPACK_IMPORTED_MODULE_4__.PayPalScriptProvider, {
+                    options: {
+                      "client-id": PAYPAL_CLIENT_ID,
+                      currency: "GBP"
+                    },
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PaypalButtonsCustomized, {
+                      createOrder: createOrder,
+                      onApprove: onApprove,
+                      onCancel: onCancel
+                    })
+                  })]
+                })]
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+                className: "btn btn-primary",
+                type: "submit",
+                onClick: handleSubmitDetails,
+                style: {
+                  width: "100%"
+                },
+                children: "Proceed to Payment"
+              })]
+            })]
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Footer__WEBPACK_IMPORTED_MODULE_6__.default, {})]
+    })
+  });
+};
+
+var PaypalButtonsCustomized = function PaypalButtonsCustomized(_ref2) {
+  var _createOrder = _ref2.createOrder,
+      _onApprove = _ref2.onApprove,
+      _onCancel = _ref2.onCancel;
+
+  var _usePayPalScriptReduc = (0,_paypal_react_paypal_js__WEBPACK_IMPORTED_MODULE_4__.usePayPalScriptReducer)(),
+      _usePayPalScriptReduc2 = _slicedToArray(_usePayPalScriptReduc, 2),
+      isPending = _usePayPalScriptReduc2[0].isPending,
+      dispatch = _usePayPalScriptReduc2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    var scriptProviderOptions = {
+      "client-id": PAYPAL_CLIENT_ID
+    };
+    dispatch({
+      type: "resetOptions",
+      value: _objectSpread(_objectSpread({}, scriptProviderOptions), {}, {
+        "data-order-id": Date.now()
+      })
+    });
+  }, [dispatch]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [isPending ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "spinner-border",
+      role: "status",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "sr-only",
+        children: "Loading..."
+      })
+    }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_paypal_react_paypal_js__WEBPACK_IMPORTED_MODULE_4__.PayPalButtons, {
+      style: {
+        layout: "vertical",
+        label: "pay",
+        height: 35
+      },
+      createOrder: function createOrder(data, actions) {
+        return _createOrder(data, actions);
+      },
+      onApprove: function onApprove(data, actions) {
+        return _onApprove(data, actions);
+      },
+      onCancel: function onCancel(data) {
+        return _onCancel(data);
+      },
+      onError: function onError(err) {
+        return console.log(err);
+      }
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Checkout);
+
+/***/ }),
+
 /***/ "./resources/js/containers/Home/index.js":
 /*!***********************************************!*\
   !*** ./resources/js/containers/Home/index.js ***!
@@ -2869,6 +4615,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _images_calendar_webp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../images/calendar.webp */ "./resources/images/calendar.webp");
 /* harmony import */ var _components_BookCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/BookCard */ "./resources/js/components/BookCard/index.js");
 /* harmony import */ var _images_image1_jpg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../images/image1.jpg */ "./resources/images/image1.jpg");
+/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Footer */ "./resources/js/components/Footer/index.js");
+
 
 
 
@@ -3040,11 +4788,162 @@ var FitToFly = function FitToFly() {
         },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_BookCard__WEBPACK_IMPORTED_MODULE_5__.default, {})
       })]
-    })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Footer__WEBPACK_IMPORTED_MODULE_7__.default, {})]
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FitToFly);
+
+/***/ }),
+
+/***/ "./resources/js/containers/PaymentRedirect/index.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/containers/PaymentRedirect/index.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! query-string */ "./node_modules/query-string/index.js");
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var PaymentRedirect = function PaymentRedirect(_ref) {
+  var location = _ref.location,
+      success = _ref.success;
+  var query = query_string__WEBPACK_IMPORTED_MODULE_2__.parse(location.search);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      redirect = _useState2[0],
+      setRedirect = _useState2[1];
+
+  var finalTask = function finalTask() {
+    localStorage.removeItem("service");
+    localStorage.removeItem("customerId");
+    setTimeout(function () {
+      return setRedirect(true);
+    }, 2000);
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var mounted = true;
+
+    if (success) {
+      var method = query.method.toLowerCase();
+
+      if (method === "stripe") {
+        if (mounted) axios.post("/api/stripe/session", {
+          sessionId: query.session_id
+        }).then(function (res) {
+          var details = res.data;
+          var data = {
+            method: method,
+            amount: details.amount_total / 100,
+            customer_id: localStorage.getItem("customerId")
+          };
+          return axios.post("/api/orders/", data);
+        }).then(function () {
+          console.log("Payment successful!");
+          finalTask();
+        })["catch"](function (err) {
+          return console.log(err.response);
+        });
+      }
+    } else finalTask();
+
+    return function () {
+      mounted = false;
+    };
+  }, []);
+  return redirect ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
+    to: "/"
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    style: {
+      textAlign: "center",
+      margin: "250px 0"
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+      style: {
+        fontSize: "25px"
+      },
+      children: [success ? "Your payment was successful!" : "Your payment was cancelled!", " ", success ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "22",
+        height: "22",
+        fill: "green",
+        className: "bi bi-check-circle",
+        viewBox: "0 0 16 16",
+        style: {
+          display: "inline-block"
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          d: "M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"
+        })]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "25",
+        height: "25",
+        fill: "red",
+        className: "bi bi-x-square-fill",
+        style: {
+          display: "inline-block"
+        },
+        viewBox: "0 0 16 16",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+          d: "M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("small", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "spinner-border",
+          role: "status",
+          style: {
+            fontSize: 1,
+            width: 10,
+            height: 10,
+            margin: "0 3px 2.5px 0"
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            className: "sr-only",
+            children: "Loading..."
+          })
+        })
+      }), "Redirecting to homepage... ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        to: "/",
+        children: "Go home"
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PaymentRedirect);
 
 /***/ }),
 
@@ -16549,6 +18448,111 @@ function toDate(argument) {
     return new Date(NaN);
   }
 }
+
+/***/ }),
+
+/***/ "./node_modules/decode-uri-component/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/decode-uri-component/index.js ***!
+  \****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+var token = '%[a-f0-9]{2}';
+var singleMatcher = new RegExp(token, 'gi');
+var multiMatcher = new RegExp('(' + token + ')+', 'gi');
+
+function decodeComponents(components, split) {
+	try {
+		// Try to decode the entire string first
+		return decodeURIComponent(components.join(''));
+	} catch (err) {
+		// Do nothing
+	}
+
+	if (components.length === 1) {
+		return components;
+	}
+
+	split = split || 1;
+
+	// Split the array in 2 parts
+	var left = components.slice(0, split);
+	var right = components.slice(split);
+
+	return Array.prototype.concat.call([], decodeComponents(left), decodeComponents(right));
+}
+
+function decode(input) {
+	try {
+		return decodeURIComponent(input);
+	} catch (err) {
+		var tokens = input.match(singleMatcher);
+
+		for (var i = 1; i < tokens.length; i++) {
+			input = decodeComponents(tokens, i).join('');
+
+			tokens = input.match(singleMatcher);
+		}
+
+		return input;
+	}
+}
+
+function customDecodeURIComponent(input) {
+	// Keep track of all the replacements and prefill the map with the `BOM`
+	var replaceMap = {
+		'%FE%FF': '\uFFFD\uFFFD',
+		'%FF%FE': '\uFFFD\uFFFD'
+	};
+
+	var match = multiMatcher.exec(input);
+	while (match) {
+		try {
+			// Decode as big chunks as possible
+			replaceMap[match[0]] = decodeURIComponent(match[0]);
+		} catch (err) {
+			var result = decode(match[0]);
+
+			if (result !== match[0]) {
+				replaceMap[match[0]] = result;
+			}
+		}
+
+		match = multiMatcher.exec(input);
+	}
+
+	// Add `%C2` at the end of the map to make sure it does not replace the combinator before everything else
+	replaceMap['%C2'] = '\uFFFD';
+
+	var entries = Object.keys(replaceMap);
+
+	for (var i = 0; i < entries.length; i++) {
+		// Replace all decoded components
+		var key = entries[i];
+		input = input.replace(new RegExp(key, 'g'), replaceMap[key]);
+	}
+
+	return input;
+}
+
+module.exports = function (encodedURI) {
+	if (typeof encodedURI !== 'string') {
+		throw new TypeError('Expected `encodedURI` to be of type `string`, got `' + typeof encodedURI + '`');
+	}
+
+	try {
+		encodedURI = encodedURI.replace(/\+/g, ' ');
+
+		// Try the built in decoder first
+		return decodeURIComponent(encodedURI);
+	} catch (err) {
+		// Fallback to a more advanced decoder
+		return customDecodeURIComponent(encodedURI);
+	}
+};
+
 
 /***/ }),
 
@@ -50789,6 +52793,397 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
+/***/ "./node_modules/query-string/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/query-string/index.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+const strictUriEncode = __webpack_require__(/*! strict-uri-encode */ "./node_modules/strict-uri-encode/index.js");
+const decodeComponent = __webpack_require__(/*! decode-uri-component */ "./node_modules/decode-uri-component/index.js");
+const splitOnFirst = __webpack_require__(/*! split-on-first */ "./node_modules/split-on-first/index.js");
+
+const isNullOrUndefined = value => value === null || value === undefined;
+
+function encoderForArrayFormat(options) {
+	switch (options.arrayFormat) {
+		case 'index':
+			return key => (result, value) => {
+				const index = result.length;
+
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				if (value === null) {
+					return [...result, [encode(key, options), '[', index, ']'].join('')];
+				}
+
+				return [
+					...result,
+					[encode(key, options), '[', encode(index, options), ']=', encode(value, options)].join('')
+				];
+			};
+
+		case 'bracket':
+			return key => (result, value) => {
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				if (value === null) {
+					return [...result, [encode(key, options), '[]'].join('')];
+				}
+
+				return [...result, [encode(key, options), '[]=', encode(value, options)].join('')];
+			};
+
+		case 'comma':
+		case 'separator':
+			return key => (result, value) => {
+				if (value === null || value === undefined || value.length === 0) {
+					return result;
+				}
+
+				if (result.length === 0) {
+					return [[encode(key, options), '=', encode(value, options)].join('')];
+				}
+
+				return [[result, encode(value, options)].join(options.arrayFormatSeparator)];
+			};
+
+		default:
+			return key => (result, value) => {
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				if (value === null) {
+					return [...result, encode(key, options)];
+				}
+
+				return [...result, [encode(key, options), '=', encode(value, options)].join('')];
+			};
+	}
+}
+
+function parserForArrayFormat(options) {
+	let result;
+
+	switch (options.arrayFormat) {
+		case 'index':
+			return (key, value, accumulator) => {
+				result = /\[(\d*)\]$/.exec(key);
+
+				key = key.replace(/\[\d*\]$/, '');
+
+				if (!result) {
+					accumulator[key] = value;
+					return;
+				}
+
+				if (accumulator[key] === undefined) {
+					accumulator[key] = {};
+				}
+
+				accumulator[key][result[1]] = value;
+			};
+
+		case 'bracket':
+			return (key, value, accumulator) => {
+				result = /(\[\])$/.exec(key);
+				key = key.replace(/\[\]$/, '');
+
+				if (!result) {
+					accumulator[key] = value;
+					return;
+				}
+
+				if (accumulator[key] === undefined) {
+					accumulator[key] = [value];
+					return;
+				}
+
+				accumulator[key] = [].concat(accumulator[key], value);
+			};
+
+		case 'comma':
+		case 'separator':
+			return (key, value, accumulator) => {
+				const isArray = typeof value === 'string' && value.includes(options.arrayFormatSeparator);
+				const isEncodedArray = (typeof value === 'string' && !isArray && decode(value, options).includes(options.arrayFormatSeparator));
+				value = isEncodedArray ? decode(value, options) : value;
+				const newValue = isArray || isEncodedArray ? value.split(options.arrayFormatSeparator).map(item => decode(item, options)) : value === null ? value : decode(value, options);
+				accumulator[key] = newValue;
+			};
+
+		default:
+			return (key, value, accumulator) => {
+				if (accumulator[key] === undefined) {
+					accumulator[key] = value;
+					return;
+				}
+
+				accumulator[key] = [].concat(accumulator[key], value);
+			};
+	}
+}
+
+function validateArrayFormatSeparator(value) {
+	if (typeof value !== 'string' || value.length !== 1) {
+		throw new TypeError('arrayFormatSeparator must be single character string');
+	}
+}
+
+function encode(value, options) {
+	if (options.encode) {
+		return options.strict ? strictUriEncode(value) : encodeURIComponent(value);
+	}
+
+	return value;
+}
+
+function decode(value, options) {
+	if (options.decode) {
+		return decodeComponent(value);
+	}
+
+	return value;
+}
+
+function keysSorter(input) {
+	if (Array.isArray(input)) {
+		return input.sort();
+	}
+
+	if (typeof input === 'object') {
+		return keysSorter(Object.keys(input))
+			.sort((a, b) => Number(a) - Number(b))
+			.map(key => input[key]);
+	}
+
+	return input;
+}
+
+function removeHash(input) {
+	const hashStart = input.indexOf('#');
+	if (hashStart !== -1) {
+		input = input.slice(0, hashStart);
+	}
+
+	return input;
+}
+
+function getHash(url) {
+	let hash = '';
+	const hashStart = url.indexOf('#');
+	if (hashStart !== -1) {
+		hash = url.slice(hashStart);
+	}
+
+	return hash;
+}
+
+function extract(input) {
+	input = removeHash(input);
+	const queryStart = input.indexOf('?');
+	if (queryStart === -1) {
+		return '';
+	}
+
+	return input.slice(queryStart + 1);
+}
+
+function parseValue(value, options) {
+	if (options.parseNumbers && !Number.isNaN(Number(value)) && (typeof value === 'string' && value.trim() !== '')) {
+		value = Number(value);
+	} else if (options.parseBooleans && value !== null && (value.toLowerCase() === 'true' || value.toLowerCase() === 'false')) {
+		value = value.toLowerCase() === 'true';
+	}
+
+	return value;
+}
+
+function parse(query, options) {
+	options = Object.assign({
+		decode: true,
+		sort: true,
+		arrayFormat: 'none',
+		arrayFormatSeparator: ',',
+		parseNumbers: false,
+		parseBooleans: false
+	}, options);
+
+	validateArrayFormatSeparator(options.arrayFormatSeparator);
+
+	const formatter = parserForArrayFormat(options);
+
+	// Create an object with no prototype
+	const ret = Object.create(null);
+
+	if (typeof query !== 'string') {
+		return ret;
+	}
+
+	query = query.trim().replace(/^[?#&]/, '');
+
+	if (!query) {
+		return ret;
+	}
+
+	for (const param of query.split('&')) {
+		let [key, value] = splitOnFirst(options.decode ? param.replace(/\+/g, ' ') : param, '=');
+
+		// Missing `=` should be `null`:
+		// http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
+		value = value === undefined ? null : ['comma', 'separator'].includes(options.arrayFormat) ? value : decode(value, options);
+		formatter(decode(key, options), value, ret);
+	}
+
+	for (const key of Object.keys(ret)) {
+		const value = ret[key];
+		if (typeof value === 'object' && value !== null) {
+			for (const k of Object.keys(value)) {
+				value[k] = parseValue(value[k], options);
+			}
+		} else {
+			ret[key] = parseValue(value, options);
+		}
+	}
+
+	if (options.sort === false) {
+		return ret;
+	}
+
+	return (options.sort === true ? Object.keys(ret).sort() : Object.keys(ret).sort(options.sort)).reduce((result, key) => {
+		const value = ret[key];
+		if (Boolean(value) && typeof value === 'object' && !Array.isArray(value)) {
+			// Sort object keys, not values
+			result[key] = keysSorter(value);
+		} else {
+			result[key] = value;
+		}
+
+		return result;
+	}, Object.create(null));
+}
+
+exports.extract = extract;
+exports.parse = parse;
+
+exports.stringify = (object, options) => {
+	if (!object) {
+		return '';
+	}
+
+	options = Object.assign({
+		encode: true,
+		strict: true,
+		arrayFormat: 'none',
+		arrayFormatSeparator: ','
+	}, options);
+
+	validateArrayFormatSeparator(options.arrayFormatSeparator);
+
+	const shouldFilter = key => (
+		(options.skipNull && isNullOrUndefined(object[key])) ||
+		(options.skipEmptyString && object[key] === '')
+	);
+
+	const formatter = encoderForArrayFormat(options);
+
+	const objectCopy = {};
+
+	for (const key of Object.keys(object)) {
+		if (!shouldFilter(key)) {
+			objectCopy[key] = object[key];
+		}
+	}
+
+	const keys = Object.keys(objectCopy);
+
+	if (options.sort !== false) {
+		keys.sort(options.sort);
+	}
+
+	return keys.map(key => {
+		const value = object[key];
+
+		if (value === undefined) {
+			return '';
+		}
+
+		if (value === null) {
+			return encode(key, options);
+		}
+
+		if (Array.isArray(value)) {
+			return value
+				.reduce(formatter(key), [])
+				.join('&');
+		}
+
+		return encode(key, options) + '=' + encode(value, options);
+	}).filter(x => x.length > 0).join('&');
+};
+
+exports.parseUrl = (url, options) => {
+	options = Object.assign({
+		decode: true
+	}, options);
+
+	const [url_, hash] = splitOnFirst(url, '#');
+
+	return Object.assign(
+		{
+			url: url_.split('?')[0] || '',
+			query: parse(extract(url), options)
+		},
+		options && options.parseFragmentIdentifier && hash ? {fragmentIdentifier: decode(hash, options)} : {}
+	);
+};
+
+exports.stringifyUrl = (object, options) => {
+	options = Object.assign({
+		encode: true,
+		strict: true
+	}, options);
+
+	const url = removeHash(object.url).split('?')[0] || '';
+	const queryFromUrl = exports.extract(object.url);
+	const parsedQueryFromUrl = exports.parse(queryFromUrl, {sort: false});
+
+	const query = Object.assign(parsedQueryFromUrl, object.query);
+	let queryString = exports.stringify(query, options);
+	if (queryString) {
+		queryString = `?${queryString}`;
+	}
+
+	let hash = getHash(object.url);
+	if (object.fragmentIdentifier) {
+		hash = `#${encode(object.fragmentIdentifier, options)}`;
+	}
+
+	return `${url}${queryString}${hash}`;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/react-datepicker/dist/react-datepicker.min.js":
 /*!********************************************************************!*\
   !*** ./node_modules/react-datepicker/dist/react-datepicker.min.js ***!
@@ -83785,6 +86180,764 @@ if ( true && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed
 
 /***/ }),
 
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+    return obj[key];
+  }
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunction.displayName = define(
+    GeneratorFunctionPrototype,
+    toStringTagSymbol,
+    "GeneratorFunction"
+  );
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      define(prototype, method, function(arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  define(Gp, toStringTagSymbol, "Generator");
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : 0
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/regexp.prototype.flags/implementation.js":
 /*!***************************************************************!*\
   !*** ./node_modules/regexp.prototype.flags/implementation.js ***!
@@ -85551,6 +88704,52 @@ if (false) {} else {
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/scheduler/cjs/scheduler-tracing.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/split-on-first/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/split-on-first/index.js ***!
+  \**********************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = (string, separator) => {
+	if (!(typeof string === 'string' && typeof separator === 'string')) {
+		throw new TypeError('Expected the arguments to be of type `string`');
+	}
+
+	if (separator === '') {
+		return [string];
+	}
+
+	const separatorIndex = string.indexOf(separator);
+
+	if (separatorIndex === -1) {
+		return [string];
+	}
+
+	return [
+		string.slice(0, separatorIndex),
+		string.slice(separatorIndex + separator.length)
+	];
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/strict-uri-encode/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/strict-uri-encode/index.js ***!
+  \*************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.charCodeAt(0).toString(16).toUpperCase()}`);
 
 
 /***/ }),
