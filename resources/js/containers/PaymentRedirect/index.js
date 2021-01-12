@@ -36,7 +36,7 @@ const PaymentRedirect = ({ location, success }) => {
                             finalTask();
                         })
                         .catch((err) => console.log(err.response));
-            }
+            } else finalTask();
         } else finalTask();
         return () => {
             mounted = false;

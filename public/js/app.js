@@ -4872,7 +4872,7 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
         })["catch"](function (err) {
           return console.log(err.response);
         });
-      }
+      } else finalTask();
     } else finalTask();
 
     return function () {
