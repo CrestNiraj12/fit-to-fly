@@ -21,7 +21,7 @@ class Location extends Model
         'booked-times' => 'array'
     ];
 
-     public function service()
+    public function service()
     {
         return $this->belongsTo(Service::class, "service_id");
     }
