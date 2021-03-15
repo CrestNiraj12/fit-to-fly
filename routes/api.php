@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\OptionController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
 
@@ -24,6 +25,7 @@ Route::post('/stripe/session', [StripeController::class, 'retrieveSession']);
 
 Route::resource('services', ServiceController::class);
 Route::resource('locations', LocationController::class);
+Route::resource('options', OptionController::class);
 Route::resource('orders', OrderController::class);
 Route::resource('customers', CustomerController::class);
 

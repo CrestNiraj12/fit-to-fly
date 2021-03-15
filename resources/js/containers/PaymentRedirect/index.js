@@ -27,7 +27,10 @@ const PaymentRedirect = ({ location, success }) => {
                             const data = {
                                 method,
                                 amount: details.amount_total / 100,
-                                customer_id: localStorage.getItem("customerId"),
+                                customer_no: localStorage.getItem("nhsNumber"),
+                                option_id: JSON.parse(
+                                    localStorage.getItem("service")
+                                ).optionId,
                             };
                             return await axios.post("/api/orders/", data);
                         })

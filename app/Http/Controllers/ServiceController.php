@@ -9,15 +9,13 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services =  Service::with('locations')->get();
+        $services =  Service::with(['locations', 'options'])->get();
         return response()->json($services);
     }
 
     public function store(Request $request) {
          $request->validate([
-            'name' => 'required',
-            'locations' => 'required',
-            'price' => 'required'
+            'name' => 'required'
         ]);
 
         $service = Service::create($request->all());

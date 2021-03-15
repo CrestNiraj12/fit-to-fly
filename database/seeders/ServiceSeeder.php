@@ -13,9 +13,8 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-          \App\Models\Service::create([
-            "name" => "LIFE Pharmacy COVID-19 PCR Test + Fit to Fly Certificate",
-            "price" => 99.00
+        \App\Models\Service::create([
+            "name" => "LIFE Pharmacy COVID-19 PCR Test + Fit to Fly Certificate"
         ]);
     }
 }

@@ -14,7 +14,7 @@ class Location extends Model
         "openingTime",
         "closingTime",
         "bookedTimes",
-        "service-id"
+        "service_id"
     ];
 
     public function service()

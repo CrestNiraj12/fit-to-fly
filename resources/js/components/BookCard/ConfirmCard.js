@@ -6,11 +6,13 @@ import { useHistory } from "react-router-dom";
 import Image from "../../../images/image2.webp";
 
 const ConfirmCard = ({
+    nhsNumber,
     serviceTitle,
     bookDate,
     location,
     price,
     setConfirmBookDate,
+    selectedOption,
 }) => {
     const history = useHistory();
     const [locationArray, setLocationArray] = useState(null);
@@ -44,8 +46,8 @@ const ConfirmCard = ({
                     />
                 </svg>
             ),
-            title: "Pharmacist",
-            description: "Select an employee",
+            title: "NHS Number",
+            description: nhsNumber,
         },
         {
             icon: (
@@ -110,6 +112,7 @@ const ConfirmCard = ({
             location: locationArray.name,
             locationId: location,
             amount: price,
+            optionId: selectedOption.id,
         };
         localStorage.setItem("service", JSON.stringify(service));
         history.push("/checkout");
@@ -176,11 +179,13 @@ const ConfirmCard = ({
                                     padding: "5px 0",
                                 }}
                             >
-                                <span>Quantity</span>
-                                <span style={{ color: "#0086ec" }}>1</span>
+                                <span>Option</span>
+                                <span style={{ color: "#0086ec" }}>
+                                    {selectedOption.name}
+                                </span>
                             </div>
                             <div
-                                className="row "
+                                className="row"
                                 style={{
                                     justifyContent: "space-between",
                                     padding: "5px 0",

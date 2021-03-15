@@ -17,8 +17,10 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string("method");
             $table->float("amount");
-            $table->unsignedBigInteger("customer_id");
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->string("customer_no");
+            $table->unsignedBigInteger("option_id");
+            $table->foreign('customer_no')->references('nhs_no')->on('customers');
+            $table->foreign('option_id')->references('id')->on('options');
             $table->timestamps();
         });
     }

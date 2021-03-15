@@ -15,6 +15,8 @@ const BookCard = () => {
     const [timePeriod, setTimePeriod] = useState([]);
     const [selectedTime, setSelectedTime] = useState("");
     const [bookedTimes, setBookedTimes] = useState([]);
+    const [nhsNumber, setNhsNumber] = useState("");
+    const [selectedOption, setSelectedOption] = useState("");
 
     useEffect(() => {
         axios
@@ -48,6 +50,7 @@ const BookCard = () => {
     const handleConfirmData = () => {
         if (!confirmData) setConfirmData(true);
         else setConfirmBookDate(true);
+        localStorage.setItem("nhsNumber", nhsNumber);
     };
 
     const convertDateToString = (date) => {
@@ -127,8 +130,12 @@ const BookCard = () => {
                         selectedTime.split(" ").join("")
                     }
                     location={location}
-                    price={services[serviceIndex].price}
+                    price={services[serviceIndex].options[selectedOption].price}
                     setConfirmBookDate={setConfirmBookDate}
+                    nhsNumber={nhsNumber}
+                    selectedOption={
+                        services[serviceIndex].options[selectedOption]
+                    }
                 />
             ) : (
                 <>
@@ -173,9 +180,10 @@ const BookCard = () => {
                                             marginBottom: "20px",
                                         }}
                                         value={location}
-                                        onChange={(e) =>
-                                            setLocation(e.target.value)
-                                        }
+                                        onChange={(e) => {
+                                            setLocation(e.target.value);
+                                            setSelectedTime("");
+                                        }}
                                     >
                                         {services[serviceIndex].locations.map(
                                             ({ name, id }, index) => (
@@ -185,12 +193,62 @@ const BookCard = () => {
                                             )
                                         )}
                                     </select>
+                                    <label htmlFor="nhs">NHS Number</label>
+                                    <input
+                                        className="form-control"
+                                        type="number"
+                                        id="nhs"
+                                        style={{
+                                            marginBottom: "20px",
+                                        }}
+                                        value={nhsNumber}
+                                        onChange={(e) =>
+                                            setNhsNumber(e.target.value)
+                                        }
+                                        required
+                                    />
+                                    <label htmlFor="option">Option</label>
+                                    <select
+                                        className="form-control"
+                                        id="option"
+                                        value={selectedOption}
+                                        onChange={(e) =>
+                                            setSelectedOption(e.target.value)
+                                        }
+                                        style={{
+                                            marginBottom: "20px",
+                                        }}
+                                    >
+                                        <option
+                                            value=""
+                                            disabled
+                                            style={{
+                                                display: "none",
+                                            }}
+                                        >
+                                            Select option
+                                        </option>
+                                        {services[serviceIndex].options.map(
+                                            ({ name }, index) => (
+                                                <option
+                                                    key={index}
+                                                    value={index}
+                                                >
+                                                    {name}
+                                                </option>
+                                            )
+                                        )}
+                                    </select>
                                     <p>
                                         Price:{" "}
-                                        <span style={{ color: "#02be02" }}>
+                                        <span
+                                            style={{
+                                                color: "#02be02",
+                                            }}
+                                        >
                                             £
-                                            {services[
-                                                serviceIndex
+                                            {services[serviceIndex].options[
+                                                selectedOption
                                             ].price.toFixed(2)}
                                         </span>
                                     </p>
@@ -320,26 +378,92 @@ const BookCard = () => {
                                                         )
                                                     )}
                                                 </select>
-                                                <p>
-                                                    Price:{" "}
-                                                    <span
+                                                <label htmlFor="nhs">
+                                                    NHS Number
+                                                </label>
+                                                <input
+                                                    className="form-control"
+                                                    id="nhs"
+                                                    type="number"
+                                                    style={{
+                                                        marginBottom: "20px",
+                                                    }}
+                                                    value={nhsNumber}
+                                                    onChange={(e) =>
+                                                        setNhsNumber(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                                <label htmlFor="option">
+                                                    Option
+                                                </label>
+                                                <select
+                                                    className="form-control"
+                                                    id="option"
+                                                    value={selectedOption}
+                                                    onChange={(e) =>
+                                                        setSelectedOption(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    style={{
+                                                        marginBottom: "20px",
+                                                    }}
+                                                >
+                                                    <option
+                                                        value=""
+                                                        disabled
                                                         style={{
-                                                            color: "#02be02",
+                                                            display: "none",
                                                         }}
                                                     >
-                                                        £
-                                                        {services[
-                                                            serviceIndex
-                                                        ].price.toFixed(2)}
-                                                    </span>
-                                                </p>
-                                                <p>
-                                                    x1 PCR Test with Fit to Fly
-                                                    certificate Please bring
-                                                    your passport/ID to your
-                                                    appointment. This purchase
-                                                    is non-refundable.
-                                                </p>
+                                                        Select option
+                                                    </option>
+                                                    {services[
+                                                        serviceIndex
+                                                    ].options.map(
+                                                        ({ name }, index) => (
+                                                            <option
+                                                                key={index}
+                                                                value={index}
+                                                            >
+                                                                {name}
+                                                            </option>
+                                                        )
+                                                    )}
+                                                </select>
+                                                {selectedOption && (
+                                                    <>
+                                                        <p>
+                                                            Price:{" "}
+                                                            <span
+                                                                style={{
+                                                                    color:
+                                                                        "#02be02",
+                                                                }}
+                                                            >
+                                                                £
+                                                                {services[
+                                                                    serviceIndex
+                                                                ].options[
+                                                                    selectedOption
+                                                                ].price.toFixed(
+                                                                    2
+                                                                )}
+                                                            </span>
+                                                        </p>
+                                                        <p>
+                                                            x1 PCR Test with Fit
+                                                            to Fly certificate
+                                                            Please bring your
+                                                            passport/ID to your
+                                                            appointment. This
+                                                            purchase is
+                                                            non-refundable.
+                                                        </p>
+                                                    </>
+                                                )}
                                             </>
                                         )}
                                     </div>
@@ -350,7 +474,12 @@ const BookCard = () => {
                             type="button"
                             className="btn btn-secondary"
                             style={{ width: "100%", marginTop: "10px" }}
-                            disabled={confirmData ? !selectedTime : !location}
+                            disabled={
+                                (confirmData
+                                    ? !selectedTime
+                                    : !location || !selectedOption) ||
+                                nhsNumber === ""
+                            }
                             onClick={handleConfirmData}
                         >
                             Continue

@@ -7,7 +7,7 @@ use App\Models\Order;
 
 class OrderController extends Controller
 {
-     public function index()
+    public function index()
     {
         $orders = Order::all();
         return response()->json($orders);
@@ -17,7 +17,8 @@ class OrderController extends Controller
          $request->validate([
             'method' => 'required',
             "amount"=> 'required',
-            "customer_id" => 'required'
+            "customer_no" => 'required',
+            "option_id" => 'required'
         ]);
 
         $order = Order::create($request->all());

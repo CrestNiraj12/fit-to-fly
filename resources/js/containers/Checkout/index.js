@@ -36,7 +36,7 @@ const Checkout = () => {
     const [detailsSubmitted, setDetailsSubmitted] = useState(false);
     const [updateInfo, setUpdateInfo] = useState({
         state: false,
-        customer_id: null,
+        customer_no: null,
     });
 
     useEffect(() => {
@@ -134,8 +134,10 @@ const Checkout = () => {
             const details = {
                 method: "paypal",
                 amount,
-                customer_id: updateInfo.customer_id,
+                customer_no: updateInfo.nhs_no,
+                option_id: service.optionId,
             };
+
             axios
                 .post("/api/orders/", details)
                 .then(async () => {
@@ -216,22 +218,21 @@ const Checkout = () => {
         if (validateForm()) {
             if (!updateInfo.state)
                 axios
-                    .post("/api/customers", details)
+                    .post("/api/customers", {
+                        nhs_no: localStorage.getItem("nhsNumber"),
+                        ...details,
+                    })
                     .then((res) => {
                         setDetailsSubmitted(true);
                         setUpdateInfo({
                             state: true,
-                            customer_id: res.data.customer_id,
+                            nhs_no: res.data.nhs_no,
                         });
-                        localStorage.setItem(
-                            "customerId",
-                            res.data.customer_id
-                        );
                     })
                     .catch((err) => console.log(err));
             else
                 axios
-                    .put(`/api/customers/${updateInfo.customer_id}`, details)
+                    .put(`/api/customers/${updateInfo.customer_no}`, details)
                     .then((res) => {
                         setDetailsSubmitted(true);
                     })

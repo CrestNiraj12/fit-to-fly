@@ -14,7 +14,7 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->id();
+            $table->string("nhs_no");
             $table->string("firstname");
             $table->string("lastname");
             $table->string("email");
@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration
             $table->string("country");
             $table->string("postal");
             $table->timestamps();
+            $table->primary("nhs_no");
         });
     }
 

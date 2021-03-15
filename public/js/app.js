@@ -3241,11 +3241,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var ConfirmCard = function ConfirmCard(_ref) {
-  var serviceTitle = _ref.serviceTitle,
+  var nhsNumber = _ref.nhsNumber,
+      serviceTitle = _ref.serviceTitle,
       bookDate = _ref.bookDate,
       location = _ref.location,
       price = _ref.price,
-      setConfirmBookDate = _ref.setConfirmBookDate;
+      setConfirmBookDate = _ref.setConfirmBookDate,
+      selectedOption = _ref.selectedOption;
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
@@ -3281,8 +3283,8 @@ var ConfirmCard = function ConfirmCard(_ref) {
         d: "M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
       })]
     }),
-    title: "Pharmacist",
-    description: "Select an employee"
+    title: "NHS Number",
+    description: nhsNumber
   }, {
     icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", {
       xmlns: "http://www.w3.org/2000/svg",
@@ -3344,7 +3346,8 @@ var ConfirmCard = function ConfirmCard(_ref) {
       date: bookDate,
       location: locationArray.name,
       locationId: location,
-      amount: price
+      amount: price,
+      optionId: selectedOption.id
     };
     localStorage.setItem("service", JSON.stringify(service));
     history.push("/checkout");
@@ -3426,15 +3429,15 @@ var ConfirmCard = function ConfirmCard(_ref) {
               padding: "5px 0"
             },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-              children: "Quantity"
+              children: "Option"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
               style: {
                 color: "#0086ec"
               },
-              children: "1"
+              children: selectedOption.name
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "row ",
+            className: "row",
             style: {
               justifyContent: "space-between",
               padding: "5px 0"
@@ -3652,6 +3655,16 @@ var BookCard = function BookCard() {
       bookedTimes = _useState18[0],
       setBookedTimes = _useState18[1];
 
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState20 = _slicedToArray(_useState19, 2),
+      nhsNumber = _useState20[0],
+      setNhsNumber = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState22 = _slicedToArray(_useState21, 2),
+      selectedOption = _useState22[0],
+      setSelectedOption = _useState22[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_5___default().get("/api/services").then(function (res) {
       setServices(res.data);
@@ -3671,6 +3684,7 @@ var BookCard = function BookCard() {
 
   var handleConfirmData = function handleConfirmData() {
     if (!confirmData) setConfirmData(true);else setConfirmBookDate(true);
+    localStorage.setItem("nhsNumber", nhsNumber);
   };
 
   var convertDateToString = function convertDateToString(date) {
@@ -3727,8 +3741,10 @@ var BookCard = function BookCard() {
       serviceTitle: services[serviceIndex].name,
       bookDate: convertDateToString(bookDate) + " " + selectedTime.split(" ").join(""),
       location: location,
-      price: services[serviceIndex].price,
-      setConfirmBookDate: setConfirmBookDate
+      price: services[serviceIndex].options[selectedOption].price,
+      setConfirmBookDate: setConfirmBookDate,
+      nhsNumber: nhsNumber,
+      selectedOption: services[serviceIndex].options[selectedOption]
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "card-body",
@@ -3777,7 +3793,8 @@ var BookCard = function BookCard() {
               },
               value: location,
               onChange: function onChange(e) {
-                return setLocation(e.target.value);
+                setLocation(e.target.value);
+                setSelectedTime("");
               },
               children: services[serviceIndex].locations.map(function (_ref2, index) {
                 var name = _ref2.name,
@@ -3787,12 +3804,54 @@ var BookCard = function BookCard() {
                   children: name
                 }, index);
               })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+              htmlFor: "nhs",
+              children: "NHS Number"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+              className: "form-control",
+              type: "number",
+              id: "nhs",
+              style: {
+                marginBottom: "20px"
+              },
+              value: nhsNumber,
+              onChange: function onChange(e) {
+                return setNhsNumber(e.target.value);
+              },
+              required: true
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+              htmlFor: "option",
+              children: "Option"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("select", {
+              className: "form-control",
+              id: "option",
+              value: selectedOption,
+              onChange: function onChange(e) {
+                return setSelectedOption(e.target.value);
+              },
+              style: {
+                marginBottom: "20px"
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+                value: "",
+                disabled: true,
+                style: {
+                  display: "none"
+                },
+                children: "Select option"
+              }), services[serviceIndex].options.map(function (_ref3, index) {
+                var name = _ref3.name;
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+                  value: index,
+                  children: name
+                }, index);
+              })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
               children: ["Price:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
                 style: {
                   color: "#02be02"
                 },
-                children: ["\xA3", services[serviceIndex].price.toFixed(2)]
+                children: ["\xA3", services[serviceIndex].options[selectedOption].price.toFixed(2)]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
               children: "x1 PCR Test with Fit to Fly certificate Please bring your passport/ID to your appointment. This purchase is non-refundable."
@@ -3859,8 +3918,8 @@ var BookCard = function BookCard() {
                     display: "none"
                   },
                   children: "Select service"
-                }), services.map(function (_ref3, index) {
-                  var name = _ref3.name;
+                }), services.map(function (_ref4, index) {
+                  var name = _ref4.name;
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
                     value: index,
                     children: name
@@ -3887,23 +3946,66 @@ var BookCard = function BookCard() {
                       display: "none"
                     },
                     children: "Select location"
-                  }), services[serviceIndex].locations.map(function (_ref4, index) {
-                    var name = _ref4.name,
-                        id = _ref4.id;
+                  }), services[serviceIndex].locations.map(function (_ref5, index) {
+                    var name = _ref5.name,
+                        id = _ref5.id;
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
                       value: id,
                       children: name
                     }, index);
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                  children: ["Price:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                  htmlFor: "nhs",
+                  children: "NHS Number"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                  className: "form-control",
+                  id: "nhs",
+                  type: "number",
+                  style: {
+                    marginBottom: "20px"
+                  },
+                  value: nhsNumber,
+                  onChange: function onChange(e) {
+                    return setNhsNumber(e.target.value);
+                  }
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                  htmlFor: "option",
+                  children: "Option"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("select", {
+                  className: "form-control",
+                  id: "option",
+                  value: selectedOption,
+                  onChange: function onChange(e) {
+                    return setSelectedOption(e.target.value);
+                  },
+                  style: {
+                    marginBottom: "20px"
+                  },
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+                    value: "",
+                    disabled: true,
                     style: {
-                      color: "#02be02"
+                      display: "none"
                     },
-                    children: ["\xA3", services[serviceIndex].price.toFixed(2)]
+                    children: "Select option"
+                  }), services[serviceIndex].options.map(function (_ref6, index) {
+                    var name = _ref6.name;
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+                      value: index,
+                      children: name
+                    }, index);
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-                  children: "x1 PCR Test with Fit to Fly certificate Please bring your passport/ID to your appointment. This purchase is non-refundable."
+                }), selectedOption && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                    children: ["Price:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                      style: {
+                        color: "#02be02"
+                      },
+                      children: ["\xA3", services[serviceIndex].options[selectedOption].price.toFixed(2)]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                    children: "x1 PCR Test with Fit to Fly certificate Please bring your passport/ID to your appointment. This purchase is non-refundable."
+                  })]
                 })]
               })]
             })
@@ -3915,7 +4017,7 @@ var BookCard = function BookCard() {
             width: "100%",
             marginTop: "10px"
           },
-          disabled: confirmData ? !selectedTime : !location,
+          disabled: (confirmData ? !selectedTime : !location || !selectedOption) || nhsNumber === "",
           onClick: handleConfirmData,
           children: "Continue"
         })]
@@ -4113,7 +4215,7 @@ var Checkout = function Checkout() {
 
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({
     state: false,
-    customer_id: null
+    customer_no: null
   }),
       _useState14 = _slicedToArray(_useState13, 2),
       updateInfo = _useState14[0],
@@ -4166,7 +4268,8 @@ var Checkout = function Checkout() {
       var details = {
         method: "paypal",
         amount: amount,
-        customer_id: updateInfo.customer_id
+        customer_no: updateInfo.nhs_no,
+        option_id: service.optionId
       };
       axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/orders/", details).then( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
         var bookedTimes;
@@ -4274,16 +4377,17 @@ var Checkout = function Checkout() {
     e.preventDefault();
 
     if (validateForm()) {
-      if (!updateInfo.state) axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/customers", details).then(function (res) {
+      if (!updateInfo.state) axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/customers", _objectSpread({
+        nhs_no: localStorage.getItem("nhsNumber")
+      }, details)).then(function (res) {
         setDetailsSubmitted(true);
         setUpdateInfo({
           state: true,
-          customer_id: res.data.customer_id
+          nhs_no: res.data.nhs_no
         });
-        localStorage.setItem("customerId", res.data.customer_id);
       })["catch"](function (err) {
         return console.log(err);
-      });else axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/customers/".concat(updateInfo.customer_id), details).then(function (res) {
+      });else axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/customers/".concat(updateInfo.customer_no), details).then(function (res) {
         setDetailsSubmitted(true);
       })["catch"](function (err) {
         return console.log(err);
@@ -4910,7 +5014,8 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
                     data = {
                       method: method,
                       amount: details.amount_total / 100,
-                      customer_id: localStorage.getItem("customerId")
+                      customer_no: localStorage.getItem("nhsNumber"),
+                      option_id: JSON.parse(localStorage.getItem("service")).optionId
                     };
                     _context.next = 4;
                     return axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/orders/", data);

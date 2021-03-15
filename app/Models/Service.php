@@ -10,13 +10,16 @@ class Service extends Model
     use HasFactory; 
     
     protected $fillable = [
-        'name',
-        'locations',
-        'price'
+        'name'
     ];
 
     public function locations()
     {
         return $this->hasMany(Location::class);
+    }
+
+    public function options()
+    {
+        return $this->hasMany(Option::class);
     }
 }
