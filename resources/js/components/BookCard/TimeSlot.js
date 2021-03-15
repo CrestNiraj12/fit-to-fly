@@ -15,6 +15,7 @@ const TimeSlot = ({
     setSelectedTime,
     activeTimeSlot,
     setActiveTimeSlot,
+    booked,
 }) => {
     const handleTimeClick = () => {
         setSelectedTime(time);
@@ -24,13 +25,14 @@ const TimeSlot = ({
     return (
         <div className="col-md-6" style={{ padding: "0 3px" }}>
             <button
-                className="timeSlot"
+                className={`timeSlot ${booked ? "disabled" : ""}`}
                 onClick={handleTimeClick}
                 style={{
                     backgroundColor:
                         activeTimeSlot === time ? "#0cca00" : "#d2d2d2",
                     outline: "none",
                 }}
+                disabled={booked}
             >
                 {time}
             </button>

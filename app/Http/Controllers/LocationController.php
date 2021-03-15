@@ -16,9 +16,9 @@ class LocationController extends Controller
     public function store(Request $request) {
          $request->validate([
             'name' => 'required',
-            "opening-time"=> 'required',
-            "closing-time"=> 'required',
-            "booked-times"=> 'required',
+            "openingTime"=> 'required',
+            "closingTime"=> 'required',
+            "bookedTimes"=> 'required',
             "service_id" => 'required',
         ]);
 

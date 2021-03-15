@@ -16,9 +16,9 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("opening-time");
-            $table->string("closing-time");
-            $table->json("booked-times");
+            $table->string("openingTime");
+            $table->string("closingTime");
+            $table->longText("bookedTimes");
             $table->unsignedBigInteger("service_id");
             $table->foreign('service_id')->references('id')->on('services');
             $table->timestamps();

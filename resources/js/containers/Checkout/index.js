@@ -138,6 +138,18 @@ const Checkout = () => {
             };
             axios
                 .post("/api/orders/", details)
+                .then(async () => {
+                    const bookedTimes = localStorage.getItem("bookedTimes");
+                    return await axios.put(
+                        `/api/locations/${service.locationId}`,
+                        {
+                            bookedTimes:
+                                (bookedTimes !== "" && bookedTimes !== null
+                                    ? bookedTimes + ","
+                                    : "") + service.date,
+                        }
+                    );
+                })
                 .then(() => {
                     history.push(
                         `/success/?order_id=${data.orderID}&method=paypal`
@@ -275,7 +287,8 @@ const Checkout = () => {
                                                     {service.title}
                                                 </h6>
                                                 <small className="text-muted">
-                                                    Date Time: {service.date}
+                                                    Date Time:{" "}
+                                                    {service.date.split("-")[0]}
                                                     <br />
                                                     Location: {service.location}
                                                 </small>

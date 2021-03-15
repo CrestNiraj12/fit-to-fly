@@ -15,17 +15,17 @@ class LocationSeeder extends Seeder
     {
         \App\Models\Location::create([
             "name" => "Life Pharmacy Brompton Road",
-            "opening-time" => "09:30",
-            "closing-time" => "22:45",
-            "booked-times" => "",
+            "openingTime" => "09:30",
+            "closingTime" => "22:45",
+            "bookedTimes" => "",
             "service_id" => 1
         ]);
 
         \App\Models\Location::create([
             "name" => "Life Pharmacy Oxford Street",
-            "opening-time" => "09:30",
-            "closing-time" => "23:00",
-            "booked-times" => "09:25,12:30",
+            "openingTime" => "09:30",
+            "closingTime" => "23:00",
+            "bookedTimes" => "",
             "service_id" => 1
         ]);
     }

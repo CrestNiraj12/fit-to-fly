@@ -25,6 +25,10 @@
     background-color: #0cca00 !important;
 }
 
+.disabled:hover {
+    cursor: not-allowed;
+}
+
 .cardSpinner {
     position: absolute;
     top: 45%;

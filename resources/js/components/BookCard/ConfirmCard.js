@@ -63,7 +63,7 @@ const ConfirmCard = ({
                 </svg>
             ),
             title: "Date Time",
-            description: bookDate,
+            description: bookDate.split("-")[0],
         },
         {
             icon: (
@@ -108,6 +108,7 @@ const ConfirmCard = ({
             title: serviceTitle,
             date: bookDate,
             location: locationArray.name,
+            locationId: location,
             amount: price,
         };
         localStorage.setItem("service", JSON.stringify(service));

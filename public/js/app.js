@@ -3300,7 +3300,7 @@ var ConfirmCard = function ConfirmCard(_ref) {
       })]
     }),
     title: "Date Time",
-    description: bookDate
+    description: bookDate.split("-")[0]
   }, {
     icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", {
       xmlns: "http://www.w3.org/2000/svg",
@@ -3343,6 +3343,7 @@ var ConfirmCard = function ConfirmCard(_ref) {
       title: serviceTitle,
       date: bookDate,
       location: locationArray.name,
+      locationId: location,
       amount: price
     };
     localStorage.setItem("service", JSON.stringify(service));
@@ -3524,7 +3525,8 @@ var TimeSlot = function TimeSlot(_ref) {
   var time = _ref.time,
       setSelectedTime = _ref.setSelectedTime,
       activeTimeSlot = _ref.activeTimeSlot,
-      setActiveTimeSlot = _ref.setActiveTimeSlot;
+      setActiveTimeSlot = _ref.setActiveTimeSlot,
+      booked = _ref.booked;
 
   var handleTimeClick = function handleTimeClick() {
     setSelectedTime(time);
@@ -3537,12 +3539,13 @@ var TimeSlot = function TimeSlot(_ref) {
       padding: "0 3px"
     },
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-      className: "timeSlot",
+      className: "timeSlot ".concat(booked ? "disabled" : ""),
       onClick: handleTimeClick,
       style: {
         backgroundColor: activeTimeSlot === time ? "#0cca00" : "#d2d2d2",
         outline: "none"
       },
+      disabled: booked,
       children: time
     })
   });
@@ -3644,6 +3647,11 @@ var BookCard = function BookCard() {
       selectedTime = _useState16[0],
       setSelectedTime = _useState16[1];
 
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState18 = _slicedToArray(_useState17, 2),
+      bookedTimes = _useState18[0],
+      setBookedTimes = _useState18[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_5___default().get("/api/services").then(function (res) {
       setServices(res.data);
@@ -3653,7 +3661,9 @@ var BookCard = function BookCard() {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (location) axios__WEBPACK_IMPORTED_MODULE_5___default().get("/api/locations/".concat(location)).then(function (res) {
-      setTimePeriod(_toConsumableArray(generateTimePeriod(res.data["opening-time"], res.data["closing-time"])));
+      setTimePeriod(_toConsumableArray(generateTimePeriod(res.data["openingTime"], res.data["closingTime"])));
+      setBookedTimes(res.data["bookedTimes"].split(","));
+      localStorage.setItem("bookedTimes", res.data["bookedTimes"]);
     })["catch"](function (err) {
       return console.log(err);
     });
@@ -3715,7 +3725,7 @@ var BookCard = function BookCard() {
     },
     children: confirmBookDate ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ConfirmCard__WEBPACK_IMPORTED_MODULE_2__.default, {
       serviceTitle: services[serviceIndex].name,
-      bookDate: convertDateToString(bookDate) + " " + selectedTime.split("-")[0].trim(),
+      bookDate: convertDateToString(bookDate) + " " + selectedTime.split(" ").join(""),
       location: location,
       price: services[serviceIndex].price,
       setConfirmBookDate: setConfirmBookDate
@@ -3813,7 +3823,8 @@ var BookCard = function BookCard() {
             children: timePeriod.map(function (time, index) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_TimeSlot__WEBPACK_IMPORTED_MODULE_3__.default, {
                 time: time,
-                setSelectedTime: setSelectedTime
+                setSelectedTime: setSelectedTime,
+                booked: bookedTimes.includes(convertDateToString(bookDate) + " " + time.split(" ").join(""))
               }, index);
             })
           })]
@@ -4157,7 +4168,28 @@ var Checkout = function Checkout() {
         amount: amount,
         customer_id: updateInfo.customer_id
       };
-      axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/orders/", details).then(function () {
+      axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/orders/", details).then( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
+        var bookedTimes;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                bookedTimes = localStorage.getItem("bookedTimes");
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/locations/".concat(service.locationId), {
+                  bookedTimes: (bookedTimes !== "" && bookedTimes !== null ? bookedTimes + "," : "") + service.date
+                });
+
+              case 3:
+                return _context.abrupt("return", _context.sent);
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))).then(function () {
         history.push("/success/?order_id=".concat(data.orderID, "&method=paypal"));
       })["catch"](function (err) {
         return "Error while creating payments!";
@@ -4181,19 +4213,19 @@ var Checkout = function Checkout() {
   };
 
   var payWithStripe = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(e) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee2(e) {
       var stripe, serviceItem, response, result;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context.prev = _context.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
               e.preventDefault();
               setButtonLoading(true);
-              _context.next = 4;
+              _context2.next = 4;
               return stripePromise;
 
             case 4:
-              stripe = _context.sent;
+              stripe = _context2.sent;
               serviceItem = JSON.stringify({
                 price_data: {
                   currency: "GBP",
@@ -4205,32 +4237,32 @@ var Checkout = function Checkout() {
                 },
                 quantity: 1
               });
-              _context.next = 8;
+              _context2.next = 8;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/stripe/pay", {
                 service: serviceItem
               });
 
             case 8:
-              response = _context.sent;
-              _context.next = 11;
+              response = _context2.sent;
+              _context2.next = 11;
               return stripe.redirectToCheckout({
                 sessionId: response.data
               });
 
             case 11:
-              result = _context.sent;
+              result = _context2.sent;
               if (result.error) console.log(result.error);
 
             case 13:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
         }
-      }, _callee);
+      }, _callee2);
     }));
 
     return function payWithStripe(_x) {
-      return _ref.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
 
@@ -4314,7 +4346,7 @@ var Checkout = function Checkout() {
                     children: service.title
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("small", {
                     className: "text-muted",
-                    children: ["Date Time: ", service.date, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Location: ", service.location]
+                    children: ["Date Time:", " ", service.date.split("-")[0], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Location: ", service.location]
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
                   className: "text-muted",
@@ -4542,10 +4574,10 @@ var Checkout = function Checkout() {
   });
 };
 
-var PaypalButtonsCustomized = function PaypalButtonsCustomized(_ref2) {
-  var _createOrder = _ref2.createOrder,
-      _onApprove = _ref2.onApprove,
-      _onCancel = _ref2.onCancel;
+var PaypalButtonsCustomized = function PaypalButtonsCustomized(_ref3) {
+  var _createOrder = _ref3.createOrder,
+      _onApprove = _ref3.onApprove,
+      _onCancel = _ref3.onCancel;
 
   var _usePayPalScriptReduc = (0,_paypal_react_paypal_js__WEBPACK_IMPORTED_MODULE_4__.usePayPalScriptReducer)(),
       _usePayPalScriptReduc2 = _slicedToArray(_usePayPalScriptReduc, 2),
@@ -4808,12 +4840,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! query-string */ "./node_modules/query-string/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var query_string__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! query-string */ "./node_modules/query-string/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 
 
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -4831,42 +4872,86 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var PaymentRedirect = function PaymentRedirect(_ref) {
   var location = _ref.location,
       success = _ref.success;
-  var query = query_string__WEBPACK_IMPORTED_MODULE_2__.parse(location.search);
+  var query = query_string__WEBPACK_IMPORTED_MODULE_3__.parse(location.search);
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       redirect = _useState2[0],
       setRedirect = _useState2[1];
 
   var finalTask = function finalTask() {
-    localStorage.removeItem("service");
-    localStorage.removeItem("customerId");
+    localStorage.clear();
     setTimeout(function () {
       return setRedirect(true);
     }, 2000);
   };
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     var mounted = true;
 
     if (success) {
       var method = query.method.toLowerCase();
 
       if (method === "stripe") {
-        if (mounted) axios.post("/api/stripe/session", {
+        if (mounted) axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/stripe/session", {
           sessionId: query.session_id
-        }).then(function (res) {
-          var details = res.data;
-          var data = {
-            method: method,
-            amount: details.amount_total / 100,
-            customer_id: localStorage.getItem("customerId")
+        }).then( /*#__PURE__*/function () {
+          var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(res) {
+            var details, data;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    details = res.data;
+                    data = {
+                      method: method,
+                      amount: details.amount_total / 100,
+                      customer_id: localStorage.getItem("customerId")
+                    };
+                    _context.next = 4;
+                    return axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/orders/", data);
+
+                  case 4:
+                    return _context.abrupt("return", _context.sent);
+
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee);
+          }));
+
+          return function (_x) {
+            return _ref2.apply(this, arguments);
           };
-          return axios.post("/api/orders/", data);
-        }).then(function () {
+        }()).then( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee2() {
+          var service, bookedTimes;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  service = JSON.parse(localStorage.getItem("service"));
+                  bookedTimes = localStorage.getItem("bookedTimes");
+                  _context2.next = 4;
+                  return axios__WEBPACK_IMPORTED_MODULE_4___default().put("/api/locations/".concat(service.locationId), {
+                    bookedTimes: (bookedTimes !== "" && bookedTimes !== null ? bookedTimes + "," : "") + service.date
+                  });
+
+                case 4:
+                  return _context2.abrupt("return", _context2.sent);
+
+                case 5:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }))).then(function () {
           console.log("Payment successful!");
           finalTask();
         })["catch"](function (err) {
@@ -4879,7 +4964,7 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
       mounted = false;
     };
   }, []);
-  return redirect ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
+  return redirect ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Redirect, {
     to: "/"
   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     style: {
@@ -4935,7 +5020,7 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
             children: "Loading..."
           })
         })
-      }), "Redirecting to homepage... ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      }), "Redirecting to homepage... ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
         to: "/",
         children: "Go home"
       })]

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import qs from "query-string";
+import axios from "axios";
 
 const PaymentRedirect = ({ location, success }) => {
     const query = qs.parse(location.search);
     const [redirect, setRedirect] = useState(false);
 
     const finalTask = () => {
-        localStorage.removeItem("service");
-        localStorage.removeItem("customerId");
+        localStorage.clear();
         setTimeout(() => setRedirect(true), 2000);
     };
 
@@ -22,14 +22,34 @@ const PaymentRedirect = ({ location, success }) => {
                         .post("/api/stripe/session", {
                             sessionId: query.session_id,
                         })
-                        .then((res) => {
+                        .then(async (res) => {
                             const details = res.data;
                             const data = {
                                 method,
                                 amount: details.amount_total / 100,
                                 customer_id: localStorage.getItem("customerId"),
                             };
-                            return axios.post("/api/orders/", data);
+                            return await axios.post("/api/orders/", data);
+                        })
+                        .then(async () => {
+                            const service = JSON.parse(
+                                localStorage.getItem("service")
+                            );
+
+                            const bookedTimes = localStorage.getItem(
+                                "bookedTimes"
+                            );
+
+                            return await axios.put(
+                                `/api/locations/${service.locationId}`,
+                                {
+                                    bookedTimes:
+                                        (bookedTimes !== "" &&
+                                        bookedTimes !== null
+                                            ? bookedTimes + ","
+                                            : "") + service.date,
+                                }
+                            );
                         })
                         .then(() => {
                             console.log("Payment successful!");

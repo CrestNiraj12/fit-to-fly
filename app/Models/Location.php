@@ -11,14 +11,10 @@ class Location extends Model
 
     protected $fillable = [
         "name",
-        "opening-time",
-        "closing-time",
-        "booked-times",
+        "openingTime",
+        "closingTime",
+        "bookedTimes",
         "service-id"
-    ];
-
-    protected $casts = [
-        'booked-times' => 'array'
     ];
 
     public function service()

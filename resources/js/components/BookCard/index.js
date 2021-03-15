@@ -14,6 +14,7 @@ const BookCard = () => {
     const [bookDate, setBookDate] = useState(new Date());
     const [timePeriod, setTimePeriod] = useState([]);
     const [selectedTime, setSelectedTime] = useState("");
+    const [bookedTimes, setBookedTimes] = useState([]);
 
     useEffect(() => {
         axios
@@ -31,10 +32,15 @@ const BookCard = () => {
                 .then((res) => {
                     setTimePeriod([
                         ...generateTimePeriod(
-                            res.data["opening-time"],
-                            res.data["closing-time"]
+                            res.data["openingTime"],
+                            res.data["closingTime"]
                         ),
                     ]);
+                    setBookedTimes(res.data["bookedTimes"].split(","));
+                    localStorage.setItem(
+                        "bookedTimes",
+                        res.data["bookedTimes"]
+                    );
                 })
                 .catch((err) => console.log(err));
     }, [location]);
@@ -118,7 +124,7 @@ const BookCard = () => {
                     bookDate={
                         convertDateToString(bookDate) +
                         " " +
-                        selectedTime.split("-")[0].trim()
+                        selectedTime.split(" ").join("")
                     }
                     location={location}
                     price={services[serviceIndex].price}
@@ -223,6 +229,11 @@ const BookCard = () => {
                                             time={time}
                                             setSelectedTime={setSelectedTime}
                                             key={index}
+                                            booked={bookedTimes.includes(
+                                                convertDateToString(bookDate) +
+                                                    " " +
+                                                    time.split(" ").join("")
+                                            )}
                                         />
                                     ))}
                                 </div>
