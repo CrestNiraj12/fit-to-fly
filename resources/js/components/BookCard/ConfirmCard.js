@@ -136,17 +136,9 @@ const ConfirmCard = ({
                         <h4>{serviceTitle}</h4>
                     </div>
 
-                    <div
-                        className="row"
-                        style={{
-                            borderTop: "1px solid #e9e9e9",
-                            borderBottom: "1px solid #e9e9e9",
-                            padding: "15px 5%",
-                            margin: "30px 0",
-                        }}
-                    >
+                    <div className="row confirmDetails">
                         {info.map(({ icon, title, description }, index) => (
-                            <div className="col-md-3" key={index}>
+                            <div className="col-md-3 details" key={index}>
                                 <div
                                     className="row"
                                     style={{ margin: "7.5px -15px" }}
@@ -163,14 +155,7 @@ const ConfirmCard = ({
                             </div>
                         ))}
                     </div>
-                    <div
-                        className="row mb-5"
-                        style={{
-                            backgroundColor: "#0086ec17",
-                            margin: "0",
-                            padding: "10px 5%",
-                        }}
-                    >
+                    <div className="row mb-5 amountBlock">
                         <div className="col-md-12">
                             <div
                                 className="row"
@@ -180,7 +165,10 @@ const ConfirmCard = ({
                                 }}
                             >
                                 <span>Option</span>
-                                <span style={{ color: "#0086ec" }}>
+                                <span
+                                    className="resFontSize"
+                                    style={{ color: "#0086ec" }}
+                                >
                                     {selectedOption.name}
                                 </span>
                             </div>
@@ -192,21 +180,23 @@ const ConfirmCard = ({
                                 }}
                             >
                                 <span>Total Price</span>
-                                <span style={{ color: "#0086ec" }}>
+                                <span
+                                    className="resFontSize"
+                                    style={{ color: "#0086ec" }}
+                                >
                                     £{price.toFixed(2)}
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div
-                        className="row"
+                        className="row buttonContainer"
                         style={{ justifyContent: "center", margin: "0 10%" }}
                     >
                         <button
                             type="button"
-                            className="btn"
+                            className="btn buttonSize"
                             style={{
-                                padding: "12px 5%",
                                 margin: "0 10px",
                                 backgroundColor: "#f3f3f3",
                             }}
@@ -216,9 +206,8 @@ const ConfirmCard = ({
                         </button>
                         <button
                             type="button"
-                            className="btn"
+                            className="btn buttonSize"
                             style={{
-                                padding: "12px 5%",
                                 backgroundColor: "#0086ec",
                                 color: "#fff",
                             }}

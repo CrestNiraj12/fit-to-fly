@@ -3385,19 +3385,13 @@ var ConfirmCard = function ConfirmCard(_ref) {
           children: serviceTitle
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "row",
-        style: {
-          borderTop: "1px solid #e9e9e9",
-          borderBottom: "1px solid #e9e9e9",
-          padding: "15px 5%",
-          margin: "30px 0"
-        },
+        className: "row confirmDetails",
         children: info.map(function (_ref2, index) {
           var icon = _ref2.icon,
               title = _ref2.title,
               description = _ref2.description;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "col-md-3",
+            className: "col-md-3 details",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               className: "row",
               style: {
@@ -3414,12 +3408,7 @@ var ConfirmCard = function ConfirmCard(_ref) {
           }, index);
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "row mb-5",
-        style: {
-          backgroundColor: "#0086ec17",
-          margin: "0",
-          padding: "10px 5%"
-        },
+        className: "row mb-5 amountBlock",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "col-md-12",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -3431,6 +3420,7 @@ var ConfirmCard = function ConfirmCard(_ref) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
               children: "Option"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+              className: "resFontSize",
               style: {
                 color: "#0086ec"
               },
@@ -3445,6 +3435,7 @@ var ConfirmCard = function ConfirmCard(_ref) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
               children: "Total Price"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+              className: "resFontSize",
               style: {
                 color: "#0086ec"
               },
@@ -3453,16 +3444,15 @@ var ConfirmCard = function ConfirmCard(_ref) {
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "row",
+        className: "row buttonContainer",
         style: {
           justifyContent: "center",
           margin: "0 10%"
         },
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
           type: "button",
-          className: "btn",
+          className: "btn buttonSize",
           style: {
-            padding: "12px 5%",
             margin: "0 10px",
             backgroundColor: "#f3f3f3"
           },
@@ -3472,9 +3462,8 @@ var ConfirmCard = function ConfirmCard(_ref) {
           children: "Back"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
           type: "button",
-          className: "btn",
+          className: "btn buttonSize",
           style: {
-            padding: "12px 5%",
             backgroundColor: "#0086ec",
             color: "#fff"
           },
@@ -3732,13 +3721,7 @@ var BookCard = function BookCard() {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    className: "card",
-    style: {
-      flexDirection: "row",
-      width: "75%",
-      boxShadow: "#eeeeee 0px 0px 20px 14px",
-      border: "1px solid #eeeeee"
-    },
+    className: "card bookCard",
     children: confirmBookDate ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ConfirmCard__WEBPACK_IMPORTED_MODULE_2__.default, {
       serviceTitle: services[serviceIndex].name,
       bookDate: convertDateToString(bookDate) + " " + selectedTime.split(" ").join(""),
@@ -3749,11 +3732,7 @@ var BookCard = function BookCard() {
       selectedOption: services[serviceIndex].options[selectedOption]
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "card-body",
-        style: {
-          padding: "70px 50px",
-          width: "50%"
-        },
+        className: "card-body card-left-body",
         children: confirmData ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h5", {
             className: "card-title",
@@ -3864,11 +3843,7 @@ var BookCard = function BookCard() {
           className: "displayImage"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "card-body",
-        style: {
-          padding: "70px 50px",
-          width: "50%"
-        },
+        className: "card-body card-right-body",
         children: [confirmData ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_7___default()), {
             selected: bookDate,

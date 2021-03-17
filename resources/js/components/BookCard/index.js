@@ -113,15 +113,7 @@ const BookCard = () => {
     };
 
     return (
-        <div
-            className="card"
-            style={{
-                flexDirection: "row",
-                width: "75%",
-                boxShadow: "#eeeeee 0px 0px 20px 14px",
-                border: "1px solid #eeeeee",
-            }}
-        >
+        <div className="card bookCard">
             {confirmBookDate ? (
                 <ConfirmCard
                     serviceTitle={services[serviceIndex].name}
@@ -140,10 +132,7 @@ const BookCard = () => {
                 />
             ) : (
                 <>
-                    <div
-                        className="card-body"
-                        style={{ padding: "70px 50px", width: "50%" }}
-                    >
+                    <div className="card-body card-left-body">
                         {confirmData ? (
                             <form>
                                 <h5
@@ -265,10 +254,7 @@ const BookCard = () => {
                             <img src={Image} className="displayImage" />
                         )}
                     </div>
-                    <div
-                        className="card-body"
-                        style={{ padding: "70px 50px", width: "50%" }}
-                    >
+                    <div className="card-body card-right-body">
                         {confirmData ? (
                             <>
                                 <DatePicker
