@@ -4068,7 +4068,7 @@ var links = [{
 var Footer = function Footer() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("footer", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("small", {
-      children: "\xA9The Woolwich Pharmacy 2021"
+      children: "\xA9The Woolwich Pharmacy | Neem Tree Pharmacy | Plumstead Pharmacy 2021"
     })
   });
 };

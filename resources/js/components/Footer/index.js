@@ -20,7 +20,10 @@ const Footer = () => {
                 ))}
             </ul>
             <hr />*/}
-            <small>&copy;The Woolwich Pharmacy 2021</small>
+            <small>
+                &copy;The Woolwich Pharmacy | Neem Tree Pharmacy | Plumstead
+                Pharmacy 2021
+            </small>
         </footer>
     );
 };
