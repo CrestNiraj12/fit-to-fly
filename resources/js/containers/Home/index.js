@@ -58,9 +58,10 @@ const FitToFly = () => {
                         <h2>Our Testing Sites</h2>
                         <hr style={{ margin: "25px 0" }} />
                         <address>
-                            <strong>Life Pharmacy - Oxford Street</strong>
+                            <strong>Woolwich Late Night Pharmacy</strong>
                             <p>
-                                489 Oxford St, Mayfair, London W1C 2AU
+                                Lower Ground Floor, Equitable House 10 Woolwich
+                                New Road, SE18 6AB
                                 <br />
                                 Phone: 020 7491 8444
                                 <br />
@@ -68,9 +69,19 @@ const FitToFly = () => {
                             </p>
                         </address>
                         <address>
-                            <strong>Life Pharmacy - Brompton Road</strong>
+                            <strong>Plumstead Pharmacy</strong>
                             <p>
-                                213 Brompton Rd, Chelsea, London SW3 2EJ
+                                9 Wickham Lane, Plumstead, London, SE2 0XJ
+                                <br />
+                                Phone: 020 7590 9995
+                                <br />
+                                Hours: Monday to Sunday: 9am - 11pm
+                            </p>
+                        </address>
+                        <address>
+                            <strong>Neem Tree Pharmacy</strong>
+                            <p>
+                                110 Mcleod Road, London SE2 0BS
                                 <br />
                                 Phone: 020 7590 9995
                                 <br />
