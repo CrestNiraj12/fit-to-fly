@@ -11,7 +11,7 @@ const links = [
 const Footer = () => {
     return (
         <footer>
-            <h5>Quick links</h5>
+            {/*<h5>Quick links</h5>
             <ul className="footer-links">
                 {links.map(({ title, url }, index) => (
                     <li key={index}>
@@ -19,7 +19,7 @@ const Footer = () => {
                     </li>
                 ))}
             </ul>
-            <hr />
+            <hr />*/}
             <small>&copy;The Woolwich Pharmacy 2021</small>
         </footer>
     );

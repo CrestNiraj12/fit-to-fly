@@ -63,7 +63,7 @@ const FitToFly = () => {
                                 Lower Ground Floor, Equitable House 10 Woolwich
                                 New Road, SE18 6AB
                                 <br />
-                                Phone: 0208 311 0636
+                                Phone: 020 8311 0636
                                 <br />
                                 Hours: Monday - Friday 07:30 AM - 10:30 PM,
                                 Saturday 08:00 AM - 09:00 PM
