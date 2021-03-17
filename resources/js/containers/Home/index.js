@@ -63,9 +63,10 @@ const FitToFly = () => {
                                 Lower Ground Floor, Equitable House 10 Woolwich
                                 New Road, SE18 6AB
                                 <br />
-                                Phone: 020 7491 8444
+                                Phone: 0208 311 0636
                                 <br />
-                                Hours: Monday to Sunday: 9am - 11pm
+                                Hours: Monday - Friday 07:30 AM - 10:30 PM,
+                                Saturday 08:00 AM - 09:00 PM
                             </p>
                         </address>
                         <address>
@@ -75,7 +76,7 @@ const FitToFly = () => {
                                 <br />
                                 Phone: 020 7590 9995
                                 <br />
-                                Hours: Monday to Sunday: 9am - 11pm
+                                Hours: Monday to Sunday: 09:00 AM - 11:00 PM
                             </p>
                         </address>
                         <address>
@@ -83,9 +84,12 @@ const FitToFly = () => {
                             <p>
                                 110 Mcleod Road, London SE2 0BS
                                 <br />
-                                Phone: 020 7590 9995
+                                Phone: 020 8311 9003
                                 <br />
-                                Hours: Monday to Sunday: 9am - 11pm
+                                Hours: Monday: 9:00 AM - 6:00 PM, Tuesday: 9:00
+                                AM - 6:00 PM, Wednesday: 9:00 AM - 6:00 PM,
+                                Thursday: 9:00 AM - 6:00 PM, Friday: 9:00 AM -
+                                6:00 PM, Saturday: 9:00 AM - 1:00 PM
                             </p>
                         </address>
                     </div>

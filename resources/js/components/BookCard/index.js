@@ -4,6 +4,7 @@ import ConfirmCard from "./ConfirmCard";
 import TimeSlot from "./TimeSlot";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import Image from "../../../images/image2.webp";
 
 const BookCard = () => {
     const [services, setServices] = useState([]);
@@ -143,7 +144,7 @@ const BookCard = () => {
                         className="card-body"
                         style={{ padding: "70px 50px", width: "50%" }}
                     >
-                        {confirmData && (
+                        {confirmData ? (
                             <form>
                                 <h5
                                     className="card-title"
@@ -260,6 +261,8 @@ const BookCard = () => {
                                     </p>
                                 </div>
                             </form>
+                        ) : (
+                            <img src={Image} className="displayImage" />
                         )}
                     </div>
                     <div
