@@ -4189,6 +4189,13 @@ var Checkout = function Checkout() {
     var parsedService = JSON.parse(localStorage.getItem("service"));
     setService(parsedService);
     setAmount(parsedService.amount);
+    var nhs_no = localStorage.getItem("nhsNumber");
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/customers/".concat(nhs_no)).then(function (res) {
+      if (res.data !== 0) setUpdateInfo({
+        customer_no: nhs_no,
+        state: true
+      });
+    });
   }, []);
 
   var validateForm = function validateForm() {
@@ -4232,7 +4239,7 @@ var Checkout = function Checkout() {
       var details = {
         method: "paypal",
         amount: amount,
-        customer_no: updateInfo.nhs_no,
+        customer_nhs_no: updateInfo.customer_no,
         option_id: service.optionId
       };
       axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/orders/", details).then( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
@@ -4337,27 +4344,44 @@ var Checkout = function Checkout() {
     setDetails(_objectSpread(_objectSpread({}, details), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
 
-  var handleSubmitDetails = function handleSubmitDetails(e) {
-    e.preventDefault();
+  var handleSubmitDetails = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee3(e) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              e.preventDefault();
 
-    if (validateForm()) {
-      if (!updateInfo.state) axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/customers", _objectSpread({
-        nhs_no: localStorage.getItem("nhsNumber")
-      }, details)).then(function (res) {
-        setDetailsSubmitted(true);
-        setUpdateInfo({
-          state: true,
-          nhs_no: res.data.nhs_no
-        });
-      })["catch"](function (err) {
-        return console.log(err);
-      });else axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/customers/".concat(updateInfo.customer_no), details).then(function (res) {
-        setDetailsSubmitted(true);
-      })["catch"](function (err) {
-        return console.log(err);
-      });
-    }
-  };
+              if (validateForm()) {
+                if (!updateInfo.state) axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/customers", _objectSpread({
+                  customer_nhs_no: localStorage.getItem("nhsNumber")
+                }, details)).then(function (res) {
+                  setDetailsSubmitted(true);
+                  setUpdateInfo({
+                    state: true,
+                    nhs_no: res.data.customer_nhs_no
+                  });
+                })["catch"](function (err) {
+                  return console.log(err.response);
+                });else axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/customers/".concat(updateInfo.customer_no), details).then(function (res) {
+                  setDetailsSubmitted(true);
+                })["catch"](function (err) {
+                  return console.log(err.response);
+                });
+              }
+
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function handleSubmitDetails(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: !localStorage.getItem("service") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Redirect, {
@@ -4642,10 +4666,10 @@ var Checkout = function Checkout() {
   });
 };
 
-var PaypalButtonsCustomized = function PaypalButtonsCustomized(_ref3) {
-  var _createOrder = _ref3.createOrder,
-      _onApprove = _ref3.onApprove,
-      _onCancel = _ref3.onCancel;
+var PaypalButtonsCustomized = function PaypalButtonsCustomized(_ref4) {
+  var _createOrder = _ref4.createOrder,
+      _onApprove = _ref4.onApprove,
+      _onCancel = _ref4.onCancel;
 
   var _usePayPalScriptReduc = (0,_paypal_react_paypal_js__WEBPACK_IMPORTED_MODULE_4__.usePayPalScriptReducer)(),
       _usePayPalScriptReduc2 = _slicedToArray(_usePayPalScriptReduc, 2),
@@ -4984,7 +5008,7 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
                     data = {
                       method: method,
                       amount: details.amount_total / 100,
-                      customer_no: localStorage.getItem("nhsNumber"),
+                      customer_nhs_no: localStorage.getItem("nhsNumber"),
                       option_id: JSON.parse(localStorage.getItem("service")).optionId
                     };
                     _context.next = 4;

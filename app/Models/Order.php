@@ -12,13 +12,13 @@ class Order extends Model
     protected $fillable = [
         "method",
         "amount",
-        "customer_no",
+        "customer_nhs_no",
         "option_id"
     ];
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class, 'customer_no');
+        return $this->belongsTo(Customer::class, 'customer_nhs_no');
     }
 
     public function option() {

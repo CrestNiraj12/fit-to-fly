@@ -9,8 +9,12 @@ class Customer extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'customer_nhs_no';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $fillable = [
-        "nhs_no",
+        "customer_nhs_no",
         "firstname",
         "lastname",
         "email",
@@ -22,6 +26,6 @@ class Customer extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'customer_nhs_no');
     }
 }

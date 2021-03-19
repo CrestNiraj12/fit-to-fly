@@ -27,7 +27,9 @@ const PaymentRedirect = ({ location, success }) => {
                             const data = {
                                 method,
                                 amount: details.amount_total / 100,
-                                customer_no: localStorage.getItem("nhsNumber"),
+                                customer_nhs_no: localStorage.getItem(
+                                    "nhsNumber"
+                                ),
                                 option_id: JSON.parse(
                                     localStorage.getItem("service")
                                 ).optionId,

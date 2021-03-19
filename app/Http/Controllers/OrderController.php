@@ -17,7 +17,7 @@ class OrderController extends Controller
          $request->validate([
             'method' => 'required',
             "amount"=> 'required',
-            "customer_no" => 'required',
+            "customer_nhs_no" => 'required',
             "option_id" => 'required'
         ]);
 

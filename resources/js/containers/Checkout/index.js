@@ -43,6 +43,16 @@ const Checkout = () => {
         const parsedService = JSON.parse(localStorage.getItem("service"));
         setService(parsedService);
         setAmount(parsedService.amount);
+
+        const nhs_no = localStorage.getItem("nhsNumber");
+
+        axios.get(`/api/customers/${nhs_no}`).then((res) => {
+            if (res.data !== 0)
+                setUpdateInfo({
+                    customer_no: nhs_no,
+                    state: true,
+                });
+        });
     }, []);
 
     const validateForm = () => {
@@ -134,7 +144,7 @@ const Checkout = () => {
             const details = {
                 method: "paypal",
                 amount,
-                customer_no: updateInfo.nhs_no,
+                customer_nhs_no: updateInfo.customer_no,
                 option_id: service.optionId,
             };
 
@@ -213,30 +223,30 @@ const Checkout = () => {
         setDetails({ ...details, [e.target.name]: e.target.value });
     };
 
-    const handleSubmitDetails = (e) => {
+    const handleSubmitDetails = async (e) => {
         e.preventDefault();
         if (validateForm()) {
             if (!updateInfo.state)
                 axios
                     .post("/api/customers", {
-                        nhs_no: localStorage.getItem("nhsNumber"),
+                        customer_nhs_no: localStorage.getItem("nhsNumber"),
                         ...details,
                     })
                     .then((res) => {
                         setDetailsSubmitted(true);
                         setUpdateInfo({
                             state: true,
-                            nhs_no: res.data.nhs_no,
+                            nhs_no: res.data.customer_nhs_no,
                         });
                     })
-                    .catch((err) => console.log(err));
+                    .catch((err) => console.log(err.response));
             else
                 axios
                     .put(`/api/customers/${updateInfo.customer_no}`, details)
                     .then((res) => {
                         setDetailsSubmitted(true);
                     })
-                    .catch((err) => console.log(err));
+                    .catch((err) => console.log(err.response));
         }
     };
 

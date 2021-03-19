@@ -15,7 +15,7 @@ class CustomerController extends Controller
 
     public function store(Request $request) {
          $request->validate([
-            "nhs_no" => 'required',
+            "customer_nhs_no" => 'required',
             "firstname" => 'required',
             "lastname" => 'required',
             "email" => 'required',
@@ -25,21 +25,21 @@ class CustomerController extends Controller
         ]);
 
         $customer = Customer::create($request->all());
-        return response()->json(['message'=> 'Customer created successfully!', 'nhs_no' => $customer->nhs_no]);
+        return response()->json(['message'=> 'Customer created successfully!', 'nhs_no' => $customer->customer_nhs_no]);
     }
 
     public function show($nhs_no) {
         $customer = Customer::find($nhs_no);
-        return response()->json($customer->load('orders'));
+        return $customer ? response()->json($customer->load('orders')) : response()->json(0);
     }
 
     public function update(Request $request, $nhs_no) {
-        Customer::where('nhs_no', $nhs_no)->update($request->all());
+        Customer::where('customer_nhs_no', $nhs_no)->update($request->all());
         return response()->json(['message'=> 'Customer updated successfully!']);
     }
 
     public function destroy($nhs_no) {
-        Customer::where('nhs_no', $nhs_no)->delete();
+        Customer::where('customer_nhs_no', $nhs_no)->delete();
         return response()->json(['message'=> 'Customer deleted successfully!']);
     }
 }
