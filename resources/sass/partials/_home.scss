@@ -117,6 +117,7 @@
 .react-datepicker__week div[aria-disabled="true"] {
     text-decoration: line-through;
     cursor: not-allowed !important;
+    color: #9e9e9e !important;
 }
 
 .react-datepicker__day-name,
@@ -170,6 +171,11 @@
     padding: 12px 5% !important;
 }
 
+.closedDay {
+    margin: 10px auto;
+    font-size: 1em;
+}
+
 @media screen and (max-width: 999px) {
     .bookCard {
         flex-direction: column !important;
@@ -220,5 +226,11 @@
 
     .buttonSize {
         padding: 12px 10% !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .closedDay {
+        font-size: 0.8em;
     }
 }

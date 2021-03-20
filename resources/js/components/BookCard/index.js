@@ -18,6 +18,7 @@ const BookCard = () => {
     const [bookedTimes, setBookedTimes] = useState([]);
     const [nhsNumber, setNhsNumber] = useState("");
     const [selectedOption, setSelectedOption] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios
@@ -29,24 +30,57 @@ const BookCard = () => {
     }, []);
 
     useEffect(() => {
+        setLoading(true);
         if (location)
             axios
                 .get(`/api/locations/${location}`)
                 .then((res) => {
-                    setTimePeriod([
-                        ...generateTimePeriod(
-                            res.data["openingTime"],
-                            res.data["closingTime"]
-                        ),
-                    ]);
+                    const openings = res.data["openingTime"]
+                        .split(",")
+                        .map((time) => time.split("-"));
+                    const closings = res.data["closingTime"]
+                        .split(",")
+                        .map((time) => time.split("-"));
+                    const selectedDay = bookDate.getDay();
+
+                    if (selectedDay === 0) setTimePeriod(null);
+                    else if (selectedDay === 6)
+                        setTimePeriod([
+                            ...generateTimePeriod(
+                                openings[1][0],
+                                closings[1][0]
+                            ),
+                            ...(openings[1].length > 1
+                                ? generateTimePeriod(
+                                      openings[1][1],
+                                      closings[1][1]
+                                  )
+                                : ""),
+                        ]);
+                    else
+                        setTimePeriod([
+                            ...generateTimePeriod(
+                                openings[0][0],
+                                closings[0][0]
+                            ),
+                            ...(openings[0].length > 1
+                                ? generateTimePeriod(
+                                      openings[0][1],
+                                      closings[0][1]
+                                  )
+                                : ""),
+                            ,
+                        ]);
+
                     setBookedTimes(res.data["bookedTimes"].split(","));
                     localStorage.setItem(
                         "bookedTimes",
                         res.data["bookedTimes"]
                     );
+                    setLoading(false);
                 })
                 .catch((err) => console.log(err));
-    }, [location]);
+    }, [location, bookDate]);
 
     const handleConfirmData = () => {
         if (!confirmData) setConfirmData(true);
@@ -68,7 +102,7 @@ const BookCard = () => {
         var month = dateObj.getUTCMonth();
         var day = dateObj.getUTCDate();
         var year = dateObj.getUTCFullYear();
-        return date >= new Date(year, month, day);
+        return date >= new Date(year, month, day) && date.getDay() !== 0;
     };
 
     const generateTimePeriod = (minTime, maxTime, duration = 5) => {
@@ -271,18 +305,34 @@ const BookCard = () => {
                                         height: 125,
                                     }}
                                 >
-                                    {timePeriod.map((time, index) => (
-                                        <TimeSlot
-                                            time={time}
-                                            setSelectedTime={setSelectedTime}
-                                            key={index}
-                                            booked={bookedTimes.includes(
-                                                convertDateToString(bookDate) +
-                                                    " " +
-                                                    time.split(" ").join("")
-                                            )}
-                                        />
-                                    ))}
+                                    {loading ? (
+                                        <div
+                                            className="spinner-border"
+                                            role="status"
+                                            style={{ margin: "auto" }}
+                                        >
+                                            <span className="sr-only">
+                                                Loading...
+                                            </span>
+                                        </div>
+                                    ) : (
+                                        timePeriod.map((time, index) => (
+                                            <TimeSlot
+                                                time={time}
+                                                setSelectedTime={
+                                                    setSelectedTime
+                                                }
+                                                key={index}
+                                                booked={bookedTimes.includes(
+                                                    convertDateToString(
+                                                        bookDate
+                                                    ) +
+                                                        " " +
+                                                        time.split(" ").join("")
+                                                )}
+                                            />
+                                        ))
+                                    )}
                                 </div>
                             </>
                         ) : (

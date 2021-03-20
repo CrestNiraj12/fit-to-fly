@@ -3525,7 +3525,7 @@ var TimeSlot = function TimeSlot(_ref) {
     setActiveTimeSlot(time);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+  return time !== "" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: "col-md-6",
     style: {
       padding: "0 3px"
@@ -3656,6 +3656,11 @@ var BookCard = function BookCard() {
       selectedOption = _useState22[0],
       setSelectedOption = _useState22[1];
 
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState24 = _slicedToArray(_useState23, 2),
+      loading = _useState24[0],
+      setLoading = _useState24[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_5___default().get("/api/services").then(function (res) {
       setServices(res.data);
@@ -3664,14 +3669,23 @@ var BookCard = function BookCard() {
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setLoading(true);
     if (location) axios__WEBPACK_IMPORTED_MODULE_5___default().get("/api/locations/".concat(location)).then(function (res) {
-      setTimePeriod(_toConsumableArray(generateTimePeriod(res.data["openingTime"], res.data["closingTime"])));
+      var openings = res.data["openingTime"].split(",").map(function (time) {
+        return time.split("-");
+      });
+      var closings = res.data["closingTime"].split(",").map(function (time) {
+        return time.split("-");
+      });
+      var selectedDay = bookDate.getDay();
+      if (selectedDay === 0) setTimePeriod(null);else if (selectedDay === 6) setTimePeriod([].concat(_toConsumableArray(generateTimePeriod(openings[1][0], closings[1][0])), _toConsumableArray(openings[1].length > 1 ? generateTimePeriod(openings[1][1], closings[1][1]) : "")));else setTimePeriod([].concat(_toConsumableArray(generateTimePeriod(openings[0][0], closings[0][0])), _toConsumableArray(openings[0].length > 1 ? generateTimePeriod(openings[0][1], closings[0][1]) : ""), [,]));
       setBookedTimes(res.data["bookedTimes"].split(","));
       localStorage.setItem("bookedTimes", res.data["bookedTimes"]);
+      setLoading(false);
     })["catch"](function (err) {
       return console.log(err);
     });
-  }, [location]);
+  }, [location, bookDate]);
 
   var handleConfirmData = function handleConfirmData() {
     if (!confirmData) setConfirmData(true);else setConfirmBookDate(true);
@@ -3690,7 +3704,7 @@ var BookCard = function BookCard() {
     var month = dateObj.getUTCMonth();
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
-    return date >= new Date(year, month, day);
+    return date >= new Date(year, month, day) && date.getDay() !== 0;
   };
 
   var generateTimePeriod = function generateTimePeriod(minTime, maxTime) {
@@ -3859,7 +3873,17 @@ var BookCard = function BookCard() {
               overflowY: "scroll",
               height: 125
             },
-            children: timePeriod.map(function (time, index) {
+            children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "spinner-border",
+              role: "status",
+              style: {
+                margin: "auto"
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                className: "sr-only",
+                children: "Loading..."
+              })
+            }) : timePeriod.map(function (time, index) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_TimeSlot__WEBPACK_IMPORTED_MODULE_3__.default, {
                 time: time,
                 setSelectedTime: setSelectedTime,
@@ -4820,13 +4844,13 @@ var FitToFly = function FitToFly() {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
               children: "Plumstead Pharmacy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-              children: ["9 Wickham Lane, Plumstead, London, SE2 0XJ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 7590 9995", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday to Sunday: 09:00 AM - 11:00 PM"]
+              children: ["9 Wickham Lane, Plumstead, London, SE2 0XJ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 7590 9995", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday 09:00 AM - 12:00 NOON 02:00 PM - 06:00 PM, Saturday 09:00 AM - 01:00 PM"]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("address", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
               children: "Neem Tree Pharmacy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-              children: ["110 Mcleod Road, London SE2 0BS", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 8311 9003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday: 9:00 AM - 6:00 PM, Tuesday: 9:00 AM - 6:00 PM, Wednesday: 9:00 AM - 6:00 PM, Thursday: 9:00 AM - 6:00 PM, Friday: 9:00 AM - 6:00 PM, Saturday: 9:00 AM - 1:00 PM"]
+              children: ["110 Mcleod Road, London SE2 0BS", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 8311 9003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 09:00 AM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM"]
             })]
           })]
         })]

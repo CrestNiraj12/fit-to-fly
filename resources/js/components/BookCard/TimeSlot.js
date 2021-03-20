@@ -23,20 +23,22 @@ const TimeSlot = ({
     };
 
     return (
-        <div className="col-md-6" style={{ padding: "0 3px" }}>
-            <button
-                className={`timeSlot ${booked ? "disabled" : ""}`}
-                onClick={handleTimeClick}
-                style={{
-                    backgroundColor:
-                        activeTimeSlot === time ? "#0cca00" : "#d2d2d2",
-                    outline: "none",
-                }}
-                disabled={booked}
-            >
-                {time}
-            </button>
-        </div>
+        time !== "" && (
+            <div className="col-md-6" style={{ padding: "0 3px" }}>
+                <button
+                    className={`timeSlot ${booked ? "disabled" : ""}`}
+                    onClick={handleTimeClick}
+                    style={{
+                        backgroundColor:
+                            activeTimeSlot === time ? "#0cca00" : "#d2d2d2",
+                        outline: "none",
+                    }}
+                    disabled={booked}
+                >
+                    {time}
+                </button>
+            </div>
+        )
     );
 };
 
