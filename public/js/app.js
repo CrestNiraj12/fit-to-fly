@@ -3883,6 +3883,8 @@ var BookCard = function BookCard() {
                 className: "sr-only",
                 children: "Loading..."
               })
+            }) : timePeriod === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+              children: "Sorry we are closed on Sunday!"
             }) : timePeriod.map(function (time, index) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_TimeSlot__WEBPACK_IMPORTED_MODULE_3__.default, {
                 time: time,
@@ -4158,7 +4160,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_test_51HrrlNARkfToiPFSupHqiJpGnsej3pPYyODpRU5x651HuosD4y4b9fufVkDzfKf0BQNbKgxwAKZWMiFWxrnIgaRO000iRAqmx5");
-var PAYPAL_CLIENT_ID = "AU7wEngzj7X-pWbhKsvfGbT4AaLZ0zEyoTL8XPiv01ujkCHwdZdHelg-TrCA-NjYkWz2VwToxE1DyPWV";
+var PAYPAL_CLIENT_ID = "AVQhddYIXjDb-oCaZTgjPUKIYz7Zv_QXkh3gPDAFMnOUURB39skjXF37BW5G6uXOvwnbMwh0Jfx69qdW";
 
 var Checkout = function Checkout() {
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();

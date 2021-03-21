@@ -16,7 +16,7 @@ const stripePromise = loadStripe(
 );
 
 const PAYPAL_CLIENT_ID =
-    "AU7wEngzj7X-pWbhKsvfGbT4AaLZ0zEyoTL8XPiv01ujkCHwdZdHelg-TrCA-NjYkWz2VwToxE1DyPWV";
+    "AVQhddYIXjDb-oCaZTgjPUKIYz7Zv_QXkh3gPDAFMnOUURB39skjXF37BW5G6uXOvwnbMwh0Jfx69qdW";
 
 const Checkout = () => {
     const history = useHistory();

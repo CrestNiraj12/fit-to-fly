@@ -315,6 +315,8 @@ const BookCard = () => {
                                                 Loading...
                                             </span>
                                         </div>
+                                    ) : timePeriod === null ? (
+                                        <h4>Sorry we are closed on Sunday!</h4>
                                     ) : (
                                         timePeriod.map((time, index) => (
                                             <TimeSlot
