@@ -4340,6 +4340,9 @@ var Checkout = function Checkout() {
               _context2.next = 8;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/stripe/pay", {
                 service: serviceItem
+              })["catch"](function (err) {
+                setButtonLoading(false);
+                console.log(err);
               });
 
             case 8:
@@ -4351,8 +4354,8 @@ var Checkout = function Checkout() {
 
             case 11:
               result = _context2.sent;
-              if (result.error) console.log(result.error);
               setButtonLoading(false);
+              if (result.error) console.log(result.error);
 
             case 14:
             case "end":
