@@ -8,12 +8,13 @@ class StripeController extends Controller
 {
     public function paymentProcess(Request $request) {
         $service = $request->service;
+        $redirect_domain = env('APP_URL');
         $service = [
             'payment_method_types' => ['card'],
             'line_items' => [json_decode(str_replace("'",'"', $service), true)],
             'mode' => 'payment',
-            'success_url' => "http://localhost:8080/success/?session_id={CHECKOUT_SESSION_ID}&method=stripe",
-            'cancel_url' => 'http://localhost:8080/cancel'
+            'success_url' => "http://$redirect_domain/success/?session_id={CHECKOUT_SESSION_ID}&method=stripe",
+            'cancel_url' => "http://$redirect_domain/cancel"
         ];
         $session = \Stripe\Checkout\Session::create($service);
         return response()->json($session->id);
