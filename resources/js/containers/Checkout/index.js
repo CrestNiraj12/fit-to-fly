@@ -205,17 +205,16 @@ const Checkout = () => {
             quantity: 1,
         });
 
-        const response = await axios
-            .post("/api/stripe/pay", {
-                service: serviceItem,
-            })
-            .catch((err) => console.log(err.response));
+        const response = await axios.post("/api/stripe/pay", {
+            service: serviceItem,
+        });
 
         const result = await stripe.redirectToCheckout({
             sessionId: response.data,
         });
 
         if (result.error) console.log(result.error);
+        setButtonLoading(false);
     };
 
     const handleFormInput = (e) => {
