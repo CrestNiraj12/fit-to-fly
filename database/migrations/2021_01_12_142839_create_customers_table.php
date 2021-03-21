@@ -19,7 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string("lastname");
             $table->string("email");
             $table->string("address");
-            $table->string("address2");
+            $table->string("address2")->nullable();
             $table->string("country");
             $table->string("postal");
             $table->timestamps();
