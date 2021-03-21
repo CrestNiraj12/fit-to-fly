@@ -4159,8 +4159,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_test_51HrrlNARkfToiPFSupHqiJpGnsej3pPYyODpRU5x651HuosD4y4b9fufVkDzfKf0BQNbKgxwAKZWMiFWxrnIgaRO000iRAqmx5");
-var PAYPAL_CLIENT_ID = "AVQhddYIXjDb-oCaZTgjPUKIYz7Zv_QXkh3gPDAFMnOUURB39skjXF37BW5G6uXOvwnbMwh0Jfx69qdW";
+var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_test_51IXKfNEtfIOLAci6yyHzUicWkQJFAk5Qf3Dd1cYbPwEQPKXMh4al3qP9MRD7jva0Bl9Ldt97gguQY0olNfj67KID00Hdfip2oL");
+var PAYPAL_CLIENT_ID = "AXBOf-rcYR-plJbb-TPkOe36Udgih_yBjCaeLFp__RuGhuL5HPmFj-Fhg7LXzo604JmUElEAB21VWtfq";
 
 var Checkout = function Checkout() {
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
@@ -4340,6 +4340,8 @@ var Checkout = function Checkout() {
               _context2.next = 8;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/stripe/pay", {
                 service: serviceItem
+              })["catch"](function (err) {
+                return console.log(err.response);
               });
 
             case 8:

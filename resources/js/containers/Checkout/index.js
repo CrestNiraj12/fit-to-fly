@@ -11,12 +11,9 @@ import Footer from "../../components/Footer";
 import Image from "../../../images/image1.jpg";
 import Image2 from "../../../images/image2.webp";
 
-const stripePromise = loadStripe(
-    "pk_test_51HrrlNARkfToiPFSupHqiJpGnsej3pPYyODpRU5x651HuosD4y4b9fufVkDzfKf0BQNbKgxwAKZWMiFWxrnIgaRO000iRAqmx5"
-);
+const stripePromise = loadStripe(process.env.MIX_STRIPE_PUBLIC_KEY);
 
-const PAYPAL_CLIENT_ID =
-    "AVQhddYIXjDb-oCaZTgjPUKIYz7Zv_QXkh3gPDAFMnOUURB39skjXF37BW5G6uXOvwnbMwh0Jfx69qdW";
+const PAYPAL_CLIENT_ID = process.env.MIX_PAYPAL_PUBLIC_KEY;
 
 const Checkout = () => {
     const history = useHistory();
@@ -208,9 +205,11 @@ const Checkout = () => {
             quantity: 1,
         });
 
-        const response = await axios.post("/api/stripe/pay", {
-            service: serviceItem,
-        });
+        const response = await axios
+            .post("/api/stripe/pay", {
+                service: serviceItem,
+            })
+            .catch((err) => console.log(err.response));
 
         const result = await stripe.redirectToCheckout({
             sessionId: response.data,
