@@ -16,9 +16,10 @@ const BookCard = () => {
     const [timePeriod, setTimePeriod] = useState([]);
     const [selectedTime, setSelectedTime] = useState("");
     const [bookedTimes, setBookedTimes] = useState([]);
-    const [nhsNumber, setNhsNumber] = useState("");
+    const [passportNumber, setPassportNumber] = useState("");
     const [selectedOption, setSelectedOption] = useState("");
     const [loading, setLoading] = useState(true);
+    const [dob, setDob] = useState("");
 
     useEffect(() => {
         axios
@@ -31,61 +32,44 @@ const BookCard = () => {
 
     useEffect(() => {
         setLoading(true);
-        if (location)
-            axios
-                .get(`/api/locations/${location}`)
-                .then((res) => {
-                    const openings = res.data["openingTime"]
-                        .split(",")
-                        .map((time) => time.split("-"));
-                    const closings = res.data["closingTime"]
-                        .split(",")
-                        .map((time) => time.split("-"));
-                    const selectedDay = bookDate.getDay();
+        if (location) {
+            const locData = services[serviceIndex].locations[location];
+            const openings = locData["openingTime"]
+                .split(",")
+                .map((time) => time.split("-"));
+            const closings = locData["closingTime"]
+                .split(",")
+                .map((time) => time.split("-"));
+            const selectedDay = bookDate.getDay();
 
-                    if (selectedDay === 0) setTimePeriod(null);
-                    else if (selectedDay === 6)
-                        setTimePeriod([
-                            ...generateTimePeriod(
-                                openings[1][0],
-                                closings[1][0]
-                            ),
-                            ...(openings[1].length > 1
-                                ? generateTimePeriod(
-                                      openings[1][1],
-                                      closings[1][1]
-                                  )
-                                : ""),
-                        ]);
-                    else
-                        setTimePeriod([
-                            ...generateTimePeriod(
-                                openings[0][0],
-                                closings[0][0]
-                            ),
-                            ...(openings[0].length > 1
-                                ? generateTimePeriod(
-                                      openings[0][1],
-                                      closings[0][1]
-                                  )
-                                : ""),
-                            ,
-                        ]);
+            if (selectedDay === 0) setTimePeriod(null);
+            else if (selectedDay === 6)
+                setTimePeriod([
+                    ...generateTimePeriod(openings[1][0], closings[1][0]),
+                    ...(openings[1].length > 1
+                        ? generateTimePeriod(openings[1][1], closings[1][1])
+                        : ""),
+                ]);
+            else
+                setTimePeriod([
+                    ...generateTimePeriod(openings[0][0], closings[0][0]),
+                    ...(openings[0].length > 1
+                        ? generateTimePeriod(openings[0][1], closings[0][1])
+                        : ""),
+                    ,
+                ]);
 
-                    setBookedTimes(res.data["bookedTimes"].split(","));
-                    localStorage.setItem(
-                        "bookedTimes",
-                        res.data["bookedTimes"]
-                    );
-                    setLoading(false);
-                })
-                .catch((err) => console.log(err));
+            setBookedTimes(locData["bookedTimes"].split(","));
+            localStorage.setItem("bookedTimes", locData["bookedTimes"]);
+            setLoading(false);
+        }
     }, [location, bookDate]);
 
     const handleConfirmData = () => {
         if (!confirmData) setConfirmData(true);
         else setConfirmBookDate(true);
-        localStorage.setItem("nhsNumber", nhsNumber);
+        localStorage.setItem("passportNumber", passportNumber);
+        localStorage.setItem("dob", dob);
     };
 
     const convertDateToString = (date) => {
@@ -150,16 +134,17 @@ const BookCard = () => {
         <div className="card bookCard">
             {confirmBookDate ? (
                 <ConfirmCard
-                    serviceTitle={services[serviceIndex].name}
+                    serviceObject={services[serviceIndex]}
                     bookDate={
                         convertDateToString(bookDate) +
                         " " +
                         selectedTime.split(" ").join("")
                     }
-                    location={location}
+                    dob={dob}
+                    location={services[serviceIndex].locations[location]}
                     price={services[serviceIndex].options[selectedOption].price}
                     setConfirmBookDate={setConfirmBookDate}
-                    nhsNumber={nhsNumber}
+                    passportNumber={passportNumber}
                     selectedOption={
                         services[serviceIndex].options[selectedOption]
                     }
@@ -210,24 +195,41 @@ const BookCard = () => {
                                         }}
                                     >
                                         {services[serviceIndex].locations.map(
-                                            ({ name, id }, index) => (
-                                                <option value={id} key={index}>
+                                            ({ name }, index) => (
+                                                <option
+                                                    value={index}
+                                                    key={index}
+                                                >
                                                     {name}
                                                 </option>
                                             )
                                         )}
                                     </select>
-                                    <label htmlFor="nhs">NHS Number</label>
+                                    <label htmlFor="dob">Date of Birth</label>
                                     <input
                                         className="form-control"
-                                        type="number"
-                                        id="nhs"
+                                        type="date"
+                                        id="dob"
                                         style={{
                                             marginBottom: "20px",
                                         }}
-                                        value={nhsNumber}
+                                        value={dob}
+                                        onChange={(e) => setDob(e.target.value)}
+                                        required
+                                    />
+                                    <label htmlFor="passport">
+                                        Passport No.
+                                    </label>
+                                    <input
+                                        className="form-control"
+                                        type="number"
+                                        id="passport"
+                                        style={{
+                                            marginBottom: "20px",
+                                        }}
+                                        value={passportNumber}
                                         onChange={(e) =>
-                                            setNhsNumber(e.target.value)
+                                            setPassportNumber(e.target.value)
                                         }
                                         required
                                     />
@@ -406,12 +408,9 @@ const BookCard = () => {
                                                     {services[
                                                         serviceIndex
                                                     ].locations.map(
-                                                        (
-                                                            { name, id },
-                                                            index
-                                                        ) => (
+                                                        ({ name }, index) => (
                                                             <option
-                                                                value={id}
+                                                                value={index}
                                                                 key={index}
                                                             >
                                                                 {name}
@@ -419,19 +418,35 @@ const BookCard = () => {
                                                         )
                                                     )}
                                                 </select>
-                                                <label htmlFor="nhs">
-                                                    NHS Number
+                                                <label htmlFor="dob">
+                                                    Date of Birth
                                                 </label>
                                                 <input
                                                     className="form-control"
-                                                    id="nhs"
+                                                    type="date"
+                                                    id="dob"
+                                                    style={{
+                                                        marginBottom: "20px",
+                                                    }}
+                                                    value={dob}
+                                                    onChange={(e) =>
+                                                        setDob(e.target.value)
+                                                    }
+                                                    required
+                                                />
+                                                <label htmlFor="passport">
+                                                    Passport Number
+                                                </label>
+                                                <input
+                                                    className="form-control"
+                                                    id="passport"
                                                     type="number"
                                                     style={{
                                                         marginBottom: "20px",
                                                     }}
-                                                    value={nhsNumber}
+                                                    value={passportNumber}
                                                     onChange={(e) =>
-                                                        setNhsNumber(
+                                                        setPassportNumber(
                                                             e.target.value
                                                         )
                                                     }
@@ -518,8 +533,8 @@ const BookCard = () => {
                             disabled={
                                 (confirmData
                                     ? !selectedTime
-                                    : !location || !selectedOption) ||
-                                nhsNumber === ""
+                                    : !location || !selectedOption || !dob) ||
+                                passportNumber === ""
                             }
                             onClick={handleConfirmData}
                         >

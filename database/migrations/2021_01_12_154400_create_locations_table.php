@@ -19,8 +19,6 @@ class CreateLocationsTable extends Migration
             $table->string("openingTime");
             $table->string("closingTime");
             $table->longText("bookedTimes");
-            $table->unsignedBigInteger("service_id");
-            $table->foreign('service_id')->references('id')->on('services');
             $table->timestamps();
         });
     }

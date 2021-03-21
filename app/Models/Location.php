@@ -13,12 +13,16 @@ class Location extends Model
         "name",
         "openingTime",
         "closingTime",
-        "bookedTimes",
-        "service_id"
+        "bookedTimes"
     ];
 
-    public function service()
+    public function services()
     {
-        return $this->belongsTo(Service::class, "service_id");
+        return $this->belongsToMany(Service::class, "service_locations");
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

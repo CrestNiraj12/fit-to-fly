@@ -17,10 +17,14 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string("method");
             $table->float("amount");
-            $table->string("customer_nhs_no");
+            $table->string("customer_no");
+            $table->unsignedBigInteger("service_id");
             $table->unsignedBigInteger("option_id");
-            $table->foreign('customer_nhs_no')->references('customer_nhs_no')->on('customers');
+            $table->unsignedBigInteger("location_id");
+            $table->foreign('customer_no')->references('passport_no')->on('customers');
+            $table->foreign('service_id')->references('id')->on('services');
             $table->foreign('option_id')->references('id')->on('options');
+            $table->foreign('location_id')->references('id')->on('locations');
             $table->timestamps();
         });
     }

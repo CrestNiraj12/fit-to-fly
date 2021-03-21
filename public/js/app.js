@@ -3212,28 +3212,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
-
-
-
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
 
 
 
@@ -3241,33 +3222,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var ConfirmCard = function ConfirmCard(_ref) {
-  var nhsNumber = _ref.nhsNumber,
-      serviceTitle = _ref.serviceTitle,
+  var passportNumber = _ref.passportNumber,
+      serviceObject = _ref.serviceObject,
       bookDate = _ref.bookDate,
+      dob = _ref.dob,
       location = _ref.location,
       price = _ref.price,
       setConfirmBookDate = _ref.setConfirmBookDate,
       selectedOption = _ref.selectedOption;
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      locationArray = _useState2[0],
-      setLocationArray = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
-      _useState4 = _slicedToArray(_useState3, 2),
-      loading = _useState4[0],
-      setLoading = _useState4[1];
-
-  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/locations/".concat(location)).then(function (res) {
-      setLocationArray(res.data);
-      setLoading(false);
-    })["catch"](function (err) {
-      return console.log(err);
-    });
-  }, []);
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useHistory)();
   var info = [{
     icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", {
       xmlns: "http://www.w3.org/2000/svg",
@@ -3283,8 +3246,24 @@ var ConfirmCard = function ConfirmCard(_ref) {
         d: "M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
       })]
     }),
-    title: "NHS Number",
-    description: nhsNumber
+    title: "Passport No.",
+    description: passportNumber
+  }, {
+    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      width: "16",
+      height: "16",
+      fill: "#0086ec",
+      className: "bi bi-geo-alt titleIcon",
+      viewBox: "0 0 16 16",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        d: "M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        d: "M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+      })]
+    }),
+    title: "Date of Birth",
+    description: dob ? dob : ""
   }, {
     icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", {
       xmlns: "http://www.w3.org/2000/svg",
@@ -3336,16 +3315,17 @@ var ConfirmCard = function ConfirmCard(_ref) {
       })]
     }),
     title: "Location",
-    description: locationArray ? locationArray.name : ""
+    description: location ? location.name : ""
   }];
 
   var handleConfirm = function handleConfirm(e) {
     e.preventDefault();
     var service = {
-      title: serviceTitle,
+      id: serviceObject.id,
+      title: serviceObject.name,
       date: bookDate,
-      location: locationArray.name,
-      locationId: location,
+      location: location.name,
+      locationId: location.id,
       amount: price,
       optionId: selectedOption.id
     };
@@ -3353,125 +3333,134 @@ var ConfirmCard = function ConfirmCard(_ref) {
     history.push("/checkout");
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "card-body",
     style: {
       padding: "50px 0",
       minHeight: 400
     },
-    children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "spinner-border cardSpinner",
-      role: "status",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-        className: "sr-only",
-        children: "Loading..."
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "row",
+      style: {
+        justifyContent: "center"
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+        src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_2__.default,
+        className: "cardHeaderImage"
       })
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "row",
-        style: {
-          justifyContent: "center"
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_3__.default,
-          className: "cardHeaderImage"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "row",
-        style: {
-          justifyContent: "center"
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
-          children: serviceTitle
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "row confirmDetails",
-        children: info.map(function (_ref2, index) {
-          var icon = _ref2.icon,
-              title = _ref2.title,
-              description = _ref2.description;
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "col-md-3 details",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-              className: "row",
-              style: {
-                margin: "7.5px -15px"
-              },
-              children: [icon, title]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-              className: "row",
-              style: {
-                fontSize: "13px"
-              },
-              children: description
-            })]
-          }, index);
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "row mb-5 amountBlock",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "col-md-12",
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "row",
+      style: {
+        justifyContent: "center"
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+        children: serviceObject.name
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "row confirmDetails",
+      children: info.map(function (_ref2, index) {
+        var icon = _ref2.icon,
+            title = _ref2.title,
+            description = _ref2.description;
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "col-md-".concat(Math.floor(12 / info.length), " details"),
+          style: {
+            margin: "0 auto"
+          },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             className: "row",
             style: {
-              justifyContent: "space-between",
-              padding: "5px 0"
+              margin: "7.5px -15px"
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-              children: "Option"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-              className: "resFontSize",
-              style: {
-                color: "#0086ec"
-              },
-              children: selectedOption.name
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            children: [icon, title]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
             className: "row",
             style: {
-              justifyContent: "space-between",
-              padding: "5px 0"
+              fontSize: "13px"
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-              children: "Total Price"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-              className: "resFontSize",
-              style: {
-                color: "#0086ec"
-              },
-              children: ["\xA3", price.toFixed(2)]
-            })]
+            children: description
           })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "row buttonContainer",
-        style: {
-          justifyContent: "center",
-          margin: "0 10%"
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-          type: "button",
-          className: "btn buttonSize",
+        }, index);
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "row mb-5 amountBlock",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "col-md-12",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "row",
           style: {
-            margin: "0 10px",
-            backgroundColor: "#f3f3f3"
+            justifyContent: "space-between",
+            padding: "5px 0"
           },
-          onClick: function onClick() {
-            return setConfirmBookDate(false);
-          },
-          children: "Back"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-          type: "button",
-          className: "btn buttonSize",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            children: "Service"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            className: "resFontSize",
+            style: {
+              color: "#0086ec"
+            },
+            children: serviceObject.name
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "row",
           style: {
-            backgroundColor: "#0086ec",
-            color: "#fff"
+            justifyContent: "space-between",
+            padding: "5px 0"
           },
-          onClick: handleConfirm,
-          children: "Confirm"
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            children: "Option"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            className: "resFontSize",
+            style: {
+              color: "#0086ec"
+            },
+            children: selectedOption.name
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "row",
+          style: {
+            justifyContent: "space-between",
+            padding: "5px 0"
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            children: "Total Price"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+            className: "resFontSize",
+            style: {
+              color: "#0086ec"
+            },
+            children: ["\xA3", price.toFixed(2)]
+          })]
         })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "row buttonContainer",
+      style: {
+        justifyContent: "center",
+        margin: "0 10%"
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+        type: "button",
+        className: "btn buttonSize",
+        style: {
+          margin: "0 10px",
+          backgroundColor: "#f3f3f3"
+        },
+        onClick: function onClick() {
+          return setConfirmBookDate(false);
+        },
+        children: "Back"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+        type: "button",
+        className: "btn buttonSize",
+        style: {
+          backgroundColor: "#0086ec",
+          color: "#fff"
+        },
+        onClick: handleConfirm,
+        children: "Confirm"
       })]
-    })
+    })]
   });
 };
 
@@ -3648,8 +3637,8 @@ var BookCard = function BookCard() {
 
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState20 = _slicedToArray(_useState19, 2),
-      nhsNumber = _useState20[0],
-      setNhsNumber = _useState20[1];
+      passportNumber = _useState20[0],
+      setPassportNumber = _useState20[1];
 
   var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState22 = _slicedToArray(_useState21, 2),
@@ -3661,6 +3650,11 @@ var BookCard = function BookCard() {
       loading = _useState24[0],
       setLoading = _useState24[1];
 
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState26 = _slicedToArray(_useState25, 2),
+      dob = _useState26[0],
+      setDob = _useState26[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_5___default().get("/api/services").then(function (res) {
       setServices(res.data);
@@ -3670,26 +3664,27 @@ var BookCard = function BookCard() {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     setLoading(true);
-    if (location) axios__WEBPACK_IMPORTED_MODULE_5___default().get("/api/locations/".concat(location)).then(function (res) {
-      var openings = res.data["openingTime"].split(",").map(function (time) {
+
+    if (location) {
+      var locData = services[serviceIndex].locations[location];
+      var openings = locData["openingTime"].split(",").map(function (time) {
         return time.split("-");
       });
-      var closings = res.data["closingTime"].split(",").map(function (time) {
+      var closings = locData["closingTime"].split(",").map(function (time) {
         return time.split("-");
       });
       var selectedDay = bookDate.getDay();
       if (selectedDay === 0) setTimePeriod(null);else if (selectedDay === 6) setTimePeriod([].concat(_toConsumableArray(generateTimePeriod(openings[1][0], closings[1][0])), _toConsumableArray(openings[1].length > 1 ? generateTimePeriod(openings[1][1], closings[1][1]) : "")));else setTimePeriod([].concat(_toConsumableArray(generateTimePeriod(openings[0][0], closings[0][0])), _toConsumableArray(openings[0].length > 1 ? generateTimePeriod(openings[0][1], closings[0][1]) : ""), [,]));
-      setBookedTimes(res.data["bookedTimes"].split(","));
-      localStorage.setItem("bookedTimes", res.data["bookedTimes"]);
+      setBookedTimes(locData["bookedTimes"].split(","));
+      localStorage.setItem("bookedTimes", locData["bookedTimes"]);
       setLoading(false);
-    })["catch"](function (err) {
-      return console.log(err);
-    });
+    }
   }, [location, bookDate]);
 
   var handleConfirmData = function handleConfirmData() {
     if (!confirmData) setConfirmData(true);else setConfirmBookDate(true);
-    localStorage.setItem("nhsNumber", nhsNumber);
+    localStorage.setItem("passportNumber", passportNumber);
+    localStorage.setItem("dob", dob);
   };
 
   var convertDateToString = function convertDateToString(date) {
@@ -3737,12 +3732,13 @@ var BookCard = function BookCard() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: "card bookCard",
     children: confirmBookDate ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ConfirmCard__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceTitle: services[serviceIndex].name,
+      serviceObject: services[serviceIndex],
       bookDate: convertDateToString(bookDate) + " " + selectedTime.split(" ").join(""),
-      location: location,
+      dob: dob,
+      location: services[serviceIndex].locations[location],
       price: services[serviceIndex].options[selectedOption].price,
       setConfirmBookDate: setConfirmBookDate,
-      nhsNumber: nhsNumber,
+      passportNumber: passportNumber,
       selectedOption: services[serviceIndex].options[selectedOption]
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -3792,26 +3788,40 @@ var BookCard = function BookCard() {
                 setSelectedTime("");
               },
               children: services[serviceIndex].locations.map(function (_ref2, index) {
-                var name = _ref2.name,
-                    id = _ref2.id;
+                var name = _ref2.name;
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
-                  value: id,
+                  value: index,
                   children: name
                 }, index);
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-              htmlFor: "nhs",
-              children: "NHS Number"
+              htmlFor: "dob",
+              children: "Date of Birth"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
               className: "form-control",
-              type: "number",
-              id: "nhs",
+              type: "date",
+              id: "dob",
               style: {
                 marginBottom: "20px"
               },
-              value: nhsNumber,
+              value: dob,
               onChange: function onChange(e) {
-                return setNhsNumber(e.target.value);
+                return setDob(e.target.value);
+              },
+              required: true
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+              htmlFor: "passport",
+              children: "Passport No."
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+              className: "form-control",
+              type: "number",
+              id: "passport",
+              style: {
+                marginBottom: "20px"
+              },
+              value: passportNumber,
+              onChange: function onChange(e) {
+                return setPassportNumber(e.target.value);
               },
               required: true
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
@@ -3953,26 +3963,40 @@ var BookCard = function BookCard() {
                     },
                     children: "Select location"
                   }), services[serviceIndex].locations.map(function (_ref5, index) {
-                    var name = _ref5.name,
-                        id = _ref5.id;
+                    var name = _ref5.name;
                     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
-                      value: id,
+                      value: index,
                       children: name
                     }, index);
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                  htmlFor: "nhs",
-                  children: "NHS Number"
+                  htmlFor: "dob",
+                  children: "Date of Birth"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
                   className: "form-control",
-                  id: "nhs",
+                  type: "date",
+                  id: "dob",
+                  style: {
+                    marginBottom: "20px"
+                  },
+                  value: dob,
+                  onChange: function onChange(e) {
+                    return setDob(e.target.value);
+                  },
+                  required: true
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                  htmlFor: "passport",
+                  children: "Passport Number"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                  className: "form-control",
+                  id: "passport",
                   type: "number",
                   style: {
                     marginBottom: "20px"
                   },
-                  value: nhsNumber,
+                  value: passportNumber,
                   onChange: function onChange(e) {
-                    return setNhsNumber(e.target.value);
+                    return setPassportNumber(e.target.value);
                   }
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
                   htmlFor: "option",
@@ -4023,7 +4047,7 @@ var BookCard = function BookCard() {
             width: "100%",
             marginTop: "10px"
           },
-          disabled: (confirmData ? !selectedTime : !location || !selectedOption) || nhsNumber === "",
+          disabled: (confirmData ? !selectedTime : !location || !selectedOption || !dob) || passportNumber === "",
           onClick: handleConfirmData,
           children: "Continue"
         })]
@@ -4159,8 +4183,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_live_51IXKfNEtfIOLAci6nhpBa0VhRS8Wm5i7qjt5MfsoMJfw9LT1ZRxeMTiM7mNp04zJg0oRyUI0ezyhvXhRF6zWI4NE000OoS6FL0");
-var PAYPAL_CLIENT_ID = "AU3QCfeLRevzoeuE5ZyvM_S36-jHP6aERXBjnC2IxzwDb2PwAn7U4QBa5Nwc8klfL9-tJw000uhYsRC3";
+var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_test_51IXKfNEtfIOLAci6yyHzUicWkQJFAk5Qf3Dd1cYbPwEQPKXMh4al3qP9MRD7jva0Bl9Ldt97gguQY0olNfj67KID00Hdfip2oL");
+var PAYPAL_CLIENT_ID = "AXBOf-rcYR-plJbb-TPkOe36Udgih_yBjCaeLFp__RuGhuL5HPmFj-Fhg7LXzo604JmUElEAB21VWtfq";
 
 var Checkout = function Checkout() {
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
@@ -4215,10 +4239,10 @@ var Checkout = function Checkout() {
     var parsedService = JSON.parse(localStorage.getItem("service"));
     setService(parsedService);
     setAmount(parsedService.amount);
-    var nhs_no = localStorage.getItem("nhsNumber");
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/customers/".concat(nhs_no)).then(function (res) {
+    var passportNumber = localStorage.getItem("passportNumber");
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/customers/".concat(passportNumber)).then(function (res) {
       if (res.data !== 0) setUpdateInfo({
-        customer_no: nhs_no,
+        customer_no: passportNumber,
         state: true
       });
     });
@@ -4230,7 +4254,7 @@ var Checkout = function Checkout() {
     document.querySelector("#firstName").classList.add(!details["firstname"] ? "is-invalid" : "is-valid");
     document.querySelector("#firstName").classList.remove(!details["firstname"] ? "is-valid" : "is-invalid");
     document.querySelector("#lastName").classList.add(!details["lastname"] ? "is-invalid" : "is-valid");
-    document.querySelector("#lastName").classList.remove(!details["lastName"] ? "is-valid" : "is-invalid");
+    document.querySelector("#lastName").classList.remove(!details["lastname"] ? "is-valid" : "is-invalid");
     document.querySelector("#email").classList.add(!details["email"] ? "is-invalid" : "is-valid");
     document.querySelector("#email").classList.remove(!details["email"] ? "is-valid" : "is-invalid");
     document.querySelector("#address").classList.add(!details["address"] ? "is-invalid" : "is-valid");
@@ -4265,8 +4289,10 @@ var Checkout = function Checkout() {
       var details = {
         method: "paypal",
         amount: amount,
-        customer_nhs_no: updateInfo.customer_no,
-        option_id: service.optionId
+        customer_no: updateInfo.customer_no,
+        service_id: service.id,
+        option_id: service.optionId,
+        location_id: service.locationId
       };
       axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/orders/", details).then( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
         var bookedTimes;
@@ -4345,7 +4371,6 @@ var Checkout = function Checkout() {
                 service: serviceItem
               })["catch"](function (err) {
                 setButtonLoading(false);
-                console.log(err);
               });
 
             case 8:
@@ -4387,12 +4412,13 @@ var Checkout = function Checkout() {
 
               if (validateForm()) {
                 if (!updateInfo.state) axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/customers", _objectSpread({
-                  customer_nhs_no: localStorage.getItem("nhsNumber")
+                  passport_no: localStorage.getItem("passportNumber"),
+                  dob: localStorage.getItem("dob")
                 }, details)).then(function (res) {
                   setDetailsSubmitted(true);
                   setUpdateInfo({
                     state: true,
-                    nhs_no: res.data.customer_nhs_no
+                    customer_no: res.data.customer_no
                   });
                 })["catch"](function (err) {
                   return console.log(err.response);
@@ -5028,6 +5054,7 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
       var method = query.method.toLowerCase();
 
       if (method === "stripe") {
+        var service = JSON.parse(localStorage.getItem("service"));
         if (mounted) axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/stripe/session", {
           sessionId: query.session_id
         }).then( /*#__PURE__*/function () {
@@ -5041,8 +5068,10 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
                     data = {
                       method: method,
                       amount: details.amount_total / 100,
-                      customer_nhs_no: localStorage.getItem("nhsNumber"),
-                      option_id: JSON.parse(localStorage.getItem("service")).optionId
+                      customer_no: localStorage.getItem("passportNumber"),
+                      service_id: service.id,
+                      option_id: service.optionId,
+                      location_id: service.locationId
                     };
                     _context.next = 4;
                     return axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/orders/", data);
@@ -5062,22 +5091,21 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
             return _ref2.apply(this, arguments);
           };
         }()).then( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee2() {
-          var service, bookedTimes;
+          var bookedTimes;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
-                  service = JSON.parse(localStorage.getItem("service"));
                   bookedTimes = localStorage.getItem("bookedTimes");
-                  _context2.next = 4;
+                  _context2.next = 3;
                   return axios__WEBPACK_IMPORTED_MODULE_4___default().put("/api/locations/".concat(service.locationId), {
                     bookedTimes: (bookedTimes !== "" && bookedTimes !== null ? bookedTimes + "," : "") + service.date
                   });
 
-                case 4:
+                case 3:
                   return _context2.abrupt("return", _context2.sent);
 
-                case 5:
+                case 4:
                 case "end":
                   return _context2.stop();
               }
@@ -5152,7 +5180,7 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
             children: "Loading..."
           })
         })
-      }), "Redirecting to homepage... ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+      }), "Redirecting to homepage...", !success && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
         to: "/",
         children: "Go home"
       })]

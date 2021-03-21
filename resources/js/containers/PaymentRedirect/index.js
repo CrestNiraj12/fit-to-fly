@@ -17,6 +17,7 @@ const PaymentRedirect = ({ location, success }) => {
         if (success) {
             const method = query.method.toLowerCase();
             if (method === "stripe") {
+                const service = JSON.parse(localStorage.getItem("service"));
                 if (mounted)
                     axios
                         .post("/api/stripe/session", {
@@ -27,20 +28,16 @@ const PaymentRedirect = ({ location, success }) => {
                             const data = {
                                 method,
                                 amount: details.amount_total / 100,
-                                customer_nhs_no: localStorage.getItem(
-                                    "nhsNumber"
+                                customer_no: localStorage.getItem(
+                                    "passportNumber"
                                 ),
-                                option_id: JSON.parse(
-                                    localStorage.getItem("service")
-                                ).optionId,
+                                service_id: service.id,
+                                option_id: service.optionId,
+                                location_id: service.locationId,
                             };
                             return await axios.post("/api/orders/", data);
                         })
                         .then(async () => {
-                            const service = JSON.parse(
-                                localStorage.getItem("service")
-                            );
-
                             const bookedTimes = localStorage.getItem(
                                 "bookedTimes"
                             );
@@ -122,7 +119,8 @@ const PaymentRedirect = ({ location, success }) => {
                         <span className="sr-only">Loading...</span>
                     </div>
                 </span>
-                Redirecting to homepage... <Link to="/">Go home</Link>
+                Redirecting to homepage...
+                {!success && <Link to="/">Go home</Link>}
             </small>
         </div>
     );

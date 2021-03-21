@@ -16,5 +16,9 @@ class ServiceSeeder extends Seeder
         \App\Models\Service::create([
             "name" => "COVID-19 PCR Test + Fit to Fly Certificate"
         ]);
+
+        \App\Models\Service::create([
+            "name" => "Test to Release"
+        ]);
     }
 }

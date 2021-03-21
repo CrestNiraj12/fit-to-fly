@@ -8,6 +8,8 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ServiceLocationController;
+use App\Http\Controllers\ServiceOptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,9 @@ Route::post('/stripe/session', [StripeController::class, 'retrieveSession']);
 
 Route::resource('services', ServiceController::class);
 Route::resource('locations', LocationController::class);
+Route::resource('service_locations', ServiceLocationController::class);
 Route::resource('options', OptionController::class);
+Route::resource('service_options', ServiceOptionController::class);
 Route::resource('orders', OrderController::class);
 Route::resource('customers', CustomerController::class);
 

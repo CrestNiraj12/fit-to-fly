@@ -11,8 +11,7 @@ class Option extends Model
 
     protected $fillable = [
         'name',
-        'price',
-        'service_id'
+        'price'
     ];
 
     public function orders()
@@ -20,8 +19,8 @@ class Option extends Model
         return $this->hasMany(Order::class);
     }
 
-    public function service()
+    public function services()
     {
-        return $this->belongsTo(Service::class, "service_id");
+        return $this->belongsToMany(Service::class, "service_options");
     }
 }

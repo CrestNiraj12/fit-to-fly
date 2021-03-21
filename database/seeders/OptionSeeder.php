@@ -15,20 +15,12 @@ class OptionSeeder extends Seeder
     {
         \App\Models\Option::create([
             "name" => "Results within 24 hrs",
-            "price" => 150.00,
-            "service_id" => 1
-        ]);
-
-        \App\Models\Option::create([
-            "name" => "Results within 24 hrs + swab done by staff",
-            "price" => 160.00,
-            "service_id" => 1
+            "price" => 185.00
         ]);
 
         \App\Models\Option::create([
             "name" => "Results within 4 hrs",
-            "price" => 350.00,
-            "service_id" => 1
+            "price" => 350.00
         ]);
     }
 }

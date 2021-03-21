@@ -41,12 +41,12 @@ const Checkout = () => {
         setService(parsedService);
         setAmount(parsedService.amount);
 
-        const nhs_no = localStorage.getItem("nhsNumber");
+        const passportNumber = localStorage.getItem("passportNumber");
 
-        axios.get(`/api/customers/${nhs_no}`).then((res) => {
+        axios.get(`/api/customers/${passportNumber}`).then((res) => {
             if (res.data !== 0)
                 setUpdateInfo({
-                    customer_no: nhs_no,
+                    customer_no: passportNumber,
                     state: true,
                 });
         });
@@ -77,7 +77,7 @@ const Checkout = () => {
             .classList.add(!details["lastname"] ? "is-invalid" : "is-valid");
         document
             .querySelector("#lastName")
-            .classList.remove(!details["lastName"] ? "is-valid" : "is-invalid");
+            .classList.remove(!details["lastname"] ? "is-valid" : "is-invalid");
         document
             .querySelector("#email")
             .classList.add(!details["email"] ? "is-invalid" : "is-valid");
@@ -141,8 +141,10 @@ const Checkout = () => {
             const details = {
                 method: "paypal",
                 amount,
-                customer_nhs_no: updateInfo.customer_no,
+                customer_no: updateInfo.customer_no,
+                service_id: service.id,
                 option_id: service.optionId,
+                location_id: service.locationId,
             };
 
             axios
@@ -214,7 +216,6 @@ const Checkout = () => {
             })
             .catch((err) => {
                 setButtonLoading(false);
-                console.log(err);
             });
 
         const result = await stripe.redirectToCheckout({
@@ -235,14 +236,15 @@ const Checkout = () => {
             if (!updateInfo.state)
                 axios
                     .post("/api/customers", {
-                        customer_nhs_no: localStorage.getItem("nhsNumber"),
+                        passport_no: localStorage.getItem("passportNumber"),
+                        dob: localStorage.getItem("dob"),
                         ...details,
                     })
                     .then((res) => {
                         setDetailsSubmitted(true);
                         setUpdateInfo({
                             state: true,
-                            nhs_no: res.data.customer_nhs_no,
+                            customer_no: res.data.customer_no,
                         });
                     })
                     .catch((err) => console.log(err.response));

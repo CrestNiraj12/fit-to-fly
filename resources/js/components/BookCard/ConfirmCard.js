@@ -1,32 +1,18 @@
-import axios from "axios";
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Image from "../../../images/image2.webp";
 
 const ConfirmCard = ({
-    nhsNumber,
-    serviceTitle,
+    passportNumber,
+    serviceObject,
     bookDate,
+    dob,
     location,
     price,
     setConfirmBookDate,
     selectedOption,
 }) => {
     const history = useHistory();
-    const [locationArray, setLocationArray] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios
-            .get(`/api/locations/${location}`)
-            .then((res) => {
-                setLocationArray(res.data);
-                setLoading(false);
-            })
-            .catch((err) => console.log(err));
-    }, []);
 
     const info = [
         {
@@ -46,8 +32,25 @@ const ConfirmCard = ({
                     />
                 </svg>
             ),
-            title: "NHS Number",
-            description: nhsNumber,
+            title: "Passport No.",
+            description: passportNumber,
+        },
+        {
+            icon: (
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="#0086ec"
+                    className="bi bi-geo-alt titleIcon"
+                    viewBox="0 0 16 16"
+                >
+                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+            ),
+            title: "Date of Birth",
+            description: dob ? dob : "",
         },
         {
             icon: (
@@ -100,17 +103,18 @@ const ConfirmCard = ({
                 </svg>
             ),
             title: "Location",
-            description: locationArray ? locationArray.name : "",
+            description: location ? location.name : "",
         },
     ];
 
     const handleConfirm = (e) => {
         e.preventDefault();
         const service = {
-            title: serviceTitle,
+            id: serviceObject.id,
+            title: serviceObject.name,
             date: bookDate,
-            location: locationArray.name,
-            locationId: location,
+            location: location.name,
+            locationId: location.id,
             amount: price,
             optionId: selectedOption.id,
         };
@@ -123,101 +127,108 @@ const ConfirmCard = ({
             className="card-body"
             style={{ padding: "50px 0", minHeight: 400 }}
         >
-            {loading ? (
-                <div className="spinner-border cardSpinner" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            ) : (
-                <>
-                    <div className="row" style={{ justifyContent: "center" }}>
-                        <img src={Image} className="cardHeaderImage" />
-                    </div>
-                    <div className="row" style={{ justifyContent: "center" }}>
-                        <h4>{serviceTitle}</h4>
-                    </div>
+            <div className="row" style={{ justifyContent: "center" }}>
+                <img src={Image} className="cardHeaderImage" />
+            </div>
+            <div className="row" style={{ justifyContent: "center" }}>
+                <h4>{serviceObject.name}</h4>
+            </div>
 
-                    <div className="row confirmDetails">
-                        {info.map(({ icon, title, description }, index) => (
-                            <div className="col-md-3 details" key={index}>
-                                <div
-                                    className="row"
-                                    style={{ margin: "7.5px -15px" }}
-                                >
-                                    {icon}
-                                    {title}
-                                </div>
-                                <div
-                                    className="row"
-                                    style={{ fontSize: "13px" }}
-                                >
-                                    {description}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="row mb-5 amountBlock">
-                        <div className="col-md-12">
-                            <div
-                                className="row"
-                                style={{
-                                    justifyContent: "space-between",
-                                    padding: "5px 0",
-                                }}
-                            >
-                                <span>Option</span>
-                                <span
-                                    className="resFontSize"
-                                    style={{ color: "#0086ec" }}
-                                >
-                                    {selectedOption.name}
-                                </span>
-                            </div>
-                            <div
-                                className="row"
-                                style={{
-                                    justifyContent: "space-between",
-                                    padding: "5px 0",
-                                }}
-                            >
-                                <span>Total Price</span>
-                                <span
-                                    className="resFontSize"
-                                    style={{ color: "#0086ec" }}
-                                >
-                                    £{price.toFixed(2)}
-                                </span>
-                            </div>
+            <div className="row confirmDetails">
+                {info.map(({ icon, title, description }, index) => (
+                    <div
+                        className={`col-md-${Math.floor(
+                            12 / info.length
+                        )} details`}
+                        key={index}
+                        style={{ margin: "0 auto" }}
+                    >
+                        <div className="row" style={{ margin: "7.5px -15px" }}>
+                            {icon}
+                            {title}
+                        </div>
+                        <div className="row" style={{ fontSize: "13px" }}>
+                            {description}
                         </div>
                     </div>
+                ))}
+            </div>
+            <div className="row mb-5 amountBlock">
+                <div className="col-md-12">
                     <div
-                        className="row buttonContainer"
-                        style={{ justifyContent: "center", margin: "0 10%" }}
+                        className="row"
+                        style={{
+                            justifyContent: "space-between",
+                            padding: "5px 0",
+                        }}
                     >
-                        <button
-                            type="button"
-                            className="btn buttonSize"
-                            style={{
-                                margin: "0 10px",
-                                backgroundColor: "#f3f3f3",
-                            }}
-                            onClick={() => setConfirmBookDate(false)}
+                        <span>Service</span>
+                        <span
+                            className="resFontSize"
+                            style={{ color: "#0086ec" }}
                         >
-                            Back
-                        </button>
-                        <button
-                            type="button"
-                            className="btn buttonSize"
-                            style={{
-                                backgroundColor: "#0086ec",
-                                color: "#fff",
-                            }}
-                            onClick={handleConfirm}
-                        >
-                            Confirm
-                        </button>
+                            {serviceObject.name}
+                        </span>
                     </div>
-                </>
-            )}
+                    <div
+                        className="row"
+                        style={{
+                            justifyContent: "space-between",
+                            padding: "5px 0",
+                        }}
+                    >
+                        <span>Option</span>
+                        <span
+                            className="resFontSize"
+                            style={{ color: "#0086ec" }}
+                        >
+                            {selectedOption.name}
+                        </span>
+                    </div>
+                    <div
+                        className="row"
+                        style={{
+                            justifyContent: "space-between",
+                            padding: "5px 0",
+                        }}
+                    >
+                        <span>Total Price</span>
+                        <span
+                            className="resFontSize"
+                            style={{ color: "#0086ec" }}
+                        >
+                            £{price.toFixed(2)}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div
+                className="row buttonContainer"
+                style={{ justifyContent: "center", margin: "0 10%" }}
+            >
+                <button
+                    type="button"
+                    className="btn buttonSize"
+                    style={{
+                        margin: "0 10px",
+                        backgroundColor: "#f3f3f3",
+                    }}
+                    onClick={() => setConfirmBookDate(false)}
+                >
+                    Back
+                </button>
+                <button
+                    type="button"
+                    className="btn buttonSize"
+                    style={{
+                        backgroundColor: "#0086ec",
+                        color: "#fff",
+                    }}
+                    onClick={handleConfirm}
+                >
+                    Confirm
+                </button>
+            </div>
         </div>
     );
 };

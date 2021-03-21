@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             LocationSeeder::class,
             OptionSeeder::class,
+            ServiceLocationSeeder::class,
+            ServiceOptionSeeder::class
         ]);
     }
 }

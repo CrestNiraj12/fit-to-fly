@@ -9,7 +9,7 @@ class LocationController extends Controller
 {
     public function index()
     {
-        $locations = Location::all();
+        $locations = Location::with(['services', 'orders'])->get();
         return response()->json($locations);
     }
 
@@ -19,7 +19,6 @@ class LocationController extends Controller
             "openingTime"=> 'required',
             "closingTime"=> 'required',
             "bookedTimes"=> 'required',
-            "service_id" => 'required',
         ]);
 
         $location = Location::create($request->all());
@@ -28,7 +27,7 @@ class LocationController extends Controller
 
     public function show($id) {
         $location = Location::find($id);
-        return response()->json($location);
+        return response()->json($location->load(['services', 'orders']));
     }
 
     public function update(Request $request, $id) {

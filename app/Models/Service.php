@@ -15,11 +15,16 @@ class Service extends Model
 
     public function locations()
     {
-        return $this->hasMany(Location::class);
+        return $this->belongsToMany(Location::class, 'service_locations');
     }
 
     public function options()
     {
-        return $this->hasMany(Option::class);
+        return $this->belongsToMany(Option::class, 'service_options');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

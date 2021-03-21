@@ -9,7 +9,7 @@ class OptionController extends Controller
 {
     public function index()
     {
-        $options = Option::with('orders')->get();
+        $options = Option::with(['services', 'orders'])->get();
         return response()->json($options);
     }
 
@@ -17,7 +17,6 @@ class OptionController extends Controller
          $request->validate([
             'name' => 'required',
             "price"=> 'required',
-            "service_id" => 'required',
         ]);
 
         $option = Option::create($request->all());
@@ -26,7 +25,7 @@ class OptionController extends Controller
 
     public function show($id) {
         $option = Option::find($id);
-        return response()->json($option->load('orders'));
+        return response()->json($option->load(['services', 'orders']));
     }
 
     public function update(Request $request, $id) {

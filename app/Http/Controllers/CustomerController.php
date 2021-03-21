@@ -15,7 +15,8 @@ class CustomerController extends Controller
 
     public function store(Request $request) {
          $request->validate([
-            "customer_nhs_no" => 'required',
+            "passport_no" => 'required',
+            "dob" => 'required',
             "firstname" => 'required',
             "lastname" => 'required',
             "email" => 'required',
@@ -25,21 +26,21 @@ class CustomerController extends Controller
         ]);
 
         $customer = Customer::create($request->all());
-        return response()->json(['message'=> 'Customer created successfully!', 'nhs_no' => $customer->customer_nhs_no]);
+        return response()->json(['message'=> 'Customer created successfully!', 'customer_no' => $customer->passport_no]);
     }
 
-    public function show($nhs_no) {
-        $customer = Customer::find($nhs_no);
+    public function show($passport_no) {
+        $customer = Customer::find($passport_no);
         return $customer ? response()->json($customer->load('orders')) : response()->json(0);
     }
 
-    public function update(Request $request, $nhs_no) {
-        Customer::where('customer_nhs_no', $nhs_no)->update($request->all());
+    public function update(Request $request, $passport_no) {
+        Customer::where('passport_no', $passport_no)->update($request->all());
         return response()->json(['message'=> 'Customer updated successfully!']);
     }
 
-    public function destroy($nhs_no) {
-        Customer::where('customer_nhs_no', $nhs_no)->delete();
+    public function destroy($passport_no) {
+        Customer::where('customer_nhs_no', $passport_no)->delete();
         return response()->json(['message'=> 'Customer deleted successfully!']);
     }
 }

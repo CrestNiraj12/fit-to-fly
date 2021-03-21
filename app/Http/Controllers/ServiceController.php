@@ -9,7 +9,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services =  Service::with(['locations', 'options'])->get();
+        $services =  Service::with(['locations', 'options', 'orders'])->get();
         return response()->json($services);
     }
 
@@ -24,7 +24,7 @@ class ServiceController extends Controller
 
     public function show($id) {
         $service = Service::find($id);
-        return response()->json($service->load('locations'));
+        return response()->json($service->load(['locations', 'options', 'orders']));
     }
 
     public function update(Request $request, $id) {

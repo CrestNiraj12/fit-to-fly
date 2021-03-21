@@ -9,7 +9,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::with(['customer', 'service', 'option', 'location'])->get();
         return response()->json($orders);
     }
 
@@ -17,8 +17,10 @@ class OrderController extends Controller
          $request->validate([
             'method' => 'required',
             "amount"=> 'required',
-            "customer_nhs_no" => 'required',
-            "option_id" => 'required'
+            "customer_no" => 'required',
+            "service_id" => 'required',
+            "option_id" => 'required',
+            "location_id" => "required"
         ]);
 
         $order = Order::create($request->all());
@@ -27,7 +29,7 @@ class OrderController extends Controller
 
     public function show($id) {
         $order = Order::find($id);
-        return response()->json($order);
+        return response()->json($order->load(['customer', 'service', 'option', 'location']));
     }
 
     public function update(Request $request, $id) {
