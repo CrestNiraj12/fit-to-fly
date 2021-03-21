@@ -189,7 +189,10 @@ const Checkout = () => {
         e.preventDefault();
         setButtonLoading(true);
 
-        const stripe = await stripePromise;
+        const stripe = await stripePromise.catch((err) => {
+            setButtonLoading(false);
+            console.log(err);
+        });
 
         const serviceItem = JSON.stringify({
             price_data: {
@@ -219,7 +222,6 @@ const Checkout = () => {
         });
 
         setButtonLoading(false);
-
         if (result.error) console.log(result.error);
     };
 

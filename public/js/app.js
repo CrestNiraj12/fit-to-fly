@@ -4322,7 +4322,10 @@ var Checkout = function Checkout() {
               e.preventDefault();
               setButtonLoading(true);
               _context2.next = 4;
-              return stripePromise;
+              return stripePromise["catch"](function (err) {
+                setButtonLoading(false);
+                console.log(err);
+              });
 
             case 4:
               stripe = _context2.sent;
