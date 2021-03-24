@@ -4555,25 +4555,38 @@ var Checkout = function Checkout() {
       to: "/"
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
-        className: "bg-dark py-5 mb-5",
+        className: "bg-dark",
         style: {
-          background: "url(".concat(_images_image1_jpg__WEBPACK_IMPORTED_MODULE_7__.default, ") bottom center / cover")
+          height: 300,
+          background: "url(https://cdn.shopify.com/s/files/1/0101/6214/3283/t/51/assets/covid-header.webp?v=1339556514687366633) bottom center / cover"
         },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "container h-100",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
             className: "row h-100 align-items-center",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               className: "col-lg-12",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
-                className: "display-4 text-white mt-5 mb-2",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
+                className: "display-6 text-black mt-5 mb-2",
                 children: "Fit to Fly Covid-19 Test"
-              })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                className: "checked",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                  style: {
+                    width: 18
+                  },
+                  src: "https://cdn.shopify.com/s/files/1/0101/6214/3283/t/51/assets/check.svg",
+                  alt: "checked"
+                }), " ", "Government-approved provider"]
+              })]
             })
           })
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "container",
+        style: {
+          marginTop: 50
+        },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {

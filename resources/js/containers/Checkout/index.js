@@ -265,22 +265,31 @@ const Checkout = () => {
             ) : (
                 <div>
                     <header
-                        className="bg-dark py-5 mb-5"
+                        className="bg-dark"
                         style={{
-                            background: `url(${Image}) bottom center / cover`,
+                            height: 300,
+                            background: `url(https://cdn.shopify.com/s/files/1/0101/6214/3283/t/51/assets/covid-header.webp?v=1339556514687366633) bottom center / cover`,
                         }}
                     >
                         <div className="container h-100">
                             <div className="row h-100 align-items-center">
                                 <div className="col-lg-12">
-                                    <h1 className="display-4 text-white mt-5 mb-2">
+                                    <h1 className="display-6 text-black mt-5 mb-2">
                                         Fit to Fly Covid-19 Test
                                     </h1>
+                                    <p className="checked">
+                                        <img
+                                            style={{ width: 18 }}
+                                            src="https://cdn.shopify.com/s/files/1/0101/6214/3283/t/51/assets/check.svg"
+                                            alt="checked"
+                                        />{" "}
+                                        Government-approved provider
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </header>
-                    <div className="container">
+                    <div className="container" style={{ marginTop: 50 }}>
                         <div className="row">
                             <div className="col-md-5 order-md-2 mb-4">
                                 <h4 className="d-flex justify-content-between align-items-center mb-3">
