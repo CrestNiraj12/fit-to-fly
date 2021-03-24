@@ -3,24 +3,32 @@ import Tick from "../../../images/tick.png";
 import Airplane from "../../../images/airplane.png";
 import Calendar from "../../../images/calendar.webp";
 import BookCard from "../../components/BookCard";
-import Image from "../../../images/image1.jpg";
 import Footer from "../../components/Footer";
 
 const FitToFly = () => {
     return (
         <>
             <header
-                className="bg-dark py-5 mb-5"
+                className="bg-dark"
                 style={{
-                    background: `url(${Image}) bottom center / cover`,
+                    height: 300,
+                    background: `url(https://cdn.shopify.com/s/files/1/0101/6214/3283/t/51/assets/covid-header.webp?v=1339556514687366633) bottom center / cover`,
                 }}
             >
                 <div className="container h-100">
                     <div className="row h-100 align-items-center">
                         <div className="col-lg-12">
-                            <h1 className="display-4 text-white mt-5 mb-2">
+                            <h1 className="display-6 text-black mt-5 mb-2">
                                 Fit to Fly Covid-19 Test
                             </h1>
+                            <p className="checked">
+                                <img
+                                    style={{ width: 18 }}
+                                    src="https://cdn.shopify.com/s/files/1/0101/6214/3283/t/51/assets/check.svg"
+                                    alt="checked"
+                                />{" "}
+                                Government-approved provider
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -28,7 +36,7 @@ const FitToFly = () => {
             <div className="container">
                 <div
                     className="row"
-                    style={{ margin: "5rem -15px 3rem -15px" }}
+                    style={{ margin: "0 -15px", padding: "5rem 0 3rem 0" }}
                 >
                     <div
                         className="col-md-8 mb-5"
@@ -54,10 +62,15 @@ const FitToFly = () => {
                             email.
                         </p>
                     </div>
-                    <div className="col-md-4 mb-5">
+                    <div className="col-md-4 mb-5" id="testingSites">
                         <h2>Our Testing Sites</h2>
                         <hr style={{ margin: "25px 0" }} />
                         <address>
+                            <img
+                                src="https://i.imgur.com/k3bQxs1.png"
+                                alt="Woolwich Late Night Pharmacy"
+                                className="logoSites"
+                            />
                             <strong>Woolwich Late Night Pharmacy</strong>
                             <p>
                                 Lower Ground Floor, Equitable House 10 Woolwich
@@ -71,6 +84,11 @@ const FitToFly = () => {
                             </p>
                         </address>
                         <address>
+                            <img
+                                src="https://imgur.com/ACRsP2Y.jpg"
+                                alt="Plumstead Pharmacy"
+                                className="logoSites"
+                            />
                             <strong>Plumstead Pharmacy</strong>
                             <p>
                                 9 Wickham Lane, Plumstead, London, SE2 0XJ
@@ -83,6 +101,11 @@ const FitToFly = () => {
                             </p>
                         </address>
                         <address>
+                            <img
+                                src="https://i.imgur.com/pDqQgph.jpg"
+                                alt="Neem Tree Pharmacy"
+                                className="logoSites"
+                            />
                             <strong>Neem Tree Pharmacy</strong>
                             <p>
                                 110 Mcleod Road, London SE2 0BS
@@ -154,12 +177,17 @@ const FitToFly = () => {
                             />
                         </div>
                         <div className="col-md-12 mb-5">
-                            <h5 className="card-title">Results in 24 hours</h5>
+                            <h5 className="card-title">
+                                Results from 4 Hours
+                                <br />
+                                (Depending upon the service)
+                            </h5>
                         </div>
                     </div>
                 </div>
                 <div
                     className="row"
+                    id="bookTest"
                     style={{
                         justifyContent: "center",
                         margin: "50px 0",

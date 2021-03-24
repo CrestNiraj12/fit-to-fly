@@ -19,13 +19,14 @@ class OptionSeeder extends Seeder
         ]);
 
         \App\Models\Option::create([
-            "name" => "Results within 4 hrs",
-            "price" => 350.00
+            "name" => "Results within 24 hrs (Self Swab)",
+            "price" => 165.00
         ]);
 
         \App\Models\Option::create([
             "name" => "Results within 4 hrs",
-            "price" => 165.00
+            "price" => 350.00
         ]);
+
     }
 }

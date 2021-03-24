@@ -176,6 +176,78 @@
     font-size: 1em;
 }
 
+.checked {
+    background: #fff;
+    width: max-content;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.navbar {
+    width: 100% !important;
+    background-color: #fff !important;
+    box-shadow: 0px -1px 20px 0px #848484;
+    z-index: 999;
+}
+
+.navbar-brand {
+    flex: 1;
+}
+
+.navbar-nav {
+    flex-direction: row !important;
+    flex: 1;
+    margin-left: -200px !important;
+}
+
+.navbar-nav > li > a {
+    color: #525252 !important;
+    font-family: Georgia, "Times New Roman", Times, serif !important;
+}
+
+.navbar-nav > li:first-of-type {
+    margin-right: 25px !important;
+}
+
+.nav-logo {
+    width: 200px;
+    margin-left: -32px;
+}
+
+.logoSites {
+    width: 100px;
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #ede9dc;
+    padding: 5px 0;
+}
+
+.navbar-toggler {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-nav {
+        flex-direction: column !important;
+        position: absolute;
+        z-index: 999;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        top: 60px;
+        right: 0px;
+        padding: 15px 35px !important;
+    }
+
+    .navbar-nav > li {
+        margin-bottom: 12px;
+    }
+}
+
 @media screen and (max-width: 999px) {
     .bookCard {
         flex-direction: column !important;

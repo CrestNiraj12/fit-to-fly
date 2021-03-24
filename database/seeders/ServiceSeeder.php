@@ -20,9 +20,5 @@ class ServiceSeeder extends Seeder
         \App\Models\Service::create([
             "name" => "PCR Test to Release"
         ]);
-
-        \App\Models\Service::create([
-            "name" => "Self Swab"
-        ]);
     }
 }

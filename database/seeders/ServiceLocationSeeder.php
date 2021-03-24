@@ -42,20 +42,5 @@ class ServiceLocationSeeder extends Seeder
             "service_id" => 2,
             "location_id" => 3
         ]);
-
-        \App\Models\ServiceLocation::create([
-            "service_id" => 3,
-            "location_id" => 1
-        ]);
-
-        \App\Models\ServiceLocation::create([
-            "service_id" => 3,
-            "location_id" => 2
-        ]);
-
-        \App\Models\ServiceLocation::create([
-            "service_id" => 3,
-            "location_id" => 3
-        ]);
     }
 }
