@@ -28,3 +28,7 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+.sticky-top {
+    z-index: 998 !important;
+}
