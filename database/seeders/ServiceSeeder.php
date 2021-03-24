@@ -14,11 +14,15 @@ class ServiceSeeder extends Seeder
     public function run()
     {
         \App\Models\Service::create([
-            "name" => "COVID-19 PCR Test + Fit to Fly Certificate"
+            "name" => "PCR Test Fit to Fly"
         ]);
 
         \App\Models\Service::create([
-            "name" => "Test to Release"
+            "name" => "PCR Test to Release"
+        ]);
+
+        \App\Models\Service::create([
+            "name" => "Self Swab"
         ]);
     }
 }

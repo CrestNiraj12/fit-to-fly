@@ -44,7 +44,7 @@ const FitToFly = () => {
                         </p>
                         <h6>Get Tested in 5mins</h6>
                         <p>
-                            Visit your pharmacy of choice and get your saliva
+                            Visit your pharmacy of choice and get your swab
                             sample taken by a healthcare professional.
                         </p>
                         <h6>Receive your certificate</h6>
@@ -65,8 +65,9 @@ const FitToFly = () => {
                                 <br />
                                 Phone: 020 8311 0636
                                 <br />
-                                Hours: Monday - Friday 07:30 AM - 10:30 PM,
-                                Saturday 08:00 AM - 09:00 PM
+                                Hours: Monday - Friday: 07:30 AM - 10:30 PM,
+                                Saturday: 08:00 AM - 09:00 PM, Sunday: 08:00 AM
+                                - 08:00 PM
                             </p>
                         </address>
                         <address>
@@ -76,9 +77,9 @@ const FitToFly = () => {
                                 <br />
                                 Phone: 020 7590 9995
                                 <br />
-                                Hours: Monday - Friday 09:00 AM - 12:00 NOON
-                                02:00 PM - 06:00 PM, Saturday 09:00 AM - 01:00
-                                PM
+                                Hours: Monday - Friday: 09:00 AM - 12:00 NOON
+                                02:00 PM - 06:00 PM, Saturday: 09:00 AM - 01:00
+                                PM, Sunday: Closed
                             </p>
                         </address>
                         <address>
@@ -89,7 +90,7 @@ const FitToFly = () => {
                                 Phone: 020 8311 9003
                                 <br />
                                 Hours: Monday - Friday: 09:00 AM - 06:00 PM,
-                                Saturday: 09:00 AM - 01:00 PM
+                                Saturday: 09:00 AM - 01:00 PM, Sunday: Closed
                             </p>
                         </address>
                     </div>

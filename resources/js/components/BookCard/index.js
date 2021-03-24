@@ -42,7 +42,23 @@ const BookCard = () => {
                 .map((time) => time.split("-"));
             const selectedDay = bookDate.getDay();
 
-            if (selectedDay === 0) setTimePeriod(null);
+            if (selectedDay === 0)
+                setTimePeriod(
+                    openings.length === 3
+                        ? [
+                              ...generateTimePeriod(
+                                  openings[2][0],
+                                  closings[2][0]
+                              ),
+                              ...(openings[1].length > 1
+                                  ? generateTimePeriod(
+                                        openings[2][1],
+                                        closings[2][1]
+                                    )
+                                  : ""),
+                          ]
+                        : null
+                );
             else if (selectedDay === 6)
                 setTimePeriod([
                     ...generateTimePeriod(openings[1][0], closings[1][0]),
@@ -86,7 +102,7 @@ const BookCard = () => {
         var month = dateObj.getUTCMonth();
         var day = dateObj.getUTCDate();
         var year = dateObj.getUTCFullYear();
-        return date >= new Date(year, month, day) && date.getDay() !== 0;
+        return date >= new Date(year, month, day);
     };
 
     const generateTimePeriod = (minTime, maxTime, duration = 5) => {

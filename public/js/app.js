@@ -3674,7 +3674,7 @@ var BookCard = function BookCard() {
         return time.split("-");
       });
       var selectedDay = bookDate.getDay();
-      if (selectedDay === 0) setTimePeriod(null);else if (selectedDay === 6) setTimePeriod([].concat(_toConsumableArray(generateTimePeriod(openings[1][0], closings[1][0])), _toConsumableArray(openings[1].length > 1 ? generateTimePeriod(openings[1][1], closings[1][1]) : "")));else setTimePeriod([].concat(_toConsumableArray(generateTimePeriod(openings[0][0], closings[0][0])), _toConsumableArray(openings[0].length > 1 ? generateTimePeriod(openings[0][1], closings[0][1]) : ""), [,]));
+      if (selectedDay === 0) setTimePeriod(openings.length === 3 ? [].concat(_toConsumableArray(generateTimePeriod(openings[2][0], closings[2][0])), _toConsumableArray(openings[1].length > 1 ? generateTimePeriod(openings[2][1], closings[2][1]) : "")) : null);else if (selectedDay === 6) setTimePeriod([].concat(_toConsumableArray(generateTimePeriod(openings[1][0], closings[1][0])), _toConsumableArray(openings[1].length > 1 ? generateTimePeriod(openings[1][1], closings[1][1]) : "")));else setTimePeriod([].concat(_toConsumableArray(generateTimePeriod(openings[0][0], closings[0][0])), _toConsumableArray(openings[0].length > 1 ? generateTimePeriod(openings[0][1], closings[0][1]) : ""), [,]));
       setBookedTimes(locData["bookedTimes"].split(","));
       localStorage.setItem("bookedTimes", locData["bookedTimes"]);
       setLoading(false);
@@ -3699,7 +3699,7 @@ var BookCard = function BookCard() {
     var month = dateObj.getUTCMonth();
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
-    return date >= new Date(year, month, day) && date.getDay() !== 0;
+    return date >= new Date(year, month, day);
   };
 
   var generateTimePeriod = function generateTimePeriod(minTime, maxTime) {
@@ -4183,8 +4183,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_live_51IXKfNEtfIOLAci6nhpBa0VhRS8Wm5i7qjt5MfsoMJfw9LT1ZRxeMTiM7mNp04zJg0oRyUI0ezyhvXhRF6zWI4NE000OoS6FL0");
-var PAYPAL_CLIENT_ID = "AU3QCfeLRevzoeuE5ZyvM_S36-jHP6aERXBjnC2IxzwDb2PwAn7U4QBa5Nwc8klfL9-tJw000uhYsRC3";
+var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_test_51IXKfNEtfIOLAci6yyHzUicWkQJFAk5Qf3Dd1cYbPwEQPKXMh4al3qP9MRD7jva0Bl9Ldt97gguQY0olNfj67KID00Hdfip2oL");
+var PAYPAL_CLIENT_ID = "AXBOf-rcYR-plJbb-TPkOe36Udgih_yBjCaeLFp__RuGhuL5HPmFj-Fhg7LXzo604JmUElEAB21VWtfq";
 
 var Checkout = function Checkout() {
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
@@ -4855,7 +4855,7 @@ var FitToFly = function FitToFly() {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h6", {
             children: "Get Tested in 5mins"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-            children: "Visit your pharmacy of choice and get your saliva sample taken by a healthcare professional."
+            children: "Visit your pharmacy of choice and get your swab sample taken by a healthcare professional."
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h6", {
             children: "Receive your certificate"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
@@ -4873,19 +4873,19 @@ var FitToFly = function FitToFly() {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
               children: "Woolwich Late Night Pharmacy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-              children: ["Lower Ground Floor, Equitable House 10 Woolwich New Road, SE18 6AB", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 8311 0636", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday 07:30 AM - 10:30 PM, Saturday 08:00 AM - 09:00 PM"]
+              children: ["Lower Ground Floor, Equitable House 10 Woolwich New Road, SE18 6AB", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 8311 0636", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 07:30 AM - 10:30 PM, Saturday: 08:00 AM - 09:00 PM, Sunday: 08:00 AM - 08:00 PM"]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("address", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
               children: "Plumstead Pharmacy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-              children: ["9 Wickham Lane, Plumstead, London, SE2 0XJ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 7590 9995", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday 09:00 AM - 12:00 NOON 02:00 PM - 06:00 PM, Saturday 09:00 AM - 01:00 PM"]
+              children: ["9 Wickham Lane, Plumstead, London, SE2 0XJ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 7590 9995", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 09:00 AM - 12:00 NOON 02:00 PM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("address", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
               children: "Neem Tree Pharmacy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-              children: ["110 Mcleod Road, London SE2 0BS", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 8311 9003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 09:00 AM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM"]
+              children: ["110 Mcleod Road, London SE2 0BS", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 8311 9003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 09:00 AM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
             })]
           })]
         })]

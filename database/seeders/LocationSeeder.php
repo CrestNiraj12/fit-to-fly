@@ -22,8 +22,8 @@ class LocationSeeder extends Seeder
 
         \App\Models\Location::create([
             "name" => "Woolwich Late Night Pharmacy, Lower Ground Floor, Equitable House, 10 Woolwich New Road, SE18 6AB",
-            "openingTime" => "07:30,08:00",
-            "closingTime" => "22:30,21:00",
+            "openingTime" => "07:30,08:00,08:00",
+            "closingTime" => "22:30,21:00,20:00",
             "bookedTimes" => ""
         ]);
 

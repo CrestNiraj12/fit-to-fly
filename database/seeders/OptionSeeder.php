@@ -22,5 +22,10 @@ class OptionSeeder extends Seeder
             "name" => "Results within 4 hrs",
             "price" => 350.00
         ]);
+
+        \App\Models\Option::create([
+            "name" => "Results within 4 hrs",
+            "price" => 165.00
+        ]);
     }
 }
