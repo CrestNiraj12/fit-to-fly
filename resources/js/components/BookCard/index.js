@@ -229,6 +229,7 @@ const BookCard = () => {
                                         style={{
                                             marginBottom: "20px",
                                         }}
+                                        placeholder="dd/mm/yyyy"
                                         value={dob}
                                         onChange={(e) => setDob(e.target.value)}
                                         required

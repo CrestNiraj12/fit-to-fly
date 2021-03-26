@@ -3809,6 +3809,7 @@ var BookCard = function BookCard() {
               style: {
                 marginBottom: "20px"
               },
+              placeholder: "dd/mm/yyyy",
               value: dob,
               onChange: function onChange(e) {
                 return setDob(e.target.value);
@@ -5008,7 +5009,10 @@ var FitToFly = function FitToFly() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
               children: "Woolwich Late Night Pharmacy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-              children: ["Lower Ground Floor, Equitable House 10 Woolwich New Road, SE18 6AB", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 8311 0636", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 07:30 AM - 10:30 PM, Saturday: 08:00 AM - 09:00 PM, Sunday: 08:00 AM - 08:00 PM"]
+              children: ["Lower Ground Floor, Equitable House 10 Woolwich New Road, SE18 6AB", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: "tel:02083110636",
+                children: "020 8311 0636"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 07:30 AM - 10:30 PM, Saturday: 08:00 AM - 09:00 PM, Sunday: 08:00 AM - 08:00 PM"]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("address", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
@@ -5018,7 +5022,10 @@ var FitToFly = function FitToFly() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
               children: "Plumstead Pharmacy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-              children: ["9 Wickham Lane, Plumstead, London, SE2 0XJ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 7590 9995", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 09:00 AM - 12:00 NOON 02:00 PM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
+              children: ["9 Wickham Lane, Plumstead, London, SE2 0XJ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: "tel:02075909995",
+                children: "020 7590 9995"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 09:00 AM - 12:00 NOON 02:00 PM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("address", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
@@ -5028,7 +5035,10 @@ var FitToFly = function FitToFly() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
               children: "Neem Tree Pharmacy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-              children: ["110 Mcleod Road, London SE2 0BS", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone: 020 8311 9003", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 09:00 AM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
+              children: ["110 Mcleod Road, London SE2 0BS", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: "tel:02083119003",
+                children: "020 8311 9003"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 09:00 AM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
             })]
           })]
         })]

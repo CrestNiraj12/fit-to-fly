@@ -76,7 +76,8 @@ const FitToFly = () => {
                                 Lower Ground Floor, Equitable House 10 Woolwich
                                 New Road, SE18 6AB
                                 <br />
-                                Phone: 020 8311 0636
+                                Phone:{" "}
+                                <a href="tel:02083110636">020 8311 0636</a>
                                 <br />
                                 Hours: Monday - Friday: 07:30 AM - 10:30 PM,
                                 Saturday: 08:00 AM - 09:00 PM, Sunday: 08:00 AM
@@ -93,7 +94,8 @@ const FitToFly = () => {
                             <p>
                                 9 Wickham Lane, Plumstead, London, SE2 0XJ
                                 <br />
-                                Phone: 020 7590 9995
+                                Phone:{" "}
+                                <a href="tel:02075909995">020 7590 9995</a>
                                 <br />
                                 Hours: Monday - Friday: 09:00 AM - 12:00 NOON
                                 02:00 PM - 06:00 PM, Saturday: 09:00 AM - 01:00
@@ -110,7 +112,8 @@ const FitToFly = () => {
                             <p>
                                 110 Mcleod Road, London SE2 0BS
                                 <br />
-                                Phone: 020 8311 9003
+                                Phone:{" "}
+                                <a href="tel:02083119003">020 8311 9003</a>
                                 <br />
                                 Hours: Monday - Friday: 09:00 AM - 06:00 PM,
                                 Saturday: 09:00 AM - 01:00 PM, Sunday: Closed
