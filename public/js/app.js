@@ -3865,7 +3865,7 @@ var BookCard = function BookCard() {
                 children: ["\xA3", services[serviceIndex].options[selectedOption].price.toFixed(2)]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-              children: "x1 PCR Test with Fit to Fly certificate Please bring your passport/ID to your appointment. This purchase is non-refundable."
+              children: "Please bring your passport/ID to your appointment. This purchase is non-refundable."
             })]
           })]
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
@@ -4040,7 +4040,7 @@ var BookCard = function BookCard() {
                       children: ["\xA3", services[serviceIndex].options[selectedOption].price.toFixed(2)]
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-                    children: "x1 PCR Test with Fit to Fly certificate Please bring your passport/ID to your appointment. This purchase is non-refundable."
+                    children: "Please bring your passport/ID to your appointment. This purchase is non-refundable."
                   })]
                 })]
               })]
@@ -4979,18 +4979,42 @@ var FitToFly = function FitToFly() {
             style: {
               margin: "25px 0"
             }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h6", {
-            children: "Book Online or Visit Branch"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-            children: "Choose the time that best suits you from our easy to use online booking portal. Alternatively pop into any store."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h6", {
-            children: "Get Tested in 5mins"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-            children: "Visit your pharmacy of choice and get your swab sample taken by a healthcare professional."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h6", {
-            children: "Receive your certificate"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-            children: "Your sample is analysed and you'll receive a secure verifiable certificate of your test results via email."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            style: {
+              margin: "40px 0"
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+              children: "Book Online or Visit Branch"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+              style: {
+                fontSize: 16
+              },
+              children: "Choose the time that best suits you from our easy to use online booking portal. Alternatively pop into any store."
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            style: {
+              margin: "40px 0"
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+              children: "Get Tested in 5mins"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+              style: {
+                fontSize: 16
+              },
+              children: "Visit your pharmacy of choice and get your swab sample taken by a healthcare professional."
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            style: {
+              margin: "40px 0"
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
+              children: "Receive your certificate"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+              style: {
+                fontSize: 16
+              },
+              children: "Your sample is analysed and you'll receive a secure verifiable certificate of your test results via email."
+            })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "col-md-4 mb-5",
@@ -5012,7 +5036,7 @@ var FitToFly = function FitToFly() {
               children: ["Lower Ground Floor, Equitable House 10 Woolwich New Road, SE18 6AB", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
                 href: "tel:02083110636",
                 children: "020 8311 0636"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 07:30 AM - 10:30 PM, Saturday: 08:00 AM - 09:00 PM, Sunday: 08:00 AM - 08:00 PM"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Opening Hours: Monday - Friday: 07:30 AM - 10:30 PM, Saturday: 08:00 AM - 09:00 PM, Sunday: 08:00 AM - 08:00 PM"]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("address", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
@@ -5025,7 +5049,7 @@ var FitToFly = function FitToFly() {
               children: ["9 Wickham Lane, Plumstead, London, SE2 0XJ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
                 href: "tel:02075909995",
                 children: "020 7590 9995"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 09:00 AM - 12:00 NOON 02:00 PM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Opening Hours: Monday - Friday: 09:00 AM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("address", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
@@ -5038,7 +5062,7 @@ var FitToFly = function FitToFly() {
               children: ["110 Mcleod Road, London SE2 0BS", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
                 href: "tel:02083119003",
                 children: "020 8311 9003"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Hours: Monday - Friday: 09:00 AM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Opening Hours: Monday - Friday: 09:00 AM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
             })]
           })]
         })]

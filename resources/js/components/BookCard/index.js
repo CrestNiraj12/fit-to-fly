@@ -296,7 +296,6 @@ const BookCard = () => {
                                         </span>
                                     </p>
                                     <p>
-                                        x1 PCR Test with Fit to Fly certificate
                                         Please bring your passport/ID to your
                                         appointment. This purchase is
                                         non-refundable.
@@ -527,8 +526,6 @@ const BookCard = () => {
                                                             </span>
                                                         </p>
                                                         <p>
-                                                            x1 PCR Test with Fit
-                                                            to Fly certificate
                                                             Please bring your
                                                             passport/ID to your
                                                             appointment. This

@@ -14,6 +14,11 @@ class OptionSeeder extends Seeder
     public function run()
     {
         \App\Models\Option::create([
+            "name" => "Results within 4 hrs",
+            "price" => 350.00
+        ]);
+
+        \App\Models\Option::create([
             "name" => "Results within 24 hrs",
             "price" => 185.00
         ]);
@@ -22,11 +27,5 @@ class OptionSeeder extends Seeder
             "name" => "Results within 24 hrs (Self Swab)",
             "price" => 165.00
         ]);
-
-        \App\Models\Option::create([
-            "name" => "Results within 4 hrs",
-            "price" => 350.00
-        ]);
-
     }
 }

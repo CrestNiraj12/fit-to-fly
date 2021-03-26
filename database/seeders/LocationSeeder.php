@@ -15,8 +15,8 @@ class LocationSeeder extends Seeder
     {
         \App\Models\Location::create([
             "name" => "Plumstead Pharmacy, Plumstead",
-            "openingTime" => "09:00-14:00,09:00",
-            "closingTime" => "12:00-18:00,13:00",
+            "openingTime" => "09:00,09:00",
+            "closingTime" => "12:00,13:00",
             "bookedTimes" => ""
         ]);
 
