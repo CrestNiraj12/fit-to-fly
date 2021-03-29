@@ -112,7 +112,7 @@ const FitToFly = () => {
                         </address>
                         <address>
                             <img
-                                src="https://i.imgur.com/pDqQgph.jpg"
+                                src="https://imgur.com/kxlQDwL.png"
                                 alt="Neem Tree Pharmacy"
                                 className="logoSites"
                             />

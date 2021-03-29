@@ -4245,10 +4245,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _paypal_react_paypal_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @paypal/react-paypal-js */ "./node_modules/@paypal/react-paypal-js/dist/react-paypal.esm.js");
 /* harmony import */ var _stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @stripe/stripe-js */ "./node_modules/@stripe/stripe-js/dist/stripe.esm.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Footer */ "./resources/js/components/Footer/index.js");
-/* harmony import */ var _images_image1_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../images/image1.jpg */ "./resources/images/image1.jpg");
-/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
+/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
 
 
 
@@ -4291,12 +4290,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_live_51IXKfNEtfIOLAci6nhpBa0VhRS8Wm5i7qjt5MfsoMJfw9LT1ZRxeMTiM7mNp04zJg0oRyUI0ezyhvXhRF6zWI4NE000OoS6FL0");
-var PAYPAL_CLIENT_ID = "AU3QCfeLRevzoeuE5ZyvM_S36-jHP6aERXBjnC2IxzwDb2PwAn7U4QBa5Nwc8klfL9-tJw000uhYsRC3";
+var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_test_51IXKfNEtfIOLAci6yyHzUicWkQJFAk5Qf3Dd1cYbPwEQPKXMh4al3qP9MRD7jva0Bl9Ldt97gguQY0olNfj67KID00Hdfip2oL");
+var PAYPAL_CLIENT_ID = "AXBOf-rcYR-plJbb-TPkOe36Udgih_yBjCaeLFp__RuGhuL5HPmFj-Fhg7LXzo604JmUElEAB21VWtfq";
 
 var Checkout = function Checkout() {
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -4552,7 +4550,7 @@ var Checkout = function Checkout() {
   }();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: !localStorage.getItem("service") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Redirect, {
+    children: !localStorage.getItem("service") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Redirect, {
       to: "/"
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", {
@@ -4604,7 +4602,7 @@ var Checkout = function Checkout() {
                 className: "list-group-item d-flex justify-content-between lh-condensed",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-                    src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_8__.default,
+                    src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_7__.default,
                     style: {
                       width: "50px",
                       margin: "5px 10px 5px 0"
@@ -5053,7 +5051,7 @@ var FitToFly = function FitToFly() {
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("address", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-              src: "https://i.imgur.com/pDqQgph.jpg",
+              src: "https://imgur.com/kxlQDwL.png",
               alt: "Neem Tree Pharmacy",
               className: "logoSites"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
@@ -19197,21 +19195,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/calendar.webp?2de06176d28c96623eb29d34eed873b7");
-
-/***/ }),
-
-/***/ "./resources/images/image1.jpg":
-/*!*************************************!*\
-  !*** ./resources/images/image1.jpg ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/image1.jpg?d903984a3dccbd35dc301d01d6de9cab");
 
 /***/ }),
 
