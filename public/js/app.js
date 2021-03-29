@@ -4290,8 +4290,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_test_51IXKfNEtfIOLAci6yyHzUicWkQJFAk5Qf3Dd1cYbPwEQPKXMh4al3qP9MRD7jva0Bl9Ldt97gguQY0olNfj67KID00Hdfip2oL");
-var PAYPAL_CLIENT_ID = "AXBOf-rcYR-plJbb-TPkOe36Udgih_yBjCaeLFp__RuGhuL5HPmFj-Fhg7LXzo604JmUElEAB21VWtfq";
+var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_live_51IXKfNEtfIOLAci6nhpBa0VhRS8Wm5i7qjt5MfsoMJfw9LT1ZRxeMTiM7mNp04zJg0oRyUI0ezyhvXhRF6zWI4NE000OoS6FL0");
+var PAYPAL_CLIENT_ID = "AU3QCfeLRevzoeuE5ZyvM_S36-jHP6aERXBjnC2IxzwDb2PwAn7U4QBa5Nwc8klfL9-tJw000uhYsRC3";
 
 var Checkout = function Checkout() {
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
