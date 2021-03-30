@@ -45,6 +45,7 @@
 .react-datepicker,
 .react-datepicker__month-container {
     width: 100%;
+    font-size: 0.8rem !important;
     border: none !important;
 }
 
@@ -114,6 +115,10 @@
     font-size: 15px;
 }
 
+.react-datepicker__week {
+    margin: 10px 0;
+}
+
 .react-datepicker__week div[aria-disabled="true"] {
     text-decoration: line-through;
     cursor: not-allowed !important;
@@ -139,6 +144,29 @@
 .react-datepicker__year-text--in-selecting-range,
 .react-datepicker__year-text--in-range {
     color: #fff !important;
+}
+
+.react-datepicker__day,
+.react-datepicker__month-text,
+.react-datepicker__quarter-text,
+.react-datepicker__year-text {
+    font-size: 13px;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+    line-height: inherit !important;
+}
+
+.react-datepicker__month {
+    margin: 0.4rem 0 !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+    width: 1.3rem !important;
 }
 
 .bookCard {
@@ -193,6 +221,7 @@
 
 .navbar-brand {
     flex: 1;
+    margin-right: 4rem !important;
 }
 
 .navbar-nav {
