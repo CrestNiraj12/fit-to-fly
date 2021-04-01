@@ -54,7 +54,7 @@ const FitToFly = () => {
                             </p>
                         </div>
                         <div style={{ margin: "40px 0" }}>
-                            <h4>Get Tested in 5mins</h4>
+                            <h4>Get Tested in 5 mins</h4>
                             <p style={{ fontSize: 16 }}>
                                 Visit your pharmacy of choice and get your swab
                                 sample taken by a healthcare professional.
