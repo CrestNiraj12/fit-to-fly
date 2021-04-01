@@ -5064,8 +5064,8 @@ var FitToFly = function FitToFly() {
               children: "Woolwich Late Night Pharmacy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
               children: ["Lower Ground Floor, Equitable House 10 Woolwich New Road, SE18 6AB", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                href: "tel:02083110636",
-                children: "020 8311 0636"
+                href: "tel:02083167977",
+                children: "020 8316 7977"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Opening Hours: Monday - Friday: 07:30 AM - 10:30 PM, Saturday: 08:00 AM - 09:00 PM, Sunday: 08:00 AM - 08:00 PM"]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("address", {
@@ -5077,8 +5077,8 @@ var FitToFly = function FitToFly() {
               children: "Plumstead Pharmacy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
               children: ["9 Wickham Lane, Plumstead, London, SE2 0XJ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Phone:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                href: "tel:02075909995",
-                children: "020 7590 9995"
+                href: "tel:02083110636",
+                children: "020 8311 0636"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "Opening Hours: Monday - Friday: 09:00 AM - 06:00 PM, Saturday: 09:00 AM - 01:00 PM, Sunday: Closed"]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("address", {

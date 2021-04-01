@@ -85,7 +85,7 @@ const FitToFly = () => {
                                 New Road, SE18 6AB
                                 <br />
                                 Phone:{" "}
-                                <a href="tel:02083110636">020 8311 0636</a>
+                                <a href="tel:02083167977">020 8316 7977</a>
                                 <br />
                                 Opening Hours: Monday - Friday: 07:30 AM - 10:30
                                 PM, Saturday: 08:00 AM - 09:00 PM, Sunday: 08:00
@@ -103,7 +103,7 @@ const FitToFly = () => {
                                 9 Wickham Lane, Plumstead, London, SE2 0XJ
                                 <br />
                                 Phone:{" "}
-                                <a href="tel:02075909995">020 7590 9995</a>
+                                <a href="tel:02083110636">020 8311 0636</a>
                                 <br />
                                 Opening Hours: Monday - Friday: 09:00 AM - 06:00
                                 PM, Saturday: 09:00 AM - 01:00 PM, Sunday:
