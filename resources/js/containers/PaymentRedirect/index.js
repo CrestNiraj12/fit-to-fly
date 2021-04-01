@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import qs from "query-string";
 import axios from "axios";
+import emailjs from "emailjs-com";
 
 const PaymentRedirect = ({ location, success }) => {
     const query = qs.parse(location.search);
@@ -55,15 +56,60 @@ const PaymentRedirect = ({ location, success }) => {
                         })
                         .then(() => {
                             console.log("Payment successful!");
-                            finalTask();
+                            handleMailSend();
                         })
                         .catch((err) => console.log(err.response));
-            } else finalTask();
+            } else handleMailSend();
         } else finalTask();
         return () => {
             mounted = false;
         };
     }, []);
+
+    const handleMailSend = () => {
+        const serviceId = "service_tsk23ym";
+        const templateId = "template_ustrari";
+        const userID = "user_letDmYNuMuPxGYCxnn6RC";
+        const date = new Date();
+        const customer = JSON.parse(localStorage.getItem("customerDetails"));
+        const service = JSON.parse(localStorage.getItem("service"));
+        emailjs
+            .send(
+                serviceId,
+                templateId,
+                {
+                    booking_date: `${date
+                        .getDate()
+                        .toString()
+                        .padStart(2, "0")}/${(date.getMonth() + 1)
+                        .toString()
+                        .padStart(2, "0")}/${date.getFullYear()}`,
+                    passport_no: localStorage.getItem("passportNumber"),
+                    name: customer.firstname + " " + customer.lastname,
+                    dob: localStorage.getItem("dob"),
+                    service: service.title,
+                    option: service.option,
+                    booked_datetime: service.date,
+                    location: service.location,
+                    price: service.amount,
+                    subtotal: service.amount,
+                    total: service.amount,
+                    send_to: localStorage.getItem("userEmail"),
+                    reply_to: "accounts@woolwichpharmacy.co.uk",
+                },
+                userID
+            )
+            .then((res) => {
+                finalTask();
+                console.log("Email successfully sent!");
+            })
+            .catch((err) =>
+                console.error(
+                    "Oh well, you failed. Here some thoughts on the error that occured:",
+                    err
+                )
+            );
+    };
 
     return redirect ? (
         <Redirect to="/" />

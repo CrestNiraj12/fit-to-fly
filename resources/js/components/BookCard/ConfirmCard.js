@@ -116,6 +116,7 @@ const ConfirmCard = ({
             location: location.name,
             locationId: location.id,
             amount: price,
+            option: selectedOption.name,
             optionId: selectedOption.id,
         };
         localStorage.setItem("service", JSON.stringify(service));

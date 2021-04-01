@@ -10,6 +10,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ServiceLocationController;
 use App\Http\Controllers\ServiceOptionController;
+use App\Mail\BookingTranscript;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------

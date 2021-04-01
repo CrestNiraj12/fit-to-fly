@@ -232,6 +232,7 @@ const Checkout = () => {
     const handleSubmitDetails = async (e) => {
         e.preventDefault();
         if (validateForm()) {
+            localStorage.setItem("customerDetails", JSON.stringify(details));
             if (!updateInfo.state)
                 axios
                     .post("/api/customers", {
@@ -245,6 +246,8 @@ const Checkout = () => {
                             state: true,
                             customer_no: res.data.customer_no,
                         });
+
+                        localStorage.setItem("userEmail", details.email);
                     })
                     .catch((err) => console.log(err.response));
             else
