@@ -17,21 +17,24 @@ class LocationSeeder extends Seeder
             "name" => "Plumstead Pharmacy, Plumstead",
             "openingTime" => "09:00,09:00",
             "closingTime" => "12:00,13:00",
-            "bookedTimes" => ""
+            "bookedTimes" => "",
+            "email" => "accounts@plumsteadpharmacy.co.uk"
         ]);
 
         \App\Models\Location::create([
             "name" => "Woolwich Late Night Pharmacy, Woolwich",
             "openingTime" => "07:30,08:00,08:00",
             "closingTime" => "22:30,21:00,20:00",
-            "bookedTimes" => ""
+            "bookedTimes" => "",
+            "email" => "accounts@woolwichpharmacy.co.uk"
         ]);
 
         \App\Models\Location::create([
             "name" => "Neem Tree Pharmacy, Abbey Wood",
             "openingTime" => "09:00,09:00",
             "closingTime" => "18:00,13:00",
-            "bookedTimes" => ""
+            "bookedTimes" => "",
+            "email" => "accounts@neemtreepharmacy.co.uk"
         ]);
     }
 }

@@ -115,6 +115,7 @@ const ConfirmCard = ({
             date: bookDate,
             location: location.name,
             locationId: location.id,
+            email: location.email,
             amount: price,
             option: selectedOption.name,
             optionId: selectedOption.id,

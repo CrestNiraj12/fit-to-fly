@@ -3331,6 +3331,7 @@ var ConfirmCard = function ConfirmCard(_ref) {
       date: bookDate,
       location: location.name,
       locationId: location.id,
+      email: location.email,
       amount: price,
       option: selectedOption.name,
       optionId: selectedOption.id
@@ -5392,7 +5393,8 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
       subtotal: service.amount,
       total: service.amount,
       send_to: localStorage.getItem("userEmail"),
-      reply_to: "accounts@woolwichpharmacy.co.uk"
+      send_from: service.email,
+      reply_to: service.email
     }, userID).then(function (res) {
       finalTask();
       console.log("Email successfully sent!");

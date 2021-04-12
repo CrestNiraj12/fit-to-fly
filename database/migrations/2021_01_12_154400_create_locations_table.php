@@ -19,6 +19,7 @@ class CreateLocationsTable extends Migration
             $table->string("openingTime");
             $table->string("closingTime");
             $table->longText("bookedTimes");
+            $table->string("email");
             $table->timestamps();
         });
     }

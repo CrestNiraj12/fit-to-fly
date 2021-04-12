@@ -98,7 +98,8 @@ const PaymentRedirect = ({ location, success }) => {
                     subtotal: service.amount,
                     total: service.amount,
                     send_to: localStorage.getItem("userEmail"),
-                    reply_to: "accounts@woolwichpharmacy.co.uk",
+                    send_from: service.email,
+                    reply_to: service.email,
                 },
                 userID
             )
