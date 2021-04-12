@@ -3513,9 +3513,21 @@ var TimeSlot = function TimeSlot(_ref) {
       setSelectedTime = _ref.setSelectedTime,
       activeTimeSlot = _ref.activeTimeSlot,
       setActiveTimeSlot = _ref.setActiveTimeSlot,
+      setSelectedOption = _ref.setSelectedOption,
+      option = _ref.option,
       booked = _ref.booked;
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (localStorage.getItem("confirmBookDate") === "true") {
+      setActiveTimeSlot(localStorage.getItem("selectedTime"));
+    }
+  }, []);
 
   var handleTimeClick = function handleTimeClick() {
+    if (option === "Results within 4 hrs" && (time < "10:00" || time > "16:30")) {
+      setSelectedOption("");
+      alert("4 hours option is only available between 10:00 AM to 16:30 PM");
+    }
+
     setSelectedTime(time);
     setActiveTimeSlot(time);
   };
@@ -3525,6 +3537,7 @@ var TimeSlot = function TimeSlot(_ref) {
     style: {
       padding: "0 3px"
     },
+    id: time.split(" ").join(""),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
       className: "timeSlot ".concat(booked ? "disabled" : ""),
       onClick: handleTimeClick,
@@ -3555,14 +3568,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
+/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _ConfirmCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ConfirmCard */ "./resources/js/components/BookCard/ConfirmCard.js");
 /* harmony import */ var _TimeSlot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TimeSlot */ "./resources/js/components/BookCard/TimeSlot.js");
-/* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-datepicker/dist/react-datepicker.css */ "./node_modules/react-datepicker/dist/react-datepicker.css");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils */ "./resources/js/utils/index.js");
+/* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-datepicker/dist/react-datepicker.css */ "./node_modules/react-datepicker/dist/react-datepicker.css");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/exclamation-triangle.js");
 
 
 
@@ -3586,6 +3601,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -3662,8 +3679,23 @@ var BookCard = function BookCard() {
       setDob = _useState26[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_5___default().get("/api/services").then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_6___default().get("/api/services").then(function (res) {
       setServices(res.data);
+
+      if (localStorage.getItem("confirmData") === "true") {
+        setConfirmData(true);
+        var service_index = Number(localStorage.getItem("serviceIndex"));
+        setService(service_index);
+        setLocation(Number(localStorage.getItem("locationIndex")));
+        setSelectedOption(Number(localStorage.getItem("optionIndex")));
+        setPassportNumber(localStorage.getItem("passportNumber"));
+        setDob(localStorage.getItem("dob"));
+
+        if (localStorage.getItem("confirmBookDate") === "true") {
+          setBookDate(new Date(localStorage.getItem("selectedBookDate")));
+          setSelectedTime(localStorage.getItem("selectedTime"));
+        }
+      }
     })["catch"](function (err) {
       return console.log(err);
     });
@@ -3671,7 +3703,7 @@ var BookCard = function BookCard() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     setLoading(true);
 
-    if (location) {
+    if (services[serviceIndex] && location) {
       var locData = services[serviceIndex].locations[location];
       var openings = locData["openingTime"].split(",").map(function (time) {
         return time.split("-");
@@ -3680,7 +3712,14 @@ var BookCard = function BookCard() {
         return time.split("-");
       });
       var selectedDay = bookDate.getDay();
-      if (selectedDay === 0) setTimePeriod(openings.length === 3 ? [].concat(_toConsumableArray(generateTimePeriod(openings[2][0], closings[2][0])), _toConsumableArray(openings[1].length > 1 ? generateTimePeriod(openings[2][1], closings[2][1]) : "")) : null);else if (selectedDay === 6) setTimePeriod([].concat(_toConsumableArray(generateTimePeriod(openings[1][0], closings[1][0])), _toConsumableArray(openings[1].length > 1 ? generateTimePeriod(openings[1][1], closings[1][1]) : "")));else setTimePeriod([].concat(_toConsumableArray(generateTimePeriod(openings[0][0], closings[0][0])), _toConsumableArray(openings[0].length > 1 ? generateTimePeriod(openings[0][1], closings[0][1]) : ""), [,]));
+
+      if (selectedDay === 0) {
+        if (openings.length === 3) setTimePeriod([].concat(_toConsumableArray((0,_utils__WEBPACK_IMPORTED_MODULE_4__.generateTimePeriod)(openings[2][0], closings[2][0])), _toConsumableArray(openings[1].length > 1 ? (0,_utils__WEBPACK_IMPORTED_MODULE_4__.generateTimePeriod)(openings[2][1], closings[2][1]) : "")));else {
+          setTimePeriod(null);
+          setSelectedTime("");
+        }
+      } else if (selectedDay === 6) setTimePeriod([].concat(_toConsumableArray((0,_utils__WEBPACK_IMPORTED_MODULE_4__.generateTimePeriod)(openings[1][0], closings[1][0])), _toConsumableArray(openings[1].length > 1 ? (0,_utils__WEBPACK_IMPORTED_MODULE_4__.generateTimePeriod)(openings[1][1], closings[1][1]) : "")));else setTimePeriod([].concat(_toConsumableArray((0,_utils__WEBPACK_IMPORTED_MODULE_4__.generateTimePeriod)(openings[0][0], closings[0][0])), _toConsumableArray(openings[0].length > 1 ? (0,_utils__WEBPACK_IMPORTED_MODULE_4__.generateTimePeriod)(openings[0][1], closings[0][1]) : ""), [,]));
+
       setBookedTimes(locData["bookedTimes"].split(","));
       localStorage.setItem("bookedTimes", locData["bookedTimes"]);
       setLoading(false);
@@ -3688,58 +3727,28 @@ var BookCard = function BookCard() {
   }, [location, bookDate]);
 
   var handleConfirmData = function handleConfirmData() {
-    if (!confirmData) setConfirmData(true);else setConfirmBookDate(true);
-    localStorage.setItem("passportNumber", passportNumber);
-    localStorage.setItem("dob", dob);
-  };
-
-  var convertDateToString = function convertDateToString(date) {
-    var month = date.getUTCMonth() + 1;
-    var day = date.getUTCDate();
-    var year = date.getUTCFullYear();
-    return "".concat(String(day).length === 2 ? day : "0".concat(day), "/").concat(String(month).length === 2 ? month : "0".concat(month), "/").concat(year);
-  };
-
-  var isValidDate = function isValidDate(date) {
-    var dateObj = new Date();
-    var month = dateObj.getUTCMonth();
-    var day = dateObj.getUTCDate();
-    var year = dateObj.getUTCFullYear();
-    return date >= new Date(year, month, day);
-  };
-
-  var generateTimePeriod = function generateTimePeriod(minTime, maxTime) {
-    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 5;
-    var periods = [];
-    var start;
-    minTime = minTime.trim();
-    maxTime = maxTime.trim();
-    var ended = false;
-
-    for (var i = Number(minTime.split(":")[0]); i <= Number(maxTime.split(":")[0]); i++) {
-      for (var j = 0; j <= 55; j += duration) {
-        var time = "".concat(String(i).length === 2 ? i : "0" + String(i), ":").concat(String(j).length === 2 ? j : "0" + String(j));
-        var endTime = j === 55 ? "".concat(String(i + 1).length === 2 ? i + 1 : "0" + String(i + 1), ":00") : "".concat(String(i).length === 2 ? i : "0" + String(i), ":").concat(String(j + 5).length === 2 ? j + 5 : "0" + String(j + 5));
-        if (time === minTime) start = true;
-        if (start) periods.push(time + " - " + endTime);
-
-        if (endTime === maxTime) {
-          ended = true;
-          break;
-        }
-      }
-
-      if (ended) break;
+    if (!confirmData) {
+      localStorage.setItem("confirmData", true);
+      setConfirmData(true);
+    } else {
+      setConfirmBookDate(true);
+      localStorage.setItem("confirmBookDate", true);
+      localStorage.setItem("selectedBookDate", bookDate);
+      localStorage.setItem("selectedTime", selectedTime);
     }
 
-    return periods;
+    localStorage.setItem("serviceIndex", serviceIndex);
+    localStorage.setItem("locationIndex", location);
+    localStorage.setItem("optionIndex", selectedOption);
+    localStorage.setItem("passportNumber", passportNumber);
+    localStorage.setItem("dob", dob);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: "card bookCard",
     children: confirmBookDate ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ConfirmCard__WEBPACK_IMPORTED_MODULE_2__.default, {
       serviceObject: services[serviceIndex],
-      bookDate: convertDateToString(bookDate) + " " + selectedTime.split(" ").join(""),
+      bookDate: (0,_utils__WEBPACK_IMPORTED_MODULE_4__.convertDateToString)(bookDate) + " " + selectedTime.split(" ").join(""),
       dob: dob,
       location: services[serviceIndex].locations[location],
       price: services[serviceIndex].options[selectedOption].price,
@@ -3793,7 +3802,7 @@ var BookCard = function BookCard() {
                 setLocation(e.target.value);
                 setSelectedTime("");
               },
-              children: services[serviceIndex].locations.map(function (_ref2, index) {
+              children: services[serviceIndex] && services[serviceIndex].locations.map(function (_ref2, index) {
                 var name = _ref2.name;
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
                   value: index,
@@ -3810,7 +3819,7 @@ var BookCard = function BookCard() {
               style: {
                 marginBottom: "20px"
               },
-              placeholder: "dd/mm/yyyy",
+              placeholder: "yyyy-mm-dd",
               value: dob,
               onChange: function onChange(e) {
                 return setDob(e.target.value);
@@ -3851,14 +3860,20 @@ var BookCard = function BookCard() {
                   display: "none"
                 },
                 children: "Select option"
-              }), services[serviceIndex].options.map(function (_ref3, index) {
+              }), services[serviceIndex] && services[serviceIndex].options.map(function (_ref3, index) {
                 var name = _ref3.name;
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
                   value: index,
+                  style: selectedTime !== "" ? {
+                    display: name === "Results within 4 hrs" && (selectedTime < "10:00" || selectedTime > "16:30") ? "none" : "block"
+                  } : {},
+                  disabled: selectedTime !== "" ? name === "Results within 4 hrs" && (selectedTime < "10:00" || selectedTime > "16:30") : false,
                   children: name
                 }, index);
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+            }), services[serviceIndex] && selectedOption && services[serviceIndex].options[selectedOption]["name"] === "Results within 4 hrs" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+              children: "Note: 4 hours option is only available between 10:00 AM to 16:30 PM."
+            }), services[serviceIndex] && selectedOption && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
               children: ["Price:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
                 style: {
                   color: "#02be02"
@@ -3866,22 +3881,23 @@ var BookCard = function BookCard() {
                 children: ["\xA3", services[serviceIndex].options[selectedOption].price.toFixed(2)]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-              children: "Please bring your passport/ID to your appointment. This purchase is non-refundable."
+              children: "Please bring your passport/ID to your appointment. The purchase is nonrefundable only exchangeable as a voucher to spend in the pharmacy."
             })]
           })]
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_6__.default,
+          src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_7__.default,
           className: "displayImage"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "card-body card-right-body",
         children: [confirmData ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_7___default()), {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_8___default()), {
             selected: bookDate,
             onChange: function onChange(date) {
-              return setBookDate(date);
+              setBookDate(date);
+              setSelectedTime("");
             },
-            filterDate: isValidDate,
+            filterDate: _utils__WEBPACK_IMPORTED_MODULE_4__.isValidDate,
             inline: true
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
             className: "row",
@@ -3890,6 +3906,7 @@ var BookCard = function BookCard() {
               overflowY: "scroll",
               height: 125
             },
+            id: "timePeriods",
             children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
               className: "spinner-border",
               role: "status",
@@ -3901,12 +3918,14 @@ var BookCard = function BookCard() {
                 children: "Loading..."
               })
             }) : timePeriod === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", {
-              children: "Sorry we are closed on Sunday!"
+              children: "Sorry bookings cant be made on Sunday!"
             }) : timePeriod.map(function (time, index) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_TimeSlot__WEBPACK_IMPORTED_MODULE_3__.default, {
                 time: time,
                 setSelectedTime: setSelectedTime,
-                booked: bookedTimes.includes(convertDateToString(bookDate) + " " + time.split(" ").join(""))
+                booked: bookedTimes.includes((0,_utils__WEBPACK_IMPORTED_MODULE_4__.convertDateToString)(bookDate) + " " + time.split(" ").join("")),
+                option: services[serviceIndex] && selectedOption === "" ? "" : services[serviceIndex].options[selectedOption]["name"],
+                setSelectedOption: setSelectedOption
               }, index);
             })
           })]
@@ -3948,7 +3967,7 @@ var BookCard = function BookCard() {
                     children: name
                   }, index);
                 })]
-              }), serviceIndex && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+              }), services[serviceIndex] && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
                   htmlFor: "location",
                   children: "Location"
@@ -4032,7 +4051,9 @@ var BookCard = function BookCard() {
                       children: name
                     }, index);
                   })]
-                }), selectedOption && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+                }), services[serviceIndex] && selectedOption && services[serviceIndex].options[selectedOption]["name"] === "Results within 4 hrs" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                  children: "Note: 4 hours option is only available between 10:00 AM to 16:30 PM."
+                }), services[serviceIndex] && selectedOption && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                     children: ["Price:", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
                       style: {
@@ -4041,12 +4062,22 @@ var BookCard = function BookCard() {
                       children: ["\xA3", services[serviceIndex].options[selectedOption].price.toFixed(2)]
                     })]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-                    children: "Please bring your passport/ID to your appointment. This purchase is non-refundable."
+                    children: "Please bring your passport/ID to your appointment. The purchase is nonrefundable only exchangeable as a voucher to spend in the pharmacy."
                   })]
                 })]
               })]
             })
           })]
+        }), selectedTime > "16:30" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+          "class": "label",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            style: {
+              margin: "0 5px"
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__.default, {
+              size: "14px"
+            })
+          }), "Results will be provided within 48 hours if booking is made after 16:30 PM"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
           type: "button",
           className: "btn btn-secondary",
@@ -4054,7 +4085,7 @@ var BookCard = function BookCard() {
             width: "100%",
             marginTop: "10px"
           },
-          disabled: (confirmData ? !selectedTime : !location || !selectedOption || !dob) || passportNumber === "",
+          disabled: (confirmData ? !selectedTime || !selectedOption : !location || !selectedOption || !dob) || passportNumber === "",
           onClick: handleConfirmData,
           children: "Continue"
         })]
@@ -4323,8 +4354,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_live_51IXKfNEtfIOLAci6nhpBa0VhRS8Wm5i7qjt5MfsoMJfw9LT1ZRxeMTiM7mNp04zJg0oRyUI0ezyhvXhRF6zWI4NE000OoS6FL0");
-var PAYPAL_CLIENT_ID = "AU3QCfeLRevzoeuE5ZyvM_S36-jHP6aERXBjnC2IxzwDb2PwAn7U4QBa5Nwc8klfL9-tJw000uhYsRC3";
+var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_test_51IXKfNEtfIOLAci6yyHzUicWkQJFAk5Qf3Dd1cYbPwEQPKXMh4al3qP9MRD7jva0Bl9Ldt97gguQY0olNfj67KID00Hdfip2oL");
+var PAYPAL_CLIENT_ID = "AXBOf-rcYR-plJbb-TPkOe36Udgih_yBjCaeLFp__RuGhuL5HPmFj-Fhg7LXzo604JmUElEAB21VWtfq";
 
 var Checkout = function Checkout() {
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
@@ -5257,7 +5288,7 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
     localStorage.clear();
     setTimeout(function () {
       return setRedirect(true);
-    }, 2000);
+    }, 1500);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
@@ -5328,10 +5359,13 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
           console.log("Payment successful!");
           handleMailSend();
         })["catch"](function (err) {
-          return console.log(err.response);
+          console.log(err.response);
+          setError(true);
         });
       } else handleMailSend();
-    } else finalTask();
+    } else setTimeout(function () {
+      return setRedirect(true);
+    }, 1500);
 
     return function () {
       mounted = false;
@@ -5378,7 +5412,7 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
       style: {
         fontSize: "25px"
       },
-      children: [success ? "Your payment was successful!" : "Your payment was cancelled!", " ", success ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", {
+      children: [success ? "Your payment was successful!" : "Your payment was cancelled!", success ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         width: "22",
         height: "22",
@@ -5539,6 +5573,61 @@ __webpack_require__.r(__webpack_exports__);
 
 var store = (0,redux__WEBPACK_IMPORTED_MODULE_1__.createStore)(_reducers__WEBPACK_IMPORTED_MODULE_0__.default);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
+
+/***/ }),
+
+/***/ "./resources/js/utils/index.js":
+/*!*************************************!*\
+  !*** ./resources/js/utils/index.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "convertDateToString": () => /* binding */ convertDateToString,
+/* harmony export */   "isValidDate": () => /* binding */ isValidDate,
+/* harmony export */   "generateTimePeriod": () => /* binding */ generateTimePeriod
+/* harmony export */ });
+var convertDateToString = function convertDateToString(date) {
+  var month = date.getUTCMonth() + 1;
+  var day = date.getUTCDate();
+  var year = date.getUTCFullYear();
+  return "".concat(String(day).length === 2 ? day : "0".concat(day), "/").concat(String(month).length === 2 ? month : "0".concat(month), "/").concat(year);
+};
+var isValidDate = function isValidDate(date) {
+  var dateObj = new Date();
+  var month = dateObj.getUTCMonth();
+  var day = dateObj.getUTCDate();
+  var year = dateObj.getUTCFullYear();
+  return date >= new Date(year, month, day);
+};
+var generateTimePeriod = function generateTimePeriod(minTime, maxTime) {
+  var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 5;
+  var periods = [];
+  var start;
+  minTime = minTime.trim();
+  maxTime = maxTime.trim();
+  var ended = false;
+
+  for (var i = Number(minTime.split(":")[0]); i <= Number(maxTime.split(":")[0]); i++) {
+    for (var j = 0; j <= 55; j += duration) {
+      var time = "".concat(String(i).length === 2 ? i : "0" + String(i), ":").concat(String(j).length === 2 ? j : "0" + String(j));
+      var endTime = j === 55 ? "".concat(String(i + 1).length === 2 ? i + 1 : "0" + String(i + 1), ":00") : "".concat(String(i).length === 2 ? i : "0" + String(i), ":").concat(String(j + 5).length === 2 ? j + 5 : "0" + String(j + 5));
+      if (time === minTime) start = true;
+      if (start) periods.push(time + " - " + endTime);
+
+      if (endTime === maxTime) {
+        ended = true;
+        break;
+      }
+    }
+
+    if (ended) break;
+  }
+
+  return periods;
+};
 
 /***/ }),
 
@@ -53843,6 +53932,58 @@ exports.stringifyUrl = (object, options) => {
 	return `${url}${queryString}${hash}`;
 };
 
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap-icons/dist/icons/exclamation-triangle.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/react-bootstrap-icons/dist/icons/exclamation-triangle.js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var ExclamationTriangle = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_ref, ref) {
+  var color = _ref.color,
+      size = _ref.size,
+      rest = _objectWithoutProperties(_ref, ["color", "size"]);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    ref: ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size,
+    height: size,
+    fill: color
+  }, rest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    d: "M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    d: "M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"
+  }));
+});
+ExclamationTriangle.propTypes = {
+  color: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number)])
+};
+ExclamationTriangle.defaultProps = {
+  color: 'currentColor',
+  size: '1em'
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ExclamationTriangle);
 
 /***/ }),
 

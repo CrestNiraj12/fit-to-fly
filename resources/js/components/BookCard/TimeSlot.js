@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { setActiveTimeSlot } from "../../actions";
 
@@ -15,16 +15,37 @@ const TimeSlot = ({
     setSelectedTime,
     activeTimeSlot,
     setActiveTimeSlot,
+    setSelectedOption,
+    option,
     booked,
 }) => {
+    useEffect(() => {
+        if (localStorage.getItem("confirmBookDate") === "true") {
+            setActiveTimeSlot(localStorage.getItem("selectedTime"));
+        }
+    }, []);
+
     const handleTimeClick = () => {
+        if (
+            option === "Results within 4 hrs" &&
+            (time < "10:00" || time > "16:30")
+        ) {
+            setSelectedOption("");
+            alert(
+                "4 hours option is only available between 10:00 AM to 16:30 PM"
+            );
+        }
         setSelectedTime(time);
         setActiveTimeSlot(time);
     };
 
     return (
         time !== "" && (
-            <div className="col-md-6" style={{ padding: "0 3px" }}>
+            <div
+                className="col-md-6"
+                style={{ padding: "0 3px" }}
+                id={time.split(" ").join("")}
+            >
                 <button
                     className={`timeSlot ${booked ? "disabled" : ""}`}
                     onClick={handleTimeClick}

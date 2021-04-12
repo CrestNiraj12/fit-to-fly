@@ -2,9 +2,15 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import ConfirmCard from "./ConfirmCard";
 import TimeSlot from "./TimeSlot";
+import {
+    convertDateToString,
+    isValidDate,
+    generateTimePeriod,
+} from "../../utils";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Image from "../../../images/image2.webp";
+import { ExclamationTriangle } from "react-bootstrap-icons";
 
 const BookCard = () => {
     const [services, setServices] = useState([]);
@@ -26,13 +32,32 @@ const BookCard = () => {
             .get("/api/services")
             .then((res) => {
                 setServices(res.data);
+                if (localStorage.getItem("confirmData") === "true") {
+                    setConfirmData(true);
+                    const service_index = Number(
+                        localStorage.getItem("serviceIndex")
+                    );
+                    setService(service_index);
+                    setLocation(Number(localStorage.getItem("locationIndex")));
+                    setSelectedOption(
+                        Number(localStorage.getItem("optionIndex"))
+                    );
+                    setPassportNumber(localStorage.getItem("passportNumber"));
+                    setDob(localStorage.getItem("dob"));
+                    if (localStorage.getItem("confirmBookDate") === "true") {
+                        setBookDate(
+                            new Date(localStorage.getItem("selectedBookDate"))
+                        );
+                        setSelectedTime(localStorage.getItem("selectedTime"));
+                    }
+                }
             })
             .catch((err) => console.log(err));
     }, []);
 
     useEffect(() => {
         setLoading(true);
-        if (location) {
+        if (services[serviceIndex] && location) {
             const locData = services[serviceIndex].locations[location];
             const openings = locData["openingTime"]
                 .split(",")
@@ -42,24 +67,19 @@ const BookCard = () => {
                 .map((time) => time.split("-"));
             const selectedDay = bookDate.getDay();
 
-            if (selectedDay === 0)
-                setTimePeriod(
-                    openings.length === 3
-                        ? [
-                              ...generateTimePeriod(
-                                  openings[2][0],
-                                  closings[2][0]
-                              ),
-                              ...(openings[1].length > 1
-                                  ? generateTimePeriod(
-                                        openings[2][1],
-                                        closings[2][1]
-                                    )
-                                  : ""),
-                          ]
-                        : null
-                );
-            else if (selectedDay === 6)
+            if (selectedDay === 0) {
+                if (openings.length === 3)
+                    setTimePeriod([
+                        ...generateTimePeriod(openings[2][0], closings[2][0]),
+                        ...(openings[1].length > 1
+                            ? generateTimePeriod(openings[2][1], closings[2][1])
+                            : ""),
+                    ]);
+                else {
+                    setTimePeriod(null);
+                    setSelectedTime("");
+                }
+            } else if (selectedDay === 6)
                 setTimePeriod([
                     ...generateTimePeriod(openings[1][0], closings[1][0]),
                     ...(openings[1].length > 1
@@ -82,68 +102,20 @@ const BookCard = () => {
     }, [location, bookDate]);
 
     const handleConfirmData = () => {
-        if (!confirmData) setConfirmData(true);
-        else setConfirmBookDate(true);
+        if (!confirmData) {
+            localStorage.setItem("confirmData", true);
+            setConfirmData(true);
+        } else {
+            setConfirmBookDate(true);
+            localStorage.setItem("confirmBookDate", true);
+            localStorage.setItem("selectedBookDate", bookDate);
+            localStorage.setItem("selectedTime", selectedTime);
+        }
+        localStorage.setItem("serviceIndex", serviceIndex);
+        localStorage.setItem("locationIndex", location);
+        localStorage.setItem("optionIndex", selectedOption);
         localStorage.setItem("passportNumber", passportNumber);
         localStorage.setItem("dob", dob);
-    };
-
-    const convertDateToString = (date) => {
-        var month = date.getUTCMonth() + 1;
-        var day = date.getUTCDate();
-        var year = date.getUTCFullYear();
-        return `${String(day).length === 2 ? day : `0${day}`}/${
-            String(month).length === 2 ? month : `0${month}`
-        }/${year}`;
-    };
-
-    const isValidDate = (date) => {
-        var dateObj = new Date();
-        var month = dateObj.getUTCMonth();
-        var day = dateObj.getUTCDate();
-        var year = dateObj.getUTCFullYear();
-        return date >= new Date(year, month, day);
-    };
-
-    const generateTimePeriod = (minTime, maxTime, duration = 5) => {
-        const periods = [];
-        var start;
-        minTime = minTime.trim();
-        maxTime = maxTime.trim();
-        var ended = false;
-
-        for (
-            var i = Number(minTime.split(":")[0]);
-            i <= Number(maxTime.split(":")[0]);
-            i++
-        ) {
-            for (var j = 0; j <= 55; j += duration) {
-                const time = `${String(i).length === 2 ? i : "0" + String(i)}:${
-                    String(j).length === 2 ? j : "0" + String(j)
-                }`;
-
-                const endTime =
-                    j === 55
-                        ? `${
-                              String(i + 1).length === 2
-                                  ? i + 1
-                                  : "0" + String(i + 1)
-                          }:00`
-                        : `${String(i).length === 2 ? i : "0" + String(i)}:${
-                              String(j + 5).length === 2
-                                  ? j + 5
-                                  : "0" + String(j + 5)
-                          }`;
-                if (time === minTime) start = true;
-                if (start) periods.push(time + " - " + endTime);
-                if (endTime === maxTime) {
-                    ended = true;
-                    break;
-                }
-            }
-            if (ended) break;
-        }
-        return periods;
     };
 
     return (
@@ -210,16 +182,19 @@ const BookCard = () => {
                                             setSelectedTime("");
                                         }}
                                     >
-                                        {services[serviceIndex].locations.map(
-                                            ({ name }, index) => (
-                                                <option
-                                                    value={index}
-                                                    key={index}
-                                                >
-                                                    {name}
-                                                </option>
-                                            )
-                                        )}
+                                        {services[serviceIndex] &&
+                                            services[
+                                                serviceIndex
+                                            ].locations.map(
+                                                ({ name }, index) => (
+                                                    <option
+                                                        value={index}
+                                                        key={index}
+                                                    >
+                                                        {name}
+                                                    </option>
+                                                )
+                                            )}
                                     </select>
                                     <label htmlFor="dob">Date of Birth</label>
                                     <input
@@ -229,7 +204,7 @@ const BookCard = () => {
                                         style={{
                                             marginBottom: "20px",
                                         }}
-                                        placeholder="dd/mm/yyyy"
+                                        placeholder="yyyy-mm-dd"
                                         value={dob}
                                         onChange={(e) => setDob(e.target.value)}
                                         required
@@ -271,34 +246,75 @@ const BookCard = () => {
                                         >
                                             Select option
                                         </option>
-                                        {services[serviceIndex].options.map(
-                                            ({ name }, index) => (
-                                                <option
-                                                    key={index}
-                                                    value={index}
-                                                >
-                                                    {name}
-                                                </option>
-                                            )
-                                        )}
+                                        {services[serviceIndex] &&
+                                            services[serviceIndex].options.map(
+                                                ({ name }, index) => (
+                                                    <option
+                                                        key={index}
+                                                        value={index}
+                                                        style={
+                                                            selectedTime !== ""
+                                                                ? {
+                                                                      display:
+                                                                          name ===
+                                                                              "Results within 4 hrs" &&
+                                                                          (selectedTime <
+                                                                              "10:00" ||
+                                                                              selectedTime >
+                                                                                  "16:30")
+                                                                              ? "none"
+                                                                              : "block",
+                                                                  }
+                                                                : {}
+                                                        }
+                                                        disabled={
+                                                            selectedTime !== ""
+                                                                ? name ===
+                                                                      "Results within 4 hrs" &&
+                                                                  (selectedTime <
+                                                                      "10:00" ||
+                                                                      selectedTime >
+                                                                          "16:30")
+                                                                : false
+                                                        }
+                                                    >
+                                                        {name}
+                                                    </option>
+                                                )
+                                            )}
                                     </select>
-                                    <p>
-                                        Price:{" "}
-                                        <span
-                                            style={{
-                                                color: "#02be02",
-                                            }}
-                                        >
-                                            £
-                                            {services[serviceIndex].options[
-                                                selectedOption
-                                            ].price.toFixed(2)}
-                                        </span>
-                                    </p>
+                                    {services[serviceIndex] &&
+                                        selectedOption &&
+                                        services[serviceIndex].options[
+                                            selectedOption
+                                        ]["name"] ===
+                                            "Results within 4 hrs" && (
+                                            <p>
+                                                Note: 4 hours option is only
+                                                available between 10:00 AM to
+                                                16:30 PM.
+                                            </p>
+                                        )}
+                                    {services[serviceIndex] && selectedOption && (
+                                        <p>
+                                            Price:{" "}
+                                            <span
+                                                style={{
+                                                    color: "#02be02",
+                                                }}
+                                            >
+                                                £
+                                                {services[serviceIndex].options[
+                                                    selectedOption
+                                                ].price.toFixed(2)}
+                                            </span>
+                                        </p>
+                                    )}
                                     <p>
                                         Please bring your passport/ID to your
-                                        appointment. This purchase is
-                                        non-refundable.
+                                        appointment. The purchase is
+                                        nonrefundable only exchangeable as a
+                                        voucher to spend in the pharmacy.
                                     </p>
                                 </div>
                             </form>
@@ -311,7 +327,10 @@ const BookCard = () => {
                             <>
                                 <DatePicker
                                     selected={bookDate}
-                                    onChange={(date) => setBookDate(date)}
+                                    onChange={(date) => {
+                                        setBookDate(date);
+                                        setSelectedTime("");
+                                    }}
                                     filterDate={isValidDate}
                                     inline
                                 />
@@ -322,6 +341,7 @@ const BookCard = () => {
                                         overflowY: "scroll",
                                         height: 125,
                                     }}
+                                    id="timePeriods"
                                 >
                                     {loading ? (
                                         <div
@@ -334,7 +354,10 @@ const BookCard = () => {
                                             </span>
                                         </div>
                                     ) : timePeriod === null ? (
-                                        <h4>Sorry we are closed on Sunday!</h4>
+                                        <h4>
+                                            Sorry bookings cant be made on
+                                            Sunday!
+                                        </h4>
                                     ) : (
                                         timePeriod.map((time, index) => (
                                             <TimeSlot
@@ -350,6 +373,18 @@ const BookCard = () => {
                                                         " " +
                                                         time.split(" ").join("")
                                                 )}
+                                                option={
+                                                    services[serviceIndex] &&
+                                                    selectedOption === ""
+                                                        ? ""
+                                                        : services[serviceIndex]
+                                                              .options[
+                                                              selectedOption
+                                                          ]["name"]
+                                                }
+                                                setSelectedOption={
+                                                    setSelectedOption
+                                                }
                                             />
                                         ))
                                     )}
@@ -394,7 +429,7 @@ const BookCard = () => {
                                                 </option>
                                             ))}
                                         </select>
-                                        {serviceIndex && (
+                                        {services[serviceIndex] && (
                                             <>
                                                 <label htmlFor="location">
                                                     Location
@@ -505,40 +540,70 @@ const BookCard = () => {
                                                         )
                                                     )}
                                                 </select>
-                                                {selectedOption && (
-                                                    <>
+                                                {services[serviceIndex] &&
+                                                    selectedOption &&
+                                                    services[serviceIndex]
+                                                        .options[
+                                                        selectedOption
+                                                    ]["name"] ===
+                                                        "Results within 4 hrs" && (
                                                         <p>
-                                                            Price:{" "}
-                                                            <span
-                                                                style={{
-                                                                    color:
-                                                                        "#02be02",
-                                                                }}
-                                                            >
-                                                                £
-                                                                {services[
-                                                                    serviceIndex
-                                                                ].options[
-                                                                    selectedOption
-                                                                ].price.toFixed(
-                                                                    2
-                                                                )}
-                                                            </span>
+                                                            Note: 4 hours option
+                                                            is only available
+                                                            between 10:00 AM to
+                                                            16:30 PM.
                                                         </p>
-                                                        <p>
-                                                            Please bring your
-                                                            passport/ID to your
-                                                            appointment. This
-                                                            purchase is
-                                                            non-refundable.
-                                                        </p>
-                                                    </>
-                                                )}
+                                                    )}
+                                                {services[serviceIndex] &&
+                                                    selectedOption && (
+                                                        <>
+                                                            <p>
+                                                                Price:{" "}
+                                                                <span
+                                                                    style={{
+                                                                        color:
+                                                                            "#02be02",
+                                                                    }}
+                                                                >
+                                                                    £
+                                                                    {services[
+                                                                        serviceIndex
+                                                                    ].options[
+                                                                        selectedOption
+                                                                    ].price.toFixed(
+                                                                        2
+                                                                    )}
+                                                                </span>
+                                                            </p>
+                                                            <p>
+                                                                Please bring
+                                                                your passport/ID
+                                                                to your
+                                                                appointment. The
+                                                                purchase is
+                                                                nonrefundable
+                                                                only
+                                                                exchangeable as
+                                                                a voucher to
+                                                                spend in the
+                                                                pharmacy.
+                                                            </p>
+                                                        </>
+                                                    )}
                                             </>
                                         )}
                                     </div>
                                 </form>
                             </>
+                        )}
+                        {selectedTime > "16:30" && (
+                            <p class="label">
+                                <span style={{ margin: "0 5px" }}>
+                                    <ExclamationTriangle size="14px" />
+                                </span>
+                                Results will be provided within 48 hours if
+                                booking is made after 16:30 PM
+                            </p>
                         )}
                         <button
                             type="button"
@@ -546,7 +611,7 @@ const BookCard = () => {
                             style={{ width: "100%", marginTop: "10px" }}
                             disabled={
                                 (confirmData
-                                    ? !selectedTime
+                                    ? !selectedTime || !selectedOption
                                     : !location || !selectedOption || !dob) ||
                                 passportNumber === ""
                             }

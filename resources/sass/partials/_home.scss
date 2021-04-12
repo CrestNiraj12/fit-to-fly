@@ -29,7 +29,7 @@
 }
 
 .timeSlot:hover {
-    background-color: #0cca00 !important;
+    background-color: #8eca8a !important;
 }
 
 .disabled:hover {
@@ -221,7 +221,6 @@
 
 .navbar-brand {
     flex: 1;
-    margin-right: 4rem !important;
 }
 
 .navbar-nav {
@@ -254,6 +253,15 @@
 
 .navbar-toggler {
     display: none;
+}
+
+.label {
+    background: #e83838;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #fff;
+    display: flex;
 }
 
 @media screen and (max-width: 768px) {

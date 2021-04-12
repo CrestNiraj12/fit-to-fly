@@ -10,7 +10,7 @@ const PaymentRedirect = ({ location, success }) => {
 
     const finalTask = () => {
         localStorage.clear();
-        setTimeout(() => setRedirect(true), 2000);
+        setTimeout(() => setRedirect(true), 1500);
     };
 
     useEffect(() => {
@@ -58,9 +58,12 @@ const PaymentRedirect = ({ location, success }) => {
                             console.log("Payment successful!");
                             handleMailSend();
                         })
-                        .catch((err) => console.log(err.response));
+                        .catch((err) => {
+                            console.log(err.response);
+                            setError(true);
+                        });
             } else handleMailSend();
-        } else finalTask();
+        } else setTimeout(() => setRedirect(true), 1500);
         return () => {
             mounted = false;
         };
@@ -122,7 +125,7 @@ const PaymentRedirect = ({ location, success }) => {
             >
                 {success
                     ? "Your payment was successful!"
-                    : "Your payment was cancelled!"}{" "}
+                    : "Your payment was cancelled!"}
                 {success ? (
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -150,6 +153,7 @@ const PaymentRedirect = ({ location, success }) => {
                     </svg>
                 )}
             </p>
+
             <small>
                 <span>
                     <div

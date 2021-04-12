@@ -38,9 +38,10 @@ class ServiceOptionSeeder extends Seeder
             "option_id" => 2
         ]);
 
-         \App\Models\ServiceOption::create([
+        \App\Models\ServiceOption::create([
             "service_id" => 2,
             "option_id" => 3
         ]);
+
     }
 }
