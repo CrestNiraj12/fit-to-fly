@@ -20,6 +20,7 @@ class CustomerController extends Controller
             "firstname" => 'required',
             "lastname" => 'required',
             "email" => 'required',
+            "phone" => 'required',
             "address" => 'required',
             "country" => 'required',
             "postal" => 'required',

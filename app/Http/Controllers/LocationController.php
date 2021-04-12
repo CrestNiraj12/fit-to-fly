@@ -19,6 +19,7 @@ class LocationController extends Controller
             "openingTime"=> 'required',
             "closingTime"=> 'required',
             "bookedTimes"=> 'required',
+            "email" => 'required'
         ]);
 
         $location = Location::create($request->all());

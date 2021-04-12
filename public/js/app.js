@@ -4385,6 +4385,7 @@ var Checkout = function Checkout() {
     firstname: "",
     lastname: "",
     email: "",
+    phone: "",
     address: "",
     address2: "",
     country: "",
@@ -4422,13 +4423,15 @@ var Checkout = function Checkout() {
 
   var validateForm = function validateForm() {
     var isValid = true;
-    if (!details["firstname"] || !details["lastname"] || !details["email"] || !details["address"] || !details["country"] || !details["postal"]) isValid = false;
+    if (!details["firstname"] || !details["lastname"] || !details["email"] || !details["phone"] || !details["address"] || !details["country"] || !details["postal"]) isValid = false;
     document.querySelector("#firstName").classList.add(!details["firstname"] ? "is-invalid" : "is-valid");
     document.querySelector("#firstName").classList.remove(!details["firstname"] ? "is-valid" : "is-invalid");
     document.querySelector("#lastName").classList.add(!details["lastname"] ? "is-invalid" : "is-valid");
     document.querySelector("#lastName").classList.remove(!details["lastname"] ? "is-valid" : "is-invalid");
     document.querySelector("#email").classList.add(!details["email"] ? "is-invalid" : "is-valid");
     document.querySelector("#email").classList.remove(!details["email"] ? "is-valid" : "is-invalid");
+    document.querySelector("#phone").classList.add(!details["phone"] ? "is-invalid" : "is-valid");
+    document.querySelector("#phone").classList.remove(!details["phone"] ? "is-valid" : "is-invalid");
     document.querySelector("#address").classList.add(!details["address"] ? "is-invalid" : "is-valid");
     document.querySelector("#address").classList.remove(!details["address"] ? "is-valid" : "is-invalid");
     document.querySelector("#country").classList.add(!details["country"] ? "is-invalid" : "is-valid");
@@ -4763,6 +4766,24 @@ var Checkout = function Checkout() {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                   className: "invalid-feedback",
                   children: "Please enter a valid email address."
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                className: "mb-3",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                  htmlFor: "phone",
+                  children: "Phone"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                  type: "text",
+                  className: "form-control",
+                  id: "phone",
+                  name: "phone",
+                  onChange: handleFormInput,
+                  value: details.phone,
+                  required: true,
+                  disabled: detailsSubmitted
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                  className: "invalid-feedback",
+                  children: "Please enter your phone number."
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                 className: "mb-3",
@@ -5392,6 +5413,9 @@ var PaymentRedirect = function PaymentRedirect(_ref) {
       price: service.amount,
       subtotal: service.amount,
       total: service.amount,
+      email: customer.email,
+      phone: customer.phone,
+      address: customer.address + ", " + customer.address2,
       send_to: localStorage.getItem("userEmail"),
       send_from: service.email,
       reply_to: service.email

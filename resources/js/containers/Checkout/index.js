@@ -24,6 +24,7 @@ const Checkout = () => {
         firstname: "",
         lastname: "",
         email: "",
+        phone: "",
         address: "",
         address2: "",
         country: "",
@@ -57,6 +58,7 @@ const Checkout = () => {
             !details["firstname"] ||
             !details["lastname"] ||
             !details["email"] ||
+            !details["phone"] ||
             !details["address"] ||
             !details["country"] ||
             !details["postal"]
@@ -83,6 +85,12 @@ const Checkout = () => {
         document
             .querySelector("#email")
             .classList.remove(!details["email"] ? "is-valid" : "is-invalid");
+        document
+            .querySelector("#phone")
+            .classList.add(!details["phone"] ? "is-invalid" : "is-valid");
+        document
+            .querySelector("#phone")
+            .classList.remove(!details["phone"] ? "is-valid" : "is-invalid");
         document
             .querySelector("#address")
             .classList.add(!details["address"] ? "is-invalid" : "is-valid");
@@ -391,6 +399,22 @@ const Checkout = () => {
                                         />
                                         <div className="invalid-feedback">
                                             Please enter a valid email address.
+                                        </div>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="phone">Phone</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            id="phone"
+                                            name="phone"
+                                            onChange={handleFormInput}
+                                            value={details.phone}
+                                            required
+                                            disabled={detailsSubmitted}
+                                        />
+                                        <div className="invalid-feedback">
+                                            Please enter your phone number.
                                         </div>
                                     </div>
                                     <div className="mb-3">

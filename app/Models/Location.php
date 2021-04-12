@@ -13,7 +13,8 @@ class Location extends Model
         "name",
         "openingTime",
         "closingTime",
-        "bookedTimes"
+        "bookedTimes",
+        "email"
     ];
 
     public function services()
