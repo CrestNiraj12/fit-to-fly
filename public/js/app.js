@@ -3219,7 +3219,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
+/* harmony import */ var _images_image2_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../images/image2.jpg */ "./resources/images/image2.jpg");
 
 
 
@@ -3352,7 +3352,7 @@ var ConfirmCard = function ConfirmCard(_ref) {
         justifyContent: "center"
       },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-        src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_2__.default,
+        src: _images_image2_jpg__WEBPACK_IMPORTED_MODULE_2__.default,
         className: "cardHeaderImage"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -3577,7 +3577,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-datepicker/dist/react-datepicker.css */ "./node_modules/react-datepicker/dist/react-datepicker.css");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
+/* harmony import */ var _images_image2_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../images/image2.jpg */ "./resources/images/image2.jpg");
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/exclamation-triangle.js");
 
 
@@ -3886,7 +3886,7 @@ var BookCard = function BookCard() {
             })]
           })]
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_7__.default,
+          src: _images_image2_jpg__WEBPACK_IMPORTED_MODULE_7__.default,
           className: "displayImage"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -4312,7 +4312,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @stripe/stripe-js */ "./node_modules/@stripe/stripe-js/dist/stripe.esm.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Footer */ "./resources/js/components/Footer/index.js");
-/* harmony import */ var _images_image2_webp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../images/image2.webp */ "./resources/images/image2.webp");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../images/image2.webp'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 
@@ -4355,8 +4355,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_test_51IXKfNEtfIOLAci6yyHzUicWkQJFAk5Qf3Dd1cYbPwEQPKXMh4al3qP9MRD7jva0Bl9Ldt97gguQY0olNfj67KID00Hdfip2oL");
-var PAYPAL_CLIENT_ID = "AXBOf-rcYR-plJbb-TPkOe36Udgih_yBjCaeLFp__RuGhuL5HPmFj-Fhg7LXzo604JmUElEAB21VWtfq";
+var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__.loadStripe)("pk_live_51IXKfNEtfIOLAci6nhpBa0VhRS8Wm5i7qjt5MfsoMJfw9LT1ZRxeMTiM7mNp04zJg0oRyUI0ezyhvXhRF6zWI4NE000OoS6FL0");
+var PAYPAL_CLIENT_ID = "AU3QCfeLRevzoeuE5ZyvM_S36-jHP6aERXBjnC2IxzwDb2PwAn7U4QBa5Nwc8klfL9-tJw000uhYsRC3";
 
 var Checkout = function Checkout() {
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
@@ -4672,7 +4672,7 @@ var Checkout = function Checkout() {
                 className: "list-group-item d-flex justify-content-between lh-condensed",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-                    src: _images_image2_webp__WEBPACK_IMPORTED_MODULE_7__.default,
+                    src: Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../images/image2.webp'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
                     style: {
                       width: "50px",
                       margin: "5px 10px 5px 0"
@@ -5003,7 +5003,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _images_tick_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../images/tick.png */ "./resources/images/tick.png");
 /* harmony import */ var _images_airplane_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../images/airplane.png */ "./resources/images/airplane.png");
-/* harmony import */ var _images_calendar_webp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../images/calendar.webp */ "./resources/images/calendar.webp");
+/* harmony import */ var _images_calendar_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../images/calendar.jpg */ "./resources/images/calendar.jpg");
 /* harmony import */ var _components_BookCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/BookCard */ "./resources/js/components/BookCard/index.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Footer */ "./resources/js/components/Footer/index.js");
 
@@ -5022,7 +5022,7 @@ var FitToFly = function FitToFly() {
       className: "bg-dark",
       style: {
         height: 300,
-        background: "url(https://cdn.shopify.com/s/files/1/0101/6214/3283/t/51/assets/covid-header.webp?v=1339556514687366633) bottom center / cover"
+        background: "url(https://cdn.shopify.com/s/files/1/0101/6214/3283/t/59/assets/covid-header.jpg?v=8867273798966894294) bottom center / cover"
       },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "container h-100",
@@ -5218,7 +5218,7 @@ var FitToFly = function FitToFly() {
             className: "col-md-12 mb-5",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
               className: "card-img-top",
-              src: _images_calendar_webp__WEBPACK_IMPORTED_MODULE_4__.default,
+              src: _images_calendar_jpg__WEBPACK_IMPORTED_MODULE_4__.default,
               alt: "Government approved",
               style: {
                 width: "40px"
@@ -19554,10 +19554,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/images/calendar.webp":
-/*!****************************************!*\
-  !*** ./resources/images/calendar.webp ***!
-  \****************************************/
+/***/ "./resources/images/calendar.jpg":
+/*!***************************************!*\
+  !*** ./resources/images/calendar.jpg ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19565,14 +19565,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/calendar.webp?2de06176d28c96623eb29d34eed873b7");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/calendar.jpg?2de06176d28c96623eb29d34eed873b7");
 
 /***/ }),
 
-/***/ "./resources/images/image2.webp":
-/*!**************************************!*\
-  !*** ./resources/images/image2.webp ***!
-  \**************************************/
+/***/ "./resources/images/image2.jpg":
+/*!*************************************!*\
+  !*** ./resources/images/image2.jpg ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19580,7 +19580,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/image2.webp?c05df8f3a6c64ad8ddccae3797ef50ee");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/image2.jpg?c05df8f3a6c64ad8ddccae3797ef50ee");
 
 /***/ }),
 

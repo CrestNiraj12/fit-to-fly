@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import Image from "../../../images/image2.webp";
+import Image from "../../../images/image2.jpg";
 
 const ConfirmCard = ({
     passportNumber,

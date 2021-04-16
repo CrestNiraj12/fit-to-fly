@@ -9,7 +9,7 @@ import {
 } from "../../utils";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-import Image from "../../../images/image2.webp";
+import Image from "../../../images/image2.jpg";
 import { ExclamationTriangle } from "react-bootstrap-icons";
 
 const BookCard = () => {

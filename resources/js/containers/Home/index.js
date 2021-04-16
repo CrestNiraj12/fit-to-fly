@@ -1,7 +1,7 @@
 import React from "react";
 import Tick from "../../../images/tick.png";
 import Airplane from "../../../images/airplane.png";
-import Calendar from "../../../images/calendar.webp";
+import Calendar from "../../../images/calendar.jpg";
 import BookCard from "../../components/BookCard";
 import Footer from "../../components/Footer";
 
@@ -12,7 +12,7 @@ const FitToFly = () => {
                 className="bg-dark"
                 style={{
                     height: 300,
-                    background: `url(https://cdn.shopify.com/s/files/1/0101/6214/3283/t/51/assets/covid-header.webp?v=1339556514687366633) bottom center / cover`,
+                    background: `url(https://cdn.shopify.com/s/files/1/0101/6214/3283/t/59/assets/covid-header.jpg?v=8867273798966894294) bottom center / cover`,
                 }}
             >
                 <div className="container h-100">
