@@ -8,7 +8,7 @@ import {
 import { loadStripe } from "@stripe/stripe-js";
 import { Redirect, useHistory } from "react-router-dom";
 import Footer from "../../components/Footer";
-import Image2 from "../../../images/image2.webp";
+import Image2 from "../../../images/image2.jpg";
 
 const stripePromise = loadStripe(process.env.MIX_STRIPE_PUBLIC_KEY);
 

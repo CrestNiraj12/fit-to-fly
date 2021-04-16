@@ -4312,7 +4312,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stripe_stripe_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @stripe/stripe-js */ "./node_modules/@stripe/stripe-js/dist/stripe.esm.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Footer */ "./resources/js/components/Footer/index.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../images/image2.webp'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _images_image2_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../images/image2.jpg */ "./resources/images/image2.jpg");
 
 
 
@@ -4672,7 +4672,7 @@ var Checkout = function Checkout() {
                 className: "list-group-item d-flex justify-content-between lh-condensed",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-                    src: Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../images/image2.webp'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+                    src: _images_image2_jpg__WEBPACK_IMPORTED_MODULE_7__.default,
                     style: {
                       width: "50px",
                       margin: "5px 10px 5px 0"
