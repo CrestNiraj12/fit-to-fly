@@ -4627,7 +4627,7 @@ var Checkout = function Checkout() {
         className: "bg-dark",
         style: {
           height: 300,
-          background: "url(https://cdn.shopify.com/s/files/1/0101/6214/3283/t/51/assets/covid-header.webp?v=1339556514687366633) bottom center / cover"
+          background: "url(https://cdn.shopify.com/s/files/1/0101/6214/3283/t/59/assets/covid-header.jpg?v=8867273798966894294) bottom center / cover"
         },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "container h-100",
@@ -19580,7 +19580,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/image2.jpg?c05df8f3a6c64ad8ddccae3797ef50ee");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/image2.jpg?785ef3ec3176575aa5cb8b22933023f7");
 
 /***/ }),
 
