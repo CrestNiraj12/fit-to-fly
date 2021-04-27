@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="description" content="Visit Our COVID-19 PCR test centres in Woolwich, Abbeywood and Plumstead for the same day Covid-19 PCR test Result. We now offer both Fit to Fly and Test to Release services.">
+        <meta name="keywords" content="">
+        <meta name="title" content="Covid-19 PCR Test in London | Woolwich, Abbeywood and Plumstead  | Fit to Fly | Test to Release"></meta>
         <title>Fit To Fly Covid-19 Testing</title>
 
         <!-- Fonts -->
