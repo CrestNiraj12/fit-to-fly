@@ -27,7 +27,7 @@ const TimeSlot = ({
 
     const handleTimeClick = () => {
         if (
-            option === "Results within 4 hrs" &&
+            option.includes("Results within 4 hrs") &&
             (time < "10:00" || time > "16:30")
         ) {
             setSelectedOption("");

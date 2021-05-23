@@ -287,12 +287,16 @@ const BookCard = () => {
                                         selectedOption &&
                                         services[serviceIndex].options[
                                             selectedOption
-                                        ]["name"] ===
-                                            "Results within 4 hrs" && (
-                                            <p>
-                                                Note: 4 hours option is only
-                                                available between 10:00 AM to
-                                                16:30 PM.
+                                        ]["name"].includes("swab") && (
+                                            <p class="label">
+                                                <span
+                                                    style={{ margin: "0 5px" }}
+                                                >
+                                                    <ExclamationTriangle size="14px" />
+                                                </span>
+                                                Note: If Test Results are
+                                                inclusive of swab , Refund is
+                                                not available.
                                             </p>
                                         )}
                                     {services[serviceIndex] && selectedOption && (
@@ -542,16 +546,24 @@ const BookCard = () => {
                                                 </select>
                                                 {services[serviceIndex] &&
                                                     selectedOption &&
-                                                    services[serviceIndex]
-                                                        .options[
-                                                        selectedOption
-                                                    ]["name"] ===
-                                                        "Results within 4 hrs" && (
-                                                        <p>
-                                                            Note: 4 hours option
-                                                            is only available
-                                                            between 10:00 AM to
-                                                            16:30 PM.
+                                                    services[
+                                                        serviceIndex
+                                                    ].options[selectedOption][
+                                                        "name"
+                                                    ].includes("swab") && (
+                                                        <p class="label">
+                                                            <span
+                                                                style={{
+                                                                    margin: "0 5px",
+                                                                }}
+                                                            >
+                                                                <ExclamationTriangle size="14px" />
+                                                            </span>
+                                                            Note: If Test
+                                                            Results are
+                                                            inclusive of swab ,
+                                                            Refund is not
+                                                            available.
                                                         </p>
                                                     )}
                                                 {services[serviceIndex] &&
@@ -561,8 +573,7 @@ const BookCard = () => {
                                                                 Price:{" "}
                                                                 <span
                                                                     style={{
-                                                                        color:
-                                                                            "#02be02",
+                                                                        color: "#02be02",
                                                                     }}
                                                                 >
                                                                     £
