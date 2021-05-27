@@ -29,7 +29,7 @@ class OptionSeeder extends Seeder
         ]);
 
         \App\Models\Option::create([
-            "name" => "Next day results (tests before 3pm) + £20 swab",
+            "name" => "Same-day results (tests before 11:30am) + £20 swab",
             "price" => 185.00
         ]);
 
