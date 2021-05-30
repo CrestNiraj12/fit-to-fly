@@ -29,9 +29,8 @@ const PaymentRedirect = ({ location, success }) => {
                             const data = {
                                 method,
                                 amount: details.amount_total / 100,
-                                customer_no: localStorage.getItem(
-                                    "passportNumber"
-                                ),
+                                customer_no:
+                                    localStorage.getItem("passportNumber"),
                                 service_id: service.id,
                                 option_id: service.optionId,
                                 location_id: service.locationId,
@@ -39,9 +38,8 @@ const PaymentRedirect = ({ location, success }) => {
                             return await axios.post("/api/orders/", data);
                         })
                         .then(async () => {
-                            const bookedTimes = localStorage.getItem(
-                                "bookedTimes"
-                            );
+                            const bookedTimes =
+                                localStorage.getItem("bookedTimes");
 
                             return await axios.put(
                                 `/api/locations/${service.locationId}`,
@@ -100,7 +98,7 @@ const PaymentRedirect = ({ location, success }) => {
                     email: customer.email,
                     phone: customer.phone,
                     address: customer.address + ", " + customer.address2,
-                    send_to: localStorage.getItem("userEmail"),
+                    send_to: customer.email,
                     send_from: service.email,
                     reply_to: service.email,
                 },
