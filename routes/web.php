@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view("/fittofly", "fittofly");
+
 Route::get( '/{path?}', function() {
     return view( 'welcome' );
 } )->where('path', '.*');

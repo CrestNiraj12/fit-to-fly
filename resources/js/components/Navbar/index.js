@@ -37,12 +37,12 @@ const Navbar = () => {
                     style={{ display: showNav ? "flex" : "none" }}
                 >
                     <li>
-                        <a href="#testingSites" onClick={handleToggleNav}>
+                        <a href="/#testingSites" onClick={handleToggleNav}>
                             Testing Sites
                         </a>
                     </li>
                     <li>
-                        <a href="#bookTest" onClick={handleToggleNav}>
+                        <a href="/#bookTest" onClick={handleToggleNav}>
                             Book Test
                         </a>
                     </li>

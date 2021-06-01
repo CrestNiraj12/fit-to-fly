@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Checkout from "./containers/Checkout";
+import FitToFly from "./containers/FitToFly";
 import Home from "./containers/Home";
 import PaymentRedirect from "./containers/PaymentRedirect";
 
@@ -12,6 +13,7 @@ const Main = () => {
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/checkout" component={Checkout} />
+                <Route path="/fittofly" component={FitToFly} />
                 <Route
                     path="/success"
                     component={(props) => (
