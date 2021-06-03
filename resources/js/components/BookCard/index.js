@@ -32,25 +32,6 @@ const BookCard = () => {
             .get("/api/services")
             .then((res) => {
                 setServices(res.data);
-                if (localStorage.getItem("confirmData") === "true") {
-                    setConfirmData(true);
-                    const service_index = Number(
-                        localStorage.getItem("serviceIndex")
-                    );
-                    setService(service_index);
-                    setLocation(Number(localStorage.getItem("locationIndex")));
-                    setSelectedOption(
-                        Number(localStorage.getItem("optionIndex"))
-                    );
-                    setPassportNumber(localStorage.getItem("passportNumber"));
-                    setDob(localStorage.getItem("dob"));
-                    if (localStorage.getItem("confirmBookDate") === "true") {
-                        setBookDate(
-                            new Date(localStorage.getItem("selectedBookDate"))
-                        );
-                        setSelectedTime(localStorage.getItem("selectedTime"));
-                    }
-                }
             })
             .catch((err) => console.log(err));
     }, []);
@@ -102,20 +83,8 @@ const BookCard = () => {
     }, [location, bookDate]);
 
     const handleConfirmData = () => {
-        if (!confirmData) {
-            localStorage.setItem("confirmData", true);
-            setConfirmData(true);
-        } else {
-            setConfirmBookDate(true);
-            localStorage.setItem("confirmBookDate", true);
-            localStorage.setItem("selectedBookDate", bookDate);
-            localStorage.setItem("selectedTime", selectedTime);
-        }
-        localStorage.setItem("serviceIndex", serviceIndex);
-        localStorage.setItem("locationIndex", location);
-        localStorage.setItem("optionIndex", selectedOption);
-        localStorage.setItem("passportNumber", passportNumber);
-        localStorage.setItem("dob", dob);
+        if (!confirmData) setConfirmData(true);
+        else setConfirmBookDate(true);
     };
 
     return (
