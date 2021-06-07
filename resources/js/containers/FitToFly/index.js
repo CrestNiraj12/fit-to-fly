@@ -7,32 +7,10 @@ const FitToFly = () => {
                 className="bg-dark"
                 style={{
                     marginBottom: 50,
-                    height: 300,
-                    background: `url(https://res.cloudinary.com/mspot/image/upload/private-covid-test.jpg) top center / cover`,
-                    backgroundBlendMode: "soft-light",
+                    height: "35vw",
+                    background: `url(https://i.imgur.com/fZfJVfw.jpg) center center / cover`,
                 }}
-            >
-                <div className="container h-100">
-                    <div className="row h-100 align-items-center">
-                        <div className="col-lg-12">
-                            <h2
-                                className="display-6 text-black mt-5 mb-2"
-                                style={{ color: "#fff" }}
-                            >
-                                Fit to Fly Covid-19 Test
-                            </h2>
-                            <p className="checked">
-                                <img
-                                    style={{ width: 18 }}
-                                    src="https://cdn.shopify.com/s/files/1/0101/6214/3283/t/51/assets/check.svg"
-                                    alt="checked"
-                                />{" "}
-                                Government-approved provider
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </header>
+            ></header>
             <div className="container">
                 <h2>
                     CORONAVIRUS TESTING CERTIFICATES FOR INTERNATIONAL TRAVEL
