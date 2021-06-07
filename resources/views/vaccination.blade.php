@@ -5,27 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Visit Our COVID-19 PCR test centres in Woolwich, Abbeywood and Plumstead for the same day Covid-19 PCR test Result. We now offer both Fit to Fly and Test to Release services.">
+        content="WLNP is an NHS approved Covid-19 vaccination site. It is currently the only Pharmacy in Greenwich, and only 1 out of 15 in the whole of London, to be approved.">
     <meta name="keywords" content="">
     <meta name="title"
-        content="Covid-19 PCR Test in London | Woolwich, Abbeywood and Plumstead  | Fit to Fly | Test to Release" />
-    <title>Fit To Fly Covid-19 Testing</title>
+        content="NHS Approved Covid-19 Vaccination Site in Woolwich | Coronavirus Vaccination in Woolwich | WLNP" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ Request::url() }}">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="http://res.cloudinary.com/mspot/image/upload/private-covid-test.jpg">
-    <meta property="og:image:secure_url"
-        content="https://res.cloudinary.com/mspot/image/upload/private-covid-test.jpg" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ Request::url() }}">
-    <meta property="twitter:title" content="">
-    <meta property="twitter:description" content="">
-    <meta property="twitter:image" content="https://res.cloudinary.com/mspot/image/upload/private-covid-test.jpg">
+    <title>NHS Approved Covid-19 Vaccination Site in Woolwich | Coronavirus Vaccination in Woolwich | WLNP</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -415,11 +400,6 @@
             font-family: 'Nunito';
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
-        integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
-        crossorigin="anonymous"></script>
     <link href="/css/app.css" rel="stylesheet">
 </head>
 

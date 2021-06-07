@@ -5,6 +5,7 @@ import Checkout from "./containers/Checkout";
 import FitToFly from "./containers/FitToFly";
 import Home from "./containers/Home";
 import PaymentRedirect from "./containers/PaymentRedirect";
+import Vaccination from "./containers/Vaccination";
 
 const Main = () => {
     return (
@@ -14,6 +15,7 @@ const Main = () => {
                 <Route exact path="/" component={Home} />
                 <Route path="/checkout" component={Checkout} />
                 <Route path="/fittofly" component={FitToFly} />
+                <Route path="/vaccination" component={Vaccination} />
                 <Route
                     path="/success"
                     component={(props) => (

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view("/fittofly", "fittofly");
+Route::view("/vaccination", "vaccination");
 
 Route::get( '/{path?}', function() {
     return view( 'welcome' );
