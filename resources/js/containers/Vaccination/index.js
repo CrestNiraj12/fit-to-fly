@@ -32,7 +32,7 @@ const Vaccination = () => {
                 </p>
                 <p>&nbsp;</p>
                 <p>
-                    <span style={{ backgroundColor: "#ffff00" }}>
+                    <span>
                         <em>
                             <span style={{ fontWeight: 400 }}>
                                 If you're aged 30 or over, or if you turn 30
@@ -231,7 +231,7 @@ const Vaccination = () => {
                 />
                 <br />
                 <p>
-                    <span style={{ backgroundColor: "#ffff00" }}>
+                    <span>
                         <em>
                             <span style={{ fontWeight: 400 }}>
                                 Use this service to book a coronavirus
