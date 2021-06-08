@@ -88,7 +88,6 @@ const Vaccination = () => {
                         <span
                             style={{
                                 fontWeight: 400,
-                                backgroundColor: "#ffff00",
                             }}
                         >
                             &ldquo;We are honoured to be a part of the NHS
@@ -105,7 +104,6 @@ const Vaccination = () => {
                 <span
                     style={{
                         fontWeight: 400,
-                        backgroundColor: "#ffff00",
                     }}
                 >
                     Jignesh Mehta
@@ -114,7 +112,6 @@ const Vaccination = () => {
                 <span
                     style={{
                         fontWeight: 400,
-                        backgroundColor: "#ffff00",
                     }}
                 >
                     Superintendent Pharmacist
@@ -123,7 +120,6 @@ const Vaccination = () => {
                 <span
                     style={{
                         fontWeight: 400,
-                        backgroundColor: "#ffff00",
                     }}
                 >
                     Woolwich late night Pharmacy
@@ -192,7 +188,6 @@ const Vaccination = () => {
                         <span
                             style={{
                                 fontWeight: 400,
-                                backgroundColor: "#ffff00",
                             }}
                         >
                             &ldquo;We are so proud to be able to support the UK
@@ -209,7 +204,6 @@ const Vaccination = () => {
                 <span
                     style={{
                         fontWeight: 400,
-                        backgroundColor: "#ffff00",
                     }}
                 >
                     Rajen Kandel
@@ -218,7 +212,6 @@ const Vaccination = () => {
                 <span
                     style={{
                         fontWeight: 400,
-                        backgroundColor: "#ffff00",
                     }}
                 >
                     Director
@@ -227,14 +220,13 @@ const Vaccination = () => {
                 <span
                     style={{
                         fontWeight: 400,
-                        backgroundColor: "#ffff00",
                     }}
                 >
                     Woolwich late night Pharmacy says
                 </span>
                 <img
                     src="https://i.imgur.com/6AF7xiz.jpg"
-                    alt="Rajesh Kandel"
+                    alt="Rajan Kandel"
                     style={{ width: "100%" }}
                 />
                 <br />
