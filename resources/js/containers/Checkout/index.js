@@ -544,9 +544,10 @@ const Checkout = () => {
                                                         </span>
                                                     )}
                                                 </button>
-                                                {/*<PayPalScriptProvider
+                                                <PayPalScriptProvider
                                                     options={{
-                                                        "client-id": PAYPAL_CLIENT_ID,
+                                                        "client-id":
+                                                            PAYPAL_CLIENT_ID,
                                                         currency: "GBP",
                                                     }}
                                                 >
@@ -557,7 +558,7 @@ const Checkout = () => {
                                                         onApprove={onApprove}
                                                         onCancel={onCancel}
                                                     />
-                                                    </PayPalScriptProvider>*/}
+                                                </PayPalScriptProvider>
                                             </div>
                                         </>
                                     ) : (
